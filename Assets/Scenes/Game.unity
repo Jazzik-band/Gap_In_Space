@@ -457,12 +457,8 @@ MonoBehaviour:
   roomCount: 20
   minRoomSize: {x: 10, y: 10}
   maxRoomSize: {x: 10, y: 10}
-  dungeonWidth: 80
-  dungeonHeight: 80
+  dungeonSize: 100
   corridorWidth: 2
-  corridorLengthFactor: 0.1
-  windingCorridors: 0
-  windingIntensity: 0.3
   floorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
   wallTile: {fileID: 11400000, guid: 382f909926fb5f448a9947405eb37bd1, type: 2}
   corridorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}

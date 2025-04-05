@@ -8,15 +8,11 @@ public class DungeonGenerator : MonoBehaviour
     [Header("Основные настройки")]
     [SerializeField] private int roomCount = 5;
     [SerializeField] private Vector2Int minRoomSize = new Vector2Int(4, 4);
-    [SerializeField] private Vector2Int maxRoomSize = new Vector2Int(10, 10);
-    [SerializeField] private int dungeonWidth = 100;
-    [SerializeField] private int dungeonHeight = 100;
+    [SerializeField] private Vector2Int maxRoomSize = new Vector2Int(8, 8);
+    [SerializeField] private int dungeonSize = 50;
 
     [Header("Настройки коридоров")]
-    [SerializeField][Range(1, 5)] private int corridorWidth = 1;
-    [SerializeField][Range(0.1f, 2f)] private float corridorLengthFactor = 1f;
-    [SerializeField] private bool windingCorridors = false;
-    [SerializeField][Range(0f, 1f)] private float windingIntensity = 0.3f;
+    [SerializeField] private int corridorWidth = 1;
 
     [Header("Тайлы")]
     [SerializeField] private TileBase floorTile;
@@ -28,30 +24,22 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private Tilemap wallMap;
 
     private List<Room> rooms = new List<Room>();
-    private System.Random random;
+    private System.Random random = new System.Random();
 
     private class Room
     {
         public RectInt bounds;
-        public Vector2Int center;
+        public Vector2Int Center => new Vector2Int(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
+        public List<Room> neighbors = new List<Room>();
 
         public Room(RectInt bounds)
         {
             this.bounds = bounds;
-            this.center = new Vector2Int(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
-        }
-
-        public bool Intersects(Room other, int padding = 1)
-        {
-            RectInt thisRect = new RectInt(bounds.x - padding, bounds.y - padding, bounds.width + padding * 2, bounds.height + padding * 2);
-            RectInt otherRect = new RectInt(other.bounds.x - padding, other.bounds.y - padding, other.bounds.width + padding * 2, other.bounds.height + padding * 2);
-            return thisRect.x < otherRect.x + otherRect.width && thisRect.x + thisRect.width > otherRect.x && thisRect.y < otherRect.y + otherRect.height && thisRect.y + thisRect.height > otherRect.y;
         }
     }
 
     void Start()
     {
-        random = new System.Random();
         GenerateDungeon();
     }
 
@@ -59,7 +47,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         ClearMaps();
         GenerateRooms();
-        ConnectRooms();
+        ConnectAllRooms();
         CreateWalls();
     }
 
@@ -75,138 +63,193 @@ public class DungeonGenerator : MonoBehaviour
         for (int i = 0; i < roomCount; i++)
         {
             int attempts = 0;
-            bool roomPlaced = false;
+            bool placed = false;
 
-            while (!roomPlaced && attempts < 100)
+            while (!placed && attempts < 100)
             {
                 attempts++;
                 int width = random.Next(minRoomSize.x, maxRoomSize.x + 1);
                 int height = random.Next(minRoomSize.y, maxRoomSize.y + 1);
-                int x = random.Next(0, dungeonWidth - width);
-                int y = random.Next(0, dungeonHeight - height);
+                int x = random.Next(0, dungeonSize - width);
+                int y = random.Next(0, dungeonSize - height);
 
-                RectInt newRoomBounds = new RectInt(x, y, width, height);
-                Room newRoom = new Room(newRoomBounds);
-
-                if (!rooms.Any(room => room.Intersects(newRoom)))
+                RectInt bounds = new RectInt(x, y, width, height);
+                if (!rooms.Any(r => Overlaps(r.bounds, bounds, 2)))
                 {
-                    rooms.Add(newRoom);
-                    roomPlaced = true;
-                    DrawRoom(newRoom);
+                    rooms.Add(new Room(bounds));
+                    DrawRoom(bounds);
+                    placed = true;
                 }
             }
         }
     }
 
-    void DrawRoom(Room room)
+    bool Overlaps(RectInt a, RectInt b, int padding)
     {
-        for (int x = room.bounds.x; x < room.bounds.x + room.bounds.width; x++)
+        return a.x - padding < b.x + b.width + padding &&
+               a.x + a.width + padding > b.x - padding &&
+               a.y - padding < b.y + b.height + padding &&
+               a.y + a.height + padding > b.y - padding;
+    }
+
+    void DrawRoom(RectInt bounds)
+    {
+        for (int x = bounds.x; x < bounds.x + bounds.width; x++)
         {
-            for (int y = room.bounds.y; y < room.bounds.y + room.bounds.height; y++)
+            for (int y = bounds.y; y < bounds.y + bounds.height; y++)
             {
                 floorMap.SetTile(new Vector3Int(x, y, 0), floorTile);
             }
         }
     }
 
-    void ConnectRooms()
+    void ConnectAllRooms()
     {
-        var sortedRooms = rooms.OrderBy(room => room.center.x).ToList();
-
-        for (int i = 0; i < sortedRooms.Count - 1; i++)
+        // Сначала соединяем ближайших соседей
+        foreach (Room room in rooms)
         {
-            ConnectTwoRooms(sortedRooms[i], sortedRooms[i + 1]);
-        }
-    }
+            var closestNeighbors = rooms
+                .Where(other => other != room)
+                .OrderBy(other => Vector2Int.Distance(room.Center, other.Center))
+                .Take(2);
 
-    void ConnectTwoRooms(Room a, Room b)
-    {
-        Vector2Int start = a.center;
-        Vector2Int end = b.center;
-        Vector2Int horizontalEnd = new Vector2Int(end.x, start.y);
-        Vector2Int verticalStart = horizontalEnd;
-
-        if (corridorLengthFactor != 1f)
-        {
-            int baseLength = end.x - start.x;
-            int modifiedLength = Mathf.RoundToInt(baseLength * corridorLengthFactor);
-            horizontalEnd.x = start.x + modifiedLength;
-            verticalStart = horizontalEnd;
-        }
-
-        if (windingCorridors)
-        {
-            int windingOffset = Mathf.RoundToInt((end.y - start.y) * windingIntensity * (float)(random.NextDouble() * 2 - 1));
-            horizontalEnd.y += windingOffset;
-            verticalStart.y += windingOffset;
-        }
-
-        DrawCorridorLine(start, horizontalEnd);
-        DrawCorridorLine(verticalStart, end);
-    }
-
-    void DrawCorridorLine(Vector2Int start, Vector2Int end)
-    {
-        int dx = Mathf.Abs(end.x - start.x);
-        int dy = Mathf.Abs(end.y - start.y);
-        int sx = start.x < end.x ? 1 : -1;
-        int sy = start.y < end.y ? 1 : -1;
-        int err = dx - dy;
-        int halfWidth = corridorWidth / 2;
-        int widthOffset = -(corridorWidth - 1) / 2;
-
-        while (true)
-        {
-            for (int w = 0; w < corridorWidth; w++)
+            foreach (Room neighbor in closestNeighbors)
             {
-                int wx = dx > dy ? start.x : start.x + widthOffset + w;
-                int wy = dx > dy ? start.y + widthOffset + w : start.y;
-                Vector3Int pos = new Vector3Int(wx, wy, 0);
+                if (!room.neighbors.Contains(neighbor))
+                {
+                    ConnectRoomsWithCorners(room, neighbor);
+                    room.neighbors.Add(neighbor);
+                    neighbor.neighbors.Add(room);
+                }
+            }
+        }
+
+        // Затем убедимся, что все комнаты связаны
+        EnsureAllRoomsConnected();
+    }
+
+    void ConnectRoomsWithCorners(Room a, Room b)
+    {
+        Vector2Int start = a.Center;
+        Vector2Int end = b.Center;
+        Vector2Int corner = new Vector2Int(end.x, start.y);
+
+        // Горизонтальная часть
+        DrawCorridorLine(start, corner, true);
+
+        // Вертикальная часть
+        DrawCorridorLine(corner, end, false);
+
+        // Угол поворота
+        DrawCorner(corner);
+    }
+
+    void DrawCorridorLine(Vector2Int start, Vector2Int end, bool isHorizontal)
+    {
+        Vector2Int direction = (end - start);
+        direction = new Vector2Int(
+            direction.x > 0 ? 1 : direction.x < 0 ? -1 : 0,
+            direction.y > 0 ? 1 : direction.y < 0 ? -1 : 0);
+
+        Vector2Int current = start;
+        while (current != end)
+        {
+            DrawCorridorPoint(current, isHorizontal);
+            current += direction;
+        }
+        DrawCorridorPoint(end, isHorizontal);
+    }
+
+    void DrawCorridorPoint(Vector2Int point, bool isHorizontal)
+    {
+        int halfWidth = corridorWidth / 2;
+        for (int w = -halfWidth; w <= halfWidth; w++)
+        {
+            Vector3Int pos = isHorizontal ?
+                new Vector3Int(point.x, point.y + w, 0) :
+                new Vector3Int(point.x + w, point.y, 0);
+
+            if (!floorMap.HasTile(pos))
+            {
+                floorMap.SetTile(pos, corridorTile ?? floorTile);
+            }
+        }
+    }
+
+    void DrawCorner(Vector2Int corner)
+    {
+        int halfWidth = corridorWidth / 2;
+        for (int x = -halfWidth; x <= halfWidth; x++)
+        {
+            for (int y = -halfWidth; y <= halfWidth; y++)
+            {
+                Vector3Int pos = new Vector3Int(corner.x + x, corner.y + y, 0);
                 if (!floorMap.HasTile(pos))
                 {
                     floorMap.SetTile(pos, corridorTile ?? floorTile);
                 }
             }
+        }
+    }
 
-            if (start.x == end.x && start.y == end.y) break;
+    void EnsureAllRoomsConnected()
+    {
+        if (rooms.Count == 0) return;
 
-            int e2 = 2 * err;
-            if (e2 > -dy)
+        HashSet<Room> visited = new HashSet<Room>();
+        Queue<Room> queue = new Queue<Room>();
+        queue.Enqueue(rooms[0]);
+
+        while (queue.Count > 0)
+        {
+            Room current = queue.Dequeue();
+            visited.Add(current);
+
+            foreach (Room neighbor in current.neighbors)
             {
-                err -= dy;
-                start.x += sx;
+                if (!visited.Contains(neighbor))
+                {
+                    queue.Enqueue(neighbor);
+                }
             }
-            if (e2 < dx)
+        }
+
+        if (visited.Count < rooms.Count)
+        {
+            foreach (Room room in rooms.Where(r => !visited.Contains(r)))
             {
-                err += dx;
-                start.y += sy;
+                Room closest = visited.OrderBy(r => Vector2Int.Distance(room.Center, r.Center)).First();
+                ConnectRoomsWithCorners(room, closest);
+                room.neighbors.Add(closest);
+                closest.neighbors.Add(room);
+                visited.Add(room);
             }
         }
     }
 
     void CreateWalls()
     {
-        HashSet<Vector3Int> floorPositions = new HashSet<Vector3Int>();
+        HashSet<Vector3Int> floorTiles = new HashSet<Vector3Int>();
 
         foreach (var pos in floorMap.cellBounds.allPositionsWithin)
         {
             if (floorMap.HasTile(pos))
             {
-                floorPositions.Add(pos);
+                floorTiles.Add(pos);
             }
         }
 
-        foreach (var floorPos in floorPositions)
+        foreach (var pos in floorTiles)
         {
             for (int x = -1; x <= 1; x++)
             {
                 for (int y = -1; y <= 1; y++)
                 {
                     if (x == 0 && y == 0) continue;
-                    Vector3Int neighborPos = new Vector3Int(floorPos.x + x, floorPos.y + y, floorPos.z);
-                    if (!floorPositions.Contains(neighborPos))
+                    Vector3Int wallPos = new Vector3Int(pos.x + x, pos.y + y, 0);
+                    if (!floorTiles.Contains(wallPos))
                     {
-                        wallMap.SetTile(neighborPos, wallTile);
+                        wallMap.SetTile(wallPos, wallTile);
                     }
                 }
             }
