@@ -11,10 +11,6 @@ public class CameraFollow : MonoBehaviour
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
-            Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothedPosition;
-            
         }
         
         if (target != null)
