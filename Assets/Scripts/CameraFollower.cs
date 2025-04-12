@@ -2,12 +2,21 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target; // Объект, за которым следует камера (ваш персонаж)
-    public float smoothSpeed = 0.125f; // Плавность перемещения камеры
-    public Vector3 offset; // Смещение камеры относительно персонажа
+    public Transform target;
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
 
     void LateUpdate()
     {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            Vector3 desiredPosition = target.position + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            transform.position = smoothedPosition;
+            
+        }
+        
         if (target != null)
         {
             Vector3 desiredPosition = target.position + offset;

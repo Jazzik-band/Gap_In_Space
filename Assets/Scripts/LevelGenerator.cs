@@ -20,6 +20,8 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
 
+    [SerializeField] private GameObject playerPrefab;
+
     private List<Room> rooms = new List<Room>();
     private System.Random random = new System.Random();
 
@@ -38,6 +40,7 @@ public class DungeonGenerator : MonoBehaviour
     void Start()
     {
         GenerateDungeon();
+        SpawnPlayerInRandomRoom();
     }
 
     public void GenerateDungeon()
@@ -102,7 +105,6 @@ public class DungeonGenerator : MonoBehaviour
 
     void ConnectAllRooms()
     {
-        // ������� ��������� ��������� �������
         foreach (Room room in rooms)
         {
             var closestNeighbors = rooms
@@ -120,8 +122,7 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
         }
-
-        // ����� ��������, ��� ��� ������� �������
+        
         EnsureAllRoomsConnected();
     }
 
@@ -130,14 +131,11 @@ public class DungeonGenerator : MonoBehaviour
         Vector2Int start = a.Center;
         Vector2Int end = b.Center;
         Vector2Int corner = new Vector2Int(end.x, start.y);
-
-        // �������������� �����
+        
         DrawCorridorLine(start, corner, true);
-
-        // ������������ �����
+        
         DrawCorridorLine(corner, end, false);
-
-        // ���� ��������
+        
         DrawCorner(corner);
     }
 
@@ -251,5 +249,25 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
         }
+    }
+    
+    public void SpawnPlayerInRandomRoom()
+    {
+        if (rooms.Count == 0 || playerPrefab == null)
+        {
+            Debug.LogError("No rooms or player prefab assigned!");
+            return;
+        }
+
+        
+        
+        // Выбор случайной комнаты
+        Room spawnRoom = rooms[Random.Range(0, rooms.Count)];
+        Vector3 spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
+
+        // Спавн игрока
+        Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+    
+        Debug.Log($"Player spawned in room at {spawnPosition}");
     }
 }
