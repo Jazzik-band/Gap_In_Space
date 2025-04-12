@@ -2,24 +2,21 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    [Header("Основные настройки")]
     [SerializeField] private int roomCount = 5;
     [SerializeField] private Vector2Int minRoomSize = new Vector2Int(4, 4);
     [SerializeField] private Vector2Int maxRoomSize = new Vector2Int(8, 8);
     [SerializeField] private int dungeonSize = 50;
 
-    [Header("Настройки коридоров")]
     [SerializeField] private int corridorWidth = 1;
 
-    [Header("Тайлы")]
     [SerializeField] private TileBase floorTile;
     [SerializeField] private TileBase wallTile;
     [SerializeField] private TileBase corridorTile;
 
-    [Header("Компоненты")]
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
 
@@ -105,7 +102,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void ConnectAllRooms()
     {
-        // Сначала соединяем ближайших соседей
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         foreach (Room room in rooms)
         {
             var closestNeighbors = rooms
@@ -124,7 +121,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
-        // Затем убедимся, что все комнаты связаны
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         EnsureAllRoomsConnected();
     }
 
@@ -134,13 +131,13 @@ public class DungeonGenerator : MonoBehaviour
         Vector2Int end = b.Center;
         Vector2Int corner = new Vector2Int(end.x, start.y);
 
-        // Горизонтальная часть
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         DrawCorridorLine(start, corner, true);
 
-        // Вертикальная часть
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         DrawCorridorLine(corner, end, false);
 
-        // Угол поворота
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         DrawCorner(corner);
     }
 
