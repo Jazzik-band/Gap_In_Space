@@ -165,5 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88053980551008468a5d5835a141489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 5
-  playerPrefab: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+  radius: 4
+  enemyWalkSpeed: 0.5
+  enemyRunSpeed: 5
+  centerPoint: {x: 0, y: 0}
