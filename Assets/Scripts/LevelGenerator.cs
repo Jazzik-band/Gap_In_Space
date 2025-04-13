@@ -21,9 +21,14 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private Tilemap wallMap;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject enemyPrefab;
 
     private List<Room> rooms = new List<Room>();
     private System.Random random = new System.Random();
+    private int playerRoom;
+    private int enemyRoom;
+    private int width;
+    private int height;
 
     private class Room
     {
@@ -41,6 +46,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         GenerateDungeon();
         SpawnPlayerInRandomRoom();
+        SpawnEnemiesInRandomRoom();
     }
 
     public void GenerateDungeon()
@@ -68,8 +74,8 @@ public class DungeonGenerator : MonoBehaviour
             while (!placed && attempts < 100)
             {
                 attempts++;
-                int width = random.Next(minRoomSize.x, maxRoomSize.x + 1);
-                int height = random.Next(minRoomSize.y, maxRoomSize.y + 1);
+                width = random.Next(minRoomSize.x, maxRoomSize.x + 1);
+                height = random.Next(minRoomSize.y, maxRoomSize.y + 1);
                 int x = random.Next(0, dungeonSize - width);
                 int y = random.Next(0, dungeonSize - height);
 
@@ -258,16 +264,36 @@ public class DungeonGenerator : MonoBehaviour
             Debug.LogError("No rooms or player prefab assigned!");
             return;
         }
-
-        
         
         // Выбор случайной комнаты
-        Room spawnRoom = rooms[Random.Range(0, rooms.Count)];
+        playerRoom = Random.Range(0, rooms.Count);
+        Room spawnRoom = rooms[playerRoom];
         Vector3 spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
 
         // Спавн игрока
         Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
     
         Debug.Log($"Player spawned in room at {spawnPosition}");
+    }
+
+    public void SpawnEnemiesInRandomRoom()
+    {
+        for (int i = 0; i < roomCount; i++)
+        {
+            if(i == playerRoom) continue;
+            if (rooms.Count == 0 || enemyPrefab == null)
+            {
+                Debug.LogError("No rooms or enemy prefab assigned!");
+                return;
+            }
+
+            enemyRoom = Random.Range(0, rooms.Count);
+            Room enemySpawnRoom = rooms[enemyRoom];
+            Vector3 enemySpawnPosition = new Vector3(enemySpawnRoom.Center.x, enemySpawnRoom.Center.y, 0);
+
+            Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
+
+            Debug.Log($"Enemy spawned in room at {enemySpawnPosition}");
+        }
     }
 }
