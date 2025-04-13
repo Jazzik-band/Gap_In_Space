@@ -269,11 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd680954b738b499a509f6f8b61c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   target: {fileID: 0}
-=======
-  target: {fileID: 3631799007920299643, guid: 31ee63adfbd1cdc4db0cfcd24e63ce72, type: 3}
->>>>>>> Stashed changes
   smoothSpeed: 10
   offset: {x: 0, y: 0, z: -10}
 --- !u!1 &547590376
@@ -525,10 +521,6 @@ MonoBehaviour:
   wallMap: {fileID: 547590379}
   playerPrefab: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
   enemyPrefab: {fileID: 6542246911285775542, guid: fbfa1c4bc1623d24da3f95d2f6a1e3ae, type: 3}
-<<<<<<< Updated upstream
-=======
-  enemiesNumber: 10
->>>>>>> Stashed changes
 --- !u!4 &1399806140
 Transform:
   m_ObjectHideFlags: 0
