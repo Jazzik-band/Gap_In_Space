@@ -15,6 +15,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject lightPrefab;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
     private readonly List<Room> rooms = new List<Room>();
@@ -239,8 +240,11 @@ public class DungeonGenerator : MonoBehaviour
         availableRooms.Remove(spawnRoom);
         var spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
         var player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        var flashlight = Instantiate(lightPrefab, player.transform);
+        flashlight.transform.localPosition = new Vector3(-0.05f, 0, 0);
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPosition + new Vector3(0, 0, -10);
         CameraFollower.Target = player.transform;
+        PlayerMovement.Light = flashlight.transform;
     }
 
     private void SpawnEnemiesInRandomRoom()

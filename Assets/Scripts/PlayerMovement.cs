@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionReference sprintAction;
     [SerializeField] private InputActionReference lookAction;
 
+    public static Transform Light;
     private Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 currentVelocity;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
             targetRotation, 
             rotationSpeed * Time.deltaTime
         );
+        Light.transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var isSprinting = sprintAction.action.IsPressed();
         var currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
