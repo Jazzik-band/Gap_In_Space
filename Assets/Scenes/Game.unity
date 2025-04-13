@@ -513,7 +513,6 @@ MonoBehaviour:
   minRoomSize: {x: 10, y: 10}
   maxRoomSize: {x: 10, y: 10}
   dungeonSize: 100
-  corridorWidth: 2
   floorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
   wallTile: {fileID: 11400000, guid: 382f909926fb5f448a9947405eb37bd1, type: 2}
   corridorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
@@ -521,6 +520,7 @@ MonoBehaviour:
   wallMap: {fileID: 547590379}
   playerPrefab: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
   enemyPrefab: {fileID: 6542246911285775542, guid: fbfa1c4bc1623d24da3f95d2f6a1e3ae, type: 3}
+  enemiesNumber: 10
 --- !u!4 &1399806140
 Transform:
   m_ObjectHideFlags: 0
