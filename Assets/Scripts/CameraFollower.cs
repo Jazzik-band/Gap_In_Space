@@ -1,23 +1,30 @@
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollower : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public static Transform Target;
+    private const float SmoothSpeed = 0.05f;
+    private readonly Vector3 baseOffset = new Vector3(0, 0, -10);
+    private const float MaxCursorDistance = 3f;
+    private const float CursorInfluence = 0.5f;
+    private Camera mainCamera;
 
-    void LateUpdate()
+    private void Start()
     {
-        if (target == null)
-        {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-        
-        if (target != null)
-        {
-            Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothedPosition;
-        }
+        mainCamera = GetComponent<Camera>();
+    }
+    
+    private void LateUpdate()
+    {
+        var cursorWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        cursorWorldPos.z = 0;
+        var playerToCursor = cursorWorldPos - Target.position;
+        var cursorDistance = playerToCursor.magnitude;
+        var cursorDirection = playerToCursor.normalized;
+        var dynamicOffsetAmount = Mathf.Min(cursorDistance * CursorInfluence, MaxCursorDistance);
+        var cursorOffset = cursorDirection * dynamicOffsetAmount;
+        var desiredPosition = Target.position + baseOffset + cursorOffset;
+        var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, SmoothSpeed);
+        transform.position = smoothedPosition;
     }
 }

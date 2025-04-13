@@ -270,8 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothSpeed: 10
-  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &547590376
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +517,7 @@ MonoBehaviour:
   floorMap: {fileID: 1652884193}
   wallMap: {fileID: 547590379}
   playerPrefab: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+  camera: {fileID: 519420031}
   enemyPrefab: {fileID: 6542246911285775542, guid: fbfa1c4bc1623d24da3f95d2f6a1e3ae, type: 3}
   enemiesNumber: 10
 --- !u!4 &1399806140

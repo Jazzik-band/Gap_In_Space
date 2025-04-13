@@ -224,7 +224,9 @@ public class DungeonGenerator : MonoBehaviour
         var spawnRoom = rooms[playerRoom];
         availableRooms.Remove(spawnRoom);
         var spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
-        Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        var player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPosition + new Vector3(0, 0, -10);
+        CameraFollower.Target = player.transform;
     }
 
     private void SpawnEnemiesInRandomRoom()
