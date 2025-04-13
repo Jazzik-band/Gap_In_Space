@@ -1,3 +1,4 @@
+using UnityEditor.Searcher;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float deceleration = 10f;
     private Rigidbody2D rb;
     private Vector2 currentVelocity;
+    public Animator animator;
 
     void Start()
     {
