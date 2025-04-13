@@ -1,26 +1,50 @@
-using UnityEditor.Searcher;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float acceleration = 10f;
-    public float deceleration = 10f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float sprintSpeed = 8f;
+    [SerializeField] private float acceleration = 10f;
+    [SerializeField] private InputActionReference moveAction;
+    [SerializeField] private InputActionReference sprintAction;
+
     private Rigidbody2D rb;
     private Vector2 currentVelocity;
-    public Animator animator;
+    private Vector2 moveInput;
+    private bool isSprinting;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
+        moveAction.action.Enable();
+        sprintAction.action.Enable();
+    }
 
-        Vector2 targetVelocity = new Vector2(moveX, moveY) * moveSpeed;
-        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, acceleration * Time.deltaTime);
+    private void OnDisable()
+    {
+        moveAction.action.Disable();
+        sprintAction.action.Disable();
+    }
+
+    private void Update()
+    {
+        moveInput = moveAction.action.ReadValue<Vector2>();
+        isSprinting = sprintAction.action.IsPressed();
+    }
+
+    [Obsolete("Obsolete")]
+    private void FixedUpdate()
+    {
+        var currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
+        var targetVelocity = moveInput * currentSpeed;
+        rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref currentVelocity,
+            acceleration * Time.fixedDeltaTime);
     }
 }
