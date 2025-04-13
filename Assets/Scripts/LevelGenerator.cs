@@ -22,6 +22,7 @@ public class DungeonGenerator : MonoBehaviour
     private HashSet<Room> availableRooms;
     private int width;
     private int height;
+    private int mapPadding = 20;
 
     private class Room
     {
@@ -105,7 +106,7 @@ public class DungeonGenerator : MonoBehaviour
                 .Where(other => other != room)
                 .OrderBy(other => Vector2Int.Distance(room.Center, other.Center))
                 .Take(2);
-            foreach (Room neighbor in closestNeighbors)
+            foreach (var neighbor in closestNeighbors)
             {
                 if (!room.Neighbors.Contains(neighbor))
                 {
@@ -141,6 +142,7 @@ public class DungeonGenerator : MonoBehaviour
             DrawCorridorPoint(current, isHorizontal);
             current += direction;
         }
+
         DrawCorridorPoint(end, isHorizontal);
     }
 
@@ -204,13 +206,25 @@ public class DungeonGenerator : MonoBehaviour
         foreach (var pos in floorMap.cellBounds.allPositionsWithin)
             if (floorMap.HasTile(pos))
                 floorTiles.Add(pos);
+        for (var x = -mapPadding; x < dungeonSize + mapPadding; x++)
+        {
+            for (var y = -mapPadding; y < dungeonSize + mapPadding; y++)
+            {
+                var pos = new Vector3Int(x, y, 0);
+                if (!floorTiles.Contains(pos))
+                    wallMap.SetTile(pos, wallTile);
+            }
+        }
+
         foreach (var pos in floorTiles)
             for (var x = -1; x <= 1; x++)
             for (var y = -1; y <= 1; y++)
             {
                 if (x == 0 && y == 0) continue;
                 var wallPos = new Vector3Int(pos.x + x, pos.y + y, 0);
-                if (!floorTiles.Contains(wallPos))
+                if (wallPos.x >= -mapPadding && wallPos.x < dungeonSize + mapPadding &&
+                    wallPos.y >= -mapPadding && wallPos.y < dungeonSize + mapPadding &&
+                    !floorTiles.Contains(wallPos))
                 {
                     wallMap.SetTile(wallPos, wallTile);
                 }
