@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class Enemy: MonoBehaviour
 {
-    [SerializeField] private float radius = 2f;
+    [SerializeField] private float radius = 4f;
     [SerializeField] public float enemyWalkSpeed;
     [SerializeField] public float enemyRunSpeed;
-    [SerializeField] private Vector2 centerPoint;
-    private float angle = 0f;
+    [SerializeField] private float minWaitTime = 1f; // Минимальное время до смены точки
+    [SerializeField] private float maxWaitTime = 3f; // Максимальное время до смены точки
+    private Vector2 targetPosition;
+    private Vector2 centerPoint;
+    private float timer;
+    private float waitTime;
     private Transform player;
     
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        if (centerPoint == Vector2.zero)
-            centerPoint = transform.position;
+        centerPoint = transform.position;
+        SetNewRandomTarget();
     }
 
     private void Update()
@@ -24,11 +28,32 @@ public class Enemy: MonoBehaviour
         }
         else
         {
-            angle -= enemyWalkSpeed * Time.deltaTime;
-            float x = centerPoint.x + Mathf.Cos(angle) * radius;
-            float y = centerPoint.y + Mathf.Sin(angle) * radius;
-            // Применяем новую позицию
-            transform.position = new Vector2(x, y);
+            transform.position =
+                Vector2.MoveTowards(transform.position, targetPosition, enemyWalkSpeed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                timer += Time.deltaTime;
+                if (timer >= waitTime)
+                {
+                    SetNewRandomTarget();
+                    timer = 0f;
+                }
+            }
         }
+    }
+    // Выбирает новую случайную позицию внутри круга
+    private void SetNewRandomTarget()
+    {
+        // Случайный угол и радиус внутри круга
+        float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+        float randomRadius = Random.Range(0f, radius);
+
+        // Переводим полярные координаты (угол + радиус) в декартовы (x, y)
+        targetPosition = centerPoint + new Vector2(
+            Mathf.Cos(randomAngle) * randomRadius,
+            Mathf.Sin(randomAngle) * randomRadius
+        );
+
+        waitTime = Random.Range(minWaitTime, maxWaitTime); // Случайное время ожидания
     }
 }

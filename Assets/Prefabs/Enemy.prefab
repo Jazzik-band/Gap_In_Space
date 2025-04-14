@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 4
-  enemyWalkSpeed: 0.5
+  enemyWalkSpeed: 1
   enemyRunSpeed: 5
-  centerPoint: {x: 0, y: 0}
+  minWaitTime: 1
+  maxWaitTime: 3
