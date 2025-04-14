@@ -7,9 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
-    [SerializeField] private float acceleration = 10f;
-    [SerializeField] private float rotationSpeed = 15f;
-    
+    [SerializeField] private float crouchSpeed = 2f;
+
     [Header("Stamina Settings")]
     [SerializeField] private float maxStamina = 100f;
     [SerializeField, Range(0.01f, 1f)] private float sprintPercentAvailability;
@@ -20,17 +19,21 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference sprintAction;
+    [SerializeField] private InputActionReference crouchAction;
     [SerializeField] private InputActionReference lookAction;
 
     public static Transform Light;
     private Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 currentVelocity;
-    
+
+    private const float RotationSpeed = 15f;
+    private const float Acceleration = 10f;
     private static float _currentStamina;
     private static float _maxStamina;
     private float lastSprintTime;
     private bool canSprint = true;
+    private static bool _isCrouching;
 
     private void Awake()
     {
@@ -62,13 +65,18 @@ public class PlayerMovement : MonoBehaviour
         var direction = (mouseWorldPosition - (Vector2)transform.position).normalized;
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
         Light.transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var isSprinting = sprintAction.action.IsPressed() && canSprint && moveInput.magnitude > 0.1f;
-        var currentSpeed = isSprinting && _currentStamina > 0 ? sprintSpeed : moveSpeed;
+        _isCrouching = crouchAction.action.IsPressed();
+        var currentSpeed =  moveSpeed;
+        if (isSprinting && !_isCrouching && _currentStamina > 0)
+            currentSpeed = sprintSpeed;
+        if (_isCrouching && !isSprinting)
+            currentSpeed = crouchSpeed;
         var targetVelocity = moveInput * currentSpeed;
-        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, acceleration * Time.fixedDeltaTime);
+        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
     }
     
     private void HandleStamina()
@@ -98,5 +106,10 @@ public class PlayerMovement : MonoBehaviour
     public static float GetStaminaNormalized()
     {
         return _currentStamina / _maxStamina;
+    }
+
+    public static bool IsCrouching()
+    {
+        return _isCrouching;
     }
 }

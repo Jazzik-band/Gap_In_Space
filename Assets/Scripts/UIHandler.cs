@@ -6,6 +6,7 @@ public class UIHandler : MonoBehaviour
     [Header("Slider Settings")]
     [SerializeField] private Slider slider;
     [SerializeField] private float hideDelay = 1f;
+    [SerializeField] private Gradient colorGradient;
     
     private Image sliderFillImage;
     private float lastStaminaChangeTime;
@@ -28,6 +29,7 @@ public class UIHandler : MonoBehaviour
     {
         var staminaValue = PlayerMovement.GetStaminaNormalized();
         slider.value = staminaValue;
+        sliderFillImage.color = colorGradient.Evaluate(staminaValue);
         var isFullNow = Mathf.Approximately(staminaValue, 1f);
         if (isFullNow != wasFullLastFrame)
         {
@@ -38,8 +40,6 @@ public class UIHandler : MonoBehaviour
         }
         if (isFullNow && sliderFillImage && 
             Time.time >= lastStaminaChangeTime + hideDelay)
-        {
             sliderFillImage.enabled = false;
-        }
     }
 }
