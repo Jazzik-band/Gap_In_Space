@@ -11,6 +11,9 @@ public class Enemy: MonoBehaviour
     private Vector2 centerPoint;
     private float timer;
     private float waitTime;
+    private bool isChasing;
+    private bool isReturning;
+    private bool wasChasing; // Был ли враг в режиме погони?
     private Transform player;
     
     private void Start()
@@ -25,6 +28,14 @@ public class Enemy: MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= 7)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
+            isChasing = true;
+            wasChasing = true;
+        }
+        else if (wasChasing && !isReturning)
+        {
+            isChasing = false;
+            wasChasing = false;
+            StartReturnToSpawn();
         }
         else
         {
@@ -55,5 +66,16 @@ public class Enemy: MonoBehaviour
         );
 
         waitTime = Random.Range(minWaitTime, maxWaitTime); // Случайное время ожидания
+    }
+    private void StartReturnToSpawn()
+    {
+        isReturning = true;
+        Invoke(nameof(TeleportToSpawn), 0.5f);
+    }
+
+    private void TeleportToSpawn()
+    {
+        transform.position = centerPoint;
+        isReturning = false;
     }
 }
