@@ -16,6 +16,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private Tilemap wallMap;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject lightPrefab;
+    [SerializeField] private GameObject roundLightPrefab;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
     private readonly List<Room> rooms = new List<Room>();
@@ -242,6 +243,8 @@ public class DungeonGenerator : MonoBehaviour
         var player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
         var flashlight = Instantiate(lightPrefab, player.transform);
         flashlight.transform.localPosition = new Vector3(-0.05f, 0, 0);
+        var roundLight = Instantiate(roundLightPrefab, player.transform);
+        roundLight.transform.localPosition = new Vector3(0, 0, 0);
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPosition + new Vector3(0, 0, -10);
         CameraFollower.Target = player.transform;
         PlayerMovement.Light = flashlight.transform;
