@@ -7,6 +7,7 @@ public class Enemy: MonoBehaviour
     [SerializeField] public float enemyRunSpeed;
     [SerializeField] private float minWaitTime = 1f; // Минимальное время до смены точки
     [SerializeField] private float maxWaitTime = 3f; // Максимальное время до смены точки
+    public float rotationSpeed = 5f;
     private Vector2 targetPosition;
     private Vector2 centerPoint;
     private float timer;
@@ -28,15 +29,7 @@ public class Enemy: MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= 7)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
-            if (player != null)
-            {
-                // Направление к цели
-                Vector2 direction = player.position - transform.position;
-                // Вычисляем угол
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                // Применяем поворот
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            }
+            RunTurn();
             isChasing = true;
             wasChasing = true;
         }
@@ -48,6 +41,7 @@ public class Enemy: MonoBehaviour
         }
         else
         {
+            WalkTurn();
             transform.position =
                 Vector2.MoveTowards(transform.position, targetPosition, enemyWalkSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
@@ -60,7 +54,12 @@ public class Enemy: MonoBehaviour
                 }
             }
         }
-        /*if (player != null)
+        
+    }
+
+    private void RunTurn()
+    {
+        if (player != null)
         {
             // Направление к цели
             Vector2 direction = player.position - transform.position;
@@ -68,8 +67,24 @@ public class Enemy: MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             // Применяем поворот
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }*/
+        }
+    }
+
+    private void WalkTurn()
+    {
+        Vector2 direction = targetPosition - (Vector2)transform.position;
+        if (direction.magnitude > 0.01f)
+        {
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
         
+            // Плавное вращение (Lerp или Slerp)
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime
+            );
+        }
     }
     // Выбирает новую случайную позицию внутри круга
     private void SetNewRandomTarget()

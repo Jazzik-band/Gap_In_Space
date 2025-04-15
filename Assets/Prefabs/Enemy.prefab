@@ -141,6 +141,7 @@ MonoBehaviour:
   enemyRunSpeed: 5.5
   minWaitTime: 1
   maxWaitTime: 3
+  rb: {fileID: 8701971965796199905}
 --- !u!70 &2640065354653171562
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
