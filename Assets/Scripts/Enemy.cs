@@ -28,6 +28,15 @@ public class Enemy: MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= 7)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
+            if (player != null)
+            {
+                // Направление к цели
+                Vector2 direction = player.position - transform.position;
+                // Вычисляем угол
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                // Применяем поворот
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
             isChasing = true;
             wasChasing = true;
         }
@@ -51,6 +60,16 @@ public class Enemy: MonoBehaviour
                 }
             }
         }
+        /*if (player != null)
+        {
+            // Направление к цели
+            Vector2 direction = player.position - transform.position;
+            // Вычисляем угол
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            // Применяем поворот
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }*/
+        
     }
     // Выбирает новую случайную позицию внутри круга
     private void SetNewRandomTarget()
