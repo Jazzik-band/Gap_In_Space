@@ -139,9 +139,11 @@ MonoBehaviour:
   radius: 4
   enemyWalkSpeed: 1
   enemyRunSpeed: 5.5
+  enemyReturnSpeed: 3
+  chaseDistance: 5
   minWaitTime: 1
   maxWaitTime: 3
-  rb: {fileID: 8701971965796199905}
+  rotationSpeed: 5
 --- !u!70 &2640065354653171562
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
