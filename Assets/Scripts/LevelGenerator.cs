@@ -5,7 +5,9 @@ using System.Linq;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    [SerializeField] private int roomCount;
+    [Header("Dungeon settings")] [SerializeField]
+    private int roomCount;
+
     [SerializeField] private Vector2Int minRoomSize;
     [SerializeField] private Vector2Int maxRoomSize;
     [SerializeField] private int dungeonSize;
@@ -14,23 +16,26 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private TileBase corridorTile;
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject lightPrefab;
-    [SerializeField] private GameObject roundLightPrefab;
+    [SerializeField] private GameObject[] items;
+
+    [Header("Creature settings")] [SerializeField]
+    private GameObject playerPrefab;
+
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
-    private readonly List<Room> rooms = new List<Room>();
-    private readonly System.Random random = new System.Random();
+    private readonly List<Room> rooms = new();
+    private readonly System.Random random = new();
     private HashSet<Room> availableRooms;
     private int width;
     private int height;
-    private int mapPadding = 20;
+    private const int MapPadding = 20;
+    private Room playerRoom;
 
     private class Room
     {
         public RectInt Bounds;
-        public Vector2Int Center => new Vector2Int(Bounds.x + Bounds.width / 2, Bounds.y + Bounds.height / 2);
-        public readonly List<Room> Neighbors = new List<Room>();
+        public Vector2Int Center => new(Bounds.x + Bounds.width / 2, Bounds.y + Bounds.height / 2);
+        public readonly List<Room> Neighbors = new();
 
         public Room(RectInt bounds)
         {
@@ -43,6 +48,7 @@ public class DungeonGenerator : MonoBehaviour
         GenerateDungeon();
         SpawnPlayerInRandomRoom();
         SpawnEnemiesInRandomRoom();
+        SpawnItems();
     }
 
     private void GenerateDungeon()
@@ -82,6 +88,7 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
         }
+
         availableRooms = rooms.ToHashSet();
     }
 
@@ -208,9 +215,9 @@ public class DungeonGenerator : MonoBehaviour
         foreach (var pos in floorMap.cellBounds.allPositionsWithin)
             if (floorMap.HasTile(pos))
                 floorTiles.Add(pos);
-        for (var x = -mapPadding; x < dungeonSize + mapPadding; x++)
+        for (var x = -MapPadding; x < dungeonSize + MapPadding; x++)
         {
-            for (var y = -mapPadding; y < dungeonSize + mapPadding; y++)
+            for (var y = -MapPadding; y < dungeonSize + MapPadding; y++)
             {
                 var pos = new Vector3Int(x, y, 0);
                 if (!floorTiles.Contains(pos))
@@ -224,8 +231,8 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (x == 0 && y == 0) continue;
                 var wallPos = new Vector3Int(pos.x + x, pos.y + y, 0);
-                if (wallPos.x >= -mapPadding && wallPos.x < dungeonSize + mapPadding &&
-                    wallPos.y >= -mapPadding && wallPos.y < dungeonSize + mapPadding &&
+                if (wallPos.x >= -MapPadding && wallPos.x < dungeonSize + MapPadding &&
+                    wallPos.y >= -MapPadding && wallPos.y < dungeonSize + MapPadding &&
                     !floorTiles.Contains(wallPos))
                 {
                     wallMap.SetTile(wallPos, wallTile);
@@ -236,18 +243,15 @@ public class DungeonGenerator : MonoBehaviour
     private void SpawnPlayerInRandomRoom()
     {
         if (rooms.Count == 0 || playerPrefab == null) return;
-        var playerRoom = Random.Range(0, rooms.Count);
-        var spawnRoom = rooms[playerRoom];
+        var playerRoomSpawn = Random.Range(0, rooms.Count);
+        var spawnRoom = rooms[playerRoomSpawn];
+        playerRoom = spawnRoom;
         availableRooms.Remove(spawnRoom);
         var spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
         var player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
-        var flashlight = Instantiate(lightPrefab, player.transform);
-        flashlight.transform.localPosition = new Vector3(-0.05f, 0, 0);
-        var roundLight = Instantiate(roundLightPrefab, player.transform);
-        roundLight.transform.localPosition = new Vector3(0, 0, 0);
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPosition + new Vector3(0, 0, -10);
         CameraFollower.Target = player.transform;
-        PlayerMovement.Light = flashlight.transform;
+        InventoryHandler.Target = player.transform;
     }
 
     private void SpawnEnemiesInRandomRoom()
@@ -262,6 +266,26 @@ public class DungeonGenerator : MonoBehaviour
             Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
             spawnedEnemies++;
             availableRooms.Remove(enemySpawnRoom);
+        }
+    }
+
+    private void SpawnItems()
+    {
+        for (var i = 0; i < 100; i++)
+        {
+            var room = rooms[random.Next(0, rooms.Count)];
+            if (room == playerRoom)
+            {
+                i--;
+                continue;
+            }
+
+            var initialX = room.Center +
+                           new Vector2Int(random.Next(-room.Bounds.width / 2 + 1, room.Bounds.width / 2 - 1), 0);
+            var initialY = room.Center +
+                           new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
+            var position = new Vector3Int(initialX.x, initialY.y, 0);
+            Instantiate(items[0], position, Quaternion.identity);
         }
     }
 }

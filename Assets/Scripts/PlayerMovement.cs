@@ -21,8 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionReference sprintAction;
     [SerializeField] private InputActionReference crouchAction;
     [SerializeField] private InputActionReference lookAction;
-
-    public static Transform Light;
+    
     private Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 currentVelocity;
@@ -66,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
-        Light.transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var isSprinting = sprintAction.action.IsPressed() && canSprint && moveInput.magnitude > 0.1f;
         _isCrouching = crouchAction.action.IsPressed();
