@@ -16,7 +16,7 @@ public class FlashlightController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerMovement.IsCrouching())
+        if (PlayerController.IsCrouching())
         {
             flashlight.intensity = flashlightIntensity - 7;
             flashlight.pointLightOuterRadius = flashlightRadius - 4;

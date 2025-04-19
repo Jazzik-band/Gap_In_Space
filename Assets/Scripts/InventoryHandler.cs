@@ -1,15 +1,22 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InventoryHandler : MonoBehaviour
 {
+    public static Transform Target;
     [SerializeField] private GameObject inventorySlotPrefab;
+    [SerializeField] private GameObject interactionHint;
     [SerializeField, Range(1, 5)] private int inventorySlotAmount;
-    [SerializeField] private LayerMask itemsLayerMask;
     [SerializeField] private float pickupRadius = 1.5f;
     private GameObject[] inventorySlots;
-    private GameObject selectedSlot;
-    public static Transform Target;
+    
+    private int selectedSlot;
+    private int previousSelectedSlot;
+    
+    private float lastPickupTime;
+    private float lastSwapTime;
 
     private void Start()
     {
@@ -28,41 +35,55 @@ public class InventoryHandler : MonoBehaviour
             rectTransform.localPosition = Vector3.zero;
             slotContent.SetActive(false);
         }
-        selectedSlot = inventorySlots[0];
+        inventorySlots[selectedSlot].GetComponent<Image>().color = Color.yellow;
     }
 
     private void Update()
     {
-        if (!Target) return;
-        var hitColliders = Physics2D.OverlapCircleAll(Target.position, pickupRadius, itemsLayerMask);
+        HandlePickingUp();
+        if (PlayerController.IsNextSlot())
+            HandleSlotSelection();
+    }
+
+    private void HandlePickingUp()
+    {
+        var offset = new Vector3(0.8f, 0.8f, 0);
+        var screenPos = Camera.main.WorldToScreenPoint(Target.position + offset);
+        interactionHint.transform.position = screenPos;
+        if (Time.time < lastPickupTime + 0.2f)
+            return;
+        var hitColliders = Physics2D.OverlapCircleAll(Target.position, pickupRadius);
+        var isItemNotFound = true;
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Item"))
             {
-                TryPickupItem(hitCollider.gameObject);
+                interactionHint.SetActive(true);
+                isItemNotFound = false;
+                if (PlayerController.TryPickUp())
+                {
+                    TryPickupItem(hitCollider.gameObject);
+                    interactionHint.SetActive(false);
+                    lastPickupTime = Time.time;
+                }
+                break;
             }
         }
+        if (isItemNotFound)
+            interactionHint.SetActive(false);
     }
-    
+
     private void TryPickupItem(GameObject item)
     {
-        foreach (var slot in inventorySlots)
-        {
-            if (slot.transform.childCount > 0)
-            {
-                var slotContent = slot.transform.GetChild(0);
-                if (!slotContent.gameObject.activeInHierarchy)
-                {
-                    PutItemInSlot(item, slotContent.gameObject);
-                    return;
-                }
-            }
-        }
+        var slotContent = inventorySlots[selectedSlot].transform.GetChild(0);
+        if (slotContent.gameObject.activeSelf == false)
+            PutItemInSlot(item, slotContent.gameObject);
     }
 
     private void PutItemInSlot(GameObject originalItem, GameObject slotContent)
     {
-        var itemUI = new GameObject("ItemUI", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        if (slotContent.transform.childCount > 0) return;
+        var itemUI = new GameObject("Item", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         itemUI.transform.SetParent(slotContent.transform, false);
         var spriteRenderer = originalItem.GetComponent<SpriteRenderer>();
         var imageComponent = itemUI.GetComponent<Image>();
@@ -73,5 +94,17 @@ public class InventoryHandler : MonoBehaviour
         }
         slotContent.SetActive(true);
         Destroy(originalItem);
+    }
+
+    private void HandleSlotSelection()
+    {
+        if (Time.time < lastSwapTime + 0.2f)
+            return;
+        selectedSlot = (selectedSlot + 1) % inventorySlotAmount;
+        inventorySlots[selectedSlot].GetComponent<Image>().color = Color.yellow;
+        if (previousSelectedSlot != selectedSlot)
+            inventorySlots[previousSelectedSlot].GetComponent<Image>().color = Color.white;
+        previousSelectedSlot = selectedSlot;
+        lastSwapTime = Time.time;
     }
 }

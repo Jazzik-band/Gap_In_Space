@@ -17,7 +17,7 @@ public class UIHandler : MonoBehaviour
         sliderFillImage = slider.fillRect.GetComponent<Image>();
         sliderFillImage.enabled = false;
         lastStaminaChangeTime = Time.time;
-        wasFullLastFrame = Mathf.Approximately(PlayerMovement.GetStaminaNormalized(), 1f);
+        wasFullLastFrame = Mathf.Approximately(PlayerController.GetStaminaNormalized(), 1f);
     }
     
     private void Update()
@@ -27,7 +27,7 @@ public class UIHandler : MonoBehaviour
 
     private void HandleStamina()
     {
-        var staminaValue = PlayerMovement.GetStaminaNormalized();
+        var staminaValue = PlayerController.GetStaminaNormalized();
         slider.value = staminaValue;
         sliderFillImage.color = colorGradient.Evaluate(staminaValue);
         var isFullNow = Mathf.Approximately(staminaValue, 1f);
