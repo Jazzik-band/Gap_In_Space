@@ -8,7 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
     [SerializeField] private float crouchSpeed = 2f;
-
+    
+    [Header("Health Settings")]
+    [SerializeField] private float maxHealth = 10f;
+    
     [Header("Stamina Settings")]
     [SerializeField] private float maxStamina = 100f;
     [SerializeField, Range(0.01f, 1f)] private float sprintPercentAvailability;
@@ -82,6 +85,10 @@ public class PlayerController : MonoBehaviour
             currentSpeed = crouchSpeed;
         var targetVelocity = moveInput * currentSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
+        if (maxHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     
     private void HandleStamina()
@@ -126,5 +133,12 @@ public class PlayerController : MonoBehaviour
     public static bool IsNextSlot()
     {
         return _isNextSlotPicking;
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            maxHealth -= 1;
+        }
     }
 }
