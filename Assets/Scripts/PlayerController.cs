@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -88,8 +89,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
         if (maxHealth <= 0)
         {
-            gameObject.transform.GetChild(0).GetComponent<Light2D>().enabled = false;
-            gameObject.transform.GetChild(1).GetComponent<Light2D>().enabled = false;
+            SceneManager.LoadScene("Death");
         }
     }
     
