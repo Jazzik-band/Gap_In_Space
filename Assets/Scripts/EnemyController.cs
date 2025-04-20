@@ -1,23 +1,25 @@
 using UnityEngine;
 
-public class Enemy: MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float radius = 4f;
     [SerializeField] public float enemyWalkSpeed;
     [SerializeField] public float enemyRunSpeed;
     [SerializeField] public float enemyReturnSpeed;
     [SerializeField] public float chaseDistance = 5f;
-    [SerializeField] private float minWaitTime = 1f; // Минимальное время до смены точки
-    [SerializeField] private float maxWaitTime = 3f; // Максимальное время до смены точки
+    [SerializeField] private float minWaitTime = 1f;
+    [SerializeField] private float maxWaitTime = 3f;
     public float rotationSpeed = 5f;
     private Vector2 targetPosition;
     private Vector2 centerPoint;
     private float timer;
+
     private float waitTime;
-    private bool isChasing;
-    private bool wasChasing; // Был ли враг в режиме погони?
+
+    // private bool isChasing;
+    private bool wasChasing;
     private Transform player;
-    
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -30,12 +32,12 @@ public class Enemy: MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= 7)
         {
             RunTurn();
-            isChasing = true;
+            // isChasing = true;
             wasChasing = true;
         }
         else if (Vector2.Distance(player.transform.position, transform.position) > 7 && wasChasing)
         {
-            isChasing = false;
+            // isChasing = false;
             wasChasing = false;
             ReturnToSpawn();
         }
@@ -43,19 +45,16 @@ public class Enemy: MonoBehaviour
         {
             WalkTurn();
         }
-        
     }
 
     private void RunTurn()
     {
-        if (player != null)
+        if (player)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
-            // Направление к цели
+            transform.position =
+                Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
             Vector2 direction = player.position - transform.position;
-            // Вычисляем угол
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            // Применяем поворот
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
@@ -73,13 +72,12 @@ public class Enemy: MonoBehaviour
                 timer = 0f;
             }
         }
+
         Vector2 direction = targetPosition - (Vector2)transform.position;
         if (direction.magnitude > 0.01f)
         {
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
-        
-            // Плавное вращение (Lerp или Slerp)
+            var targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            var targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 targetRotation,
@@ -87,20 +85,16 @@ public class Enemy: MonoBehaviour
             );
         }
     }
-    // Выбирает новую случайную позицию внутри круга
+
     private void SetNewRandomTarget()
     {
-        // Случайный угол и радиус внутри круга
-        float randomAngle = Random.Range(0f, Mathf.PI * 2f);
-        float randomRadius = Random.Range(0f, radius);
-
-        // Переводим полярные координаты (угол + радиус) в декартовы (x, y)
+        var randomAngle = Random.Range(0f, Mathf.PI * 2f);
+        var randomRadius = Random.Range(0f, radius);
         targetPosition = centerPoint + new Vector2(
             Mathf.Cos(randomAngle) * randomRadius,
             Mathf.Sin(randomAngle) * randomRadius
         );
-
-        waitTime = Random.Range(minWaitTime, maxWaitTime); // Случайное время ожидания
+        waitTime = Random.Range(minWaitTime, maxWaitTime);
     }
 
     private void ReturnToSpawn()

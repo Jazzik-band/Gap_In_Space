@@ -124,7 +124,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -162,7 +162,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -172,6 +172,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -859,7 +872,37 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      2400231749_preview_Enemy_Prisoner (1) 1_0: -2398098936861430195
+      2400231749_preview_Enemy_Prisoner (1) 1_1: -5527548231748388513
+      2400231749_preview_Enemy_Prisoner (1) 1_10: -31246640148786784
+      2400231749_preview_Enemy_Prisoner (1) 1_11: -8637488916834970828
+      2400231749_preview_Enemy_Prisoner (1) 1_12: -5771285960556867849
+      2400231749_preview_Enemy_Prisoner (1) 1_13: 9108050408944523072
+      2400231749_preview_Enemy_Prisoner (1) 1_14: 962209792153031341
+      2400231749_preview_Enemy_Prisoner (1) 1_15: 6297453668484964376
+      2400231749_preview_Enemy_Prisoner (1) 1_16: -1305478229569353908
+      2400231749_preview_Enemy_Prisoner (1) 1_17: 7813052144439467286
+      2400231749_preview_Enemy_Prisoner (1) 1_18: -5125303653709799262
+      2400231749_preview_Enemy_Prisoner (1) 1_19: -7969435932614126127
+      2400231749_preview_Enemy_Prisoner (1) 1_2: 7112878341653957276
+      2400231749_preview_Enemy_Prisoner (1) 1_20: 5987302575242216746
+      2400231749_preview_Enemy_Prisoner (1) 1_21: -7043667984663938720
+      2400231749_preview_Enemy_Prisoner (1) 1_22: 6931247351125152014
+      2400231749_preview_Enemy_Prisoner (1) 1_23: 7344244072811152648
+      2400231749_preview_Enemy_Prisoner (1) 1_24: 6377304642769556482
+      2400231749_preview_Enemy_Prisoner (1) 1_25: -5920437740000513064
+      2400231749_preview_Enemy_Prisoner (1) 1_26: 6940857622067444432
+      2400231749_preview_Enemy_Prisoner (1) 1_27: -7305787570093812180
+      2400231749_preview_Enemy_Prisoner (1) 1_28: -2351603030374948588
+      2400231749_preview_Enemy_Prisoner (1) 1_29: -677007842746625802
+      2400231749_preview_Enemy_Prisoner (1) 1_3: 8851618770167852818
+      2400231749_preview_Enemy_Prisoner (1) 1_4: 7205333931468888406
+      2400231749_preview_Enemy_Prisoner (1) 1_5: 8484195962023796579
+      2400231749_preview_Enemy_Prisoner (1) 1_6: -4421900574284819377
+      2400231749_preview_Enemy_Prisoner (1) 1_7: -1211427869976190001
+      2400231749_preview_Enemy_Prisoner (1) 1_8: 2357751987652033053
+      2400231749_preview_Enemy_Prisoner (1) 1_9: -7967086771244425122
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

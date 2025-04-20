@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -87,7 +88,8 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
         if (maxHealth <= 0)
         {
-            Destroy(gameObject);
+            gameObject.transform.GetChild(0).GetComponent<Light2D>().enabled = false;
+            gameObject.transform.GetChild(1).GetComponent<Light2D>().enabled = false;
         }
     }
     
