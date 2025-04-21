@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd680954b738b499a509f6f8b61c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1159796970
+--- !u!1001 &992306624
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -283,11 +283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.6
+      value: -24.835552
       objectReference: {fileID: 0}
     - target: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.130487
+      value: 15.57514
       objectReference: {fileID: 0}
     - target: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -771,4 +771,4 @@ SceneRoots:
   - {fileID: 1760861608}
   - {fileID: 1557623810}
   - {fileID: 1879080783}
-  - {fileID: 1159796970}
+  - {fileID: 992306624}
