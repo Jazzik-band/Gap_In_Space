@@ -1,0 +1,867 @@
+fileFormatVersion: 2
+guid: 45acddbcfb173514d9b69f614ff4aca8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -676902002700261200
+    second: Player without a flashlight_0
+  - first:
+      213: 9018135035887037010
+    second: Player without a flashlight_1
+  - first:
+      213: 4469553731419516876
+    second: Player without a flashlight_2
+  - first:
+      213: 4719316720377344244
+    second: Player without a flashlight_3
+  - first:
+      213: -5476533931006968470
+    second: Player without a flashlight_4
+  - first:
+      213: 8434425473356094137
+    second: Player without a flashlight_5
+  - first:
+      213: -3176280121940991790
+    second: Player without a flashlight_6
+  - first:
+      213: -6228670626288699550
+    second: Player without a flashlight_7
+  - first:
+      213: -6442899666054968468
+    second: Player without a flashlight_8
+  - first:
+      213: -475524467565726729
+    second: Player without a flashlight_9
+  - first:
+      213: -2956494352422415862
+    second: Player without a flashlight_10
+  - first:
+      213: -5272571848528660582
+    second: Player without a flashlight_11
+  - first:
+      213: -3797054642983582777
+    second: Player without a flashlight_12
+  - first:
+      213: 3850459141918008786
+    second: Player without a flashlight_13
+  - first:
+      213: -748038872201567608
+    second: Player without a flashlight_14
+  - first:
+      213: -9012153367386506288
+    second: Player without a flashlight_15
+  - first:
+      213: 4347320329062947653
+    second: Player without a flashlight_16
+  - first:
+      213: -3899942080239648906
+    second: Player without a flashlight_17
+  - first:
+      213: 7256576231520147456
+    second: Player without a flashlight_18
+  - first:
+      213: -1690138425755998880
+    second: Player without a flashlight_19
+  - first:
+      213: -8236739181852378383
+    second: Player without a flashlight_20
+  - first:
+      213: -3934260825484322891
+    second: Player without a flashlight_21
+  - first:
+      213: 6135757824177146617
+    second: Player without a flashlight_22
+  - first:
+      213: 8264998962999266336
+    second: Player without a flashlight_23
+  - first:
+      213: 6973592710479243965
+    second: Player without a flashlight_24
+  - first:
+      213: -589821096341392778
+    second: Player without a flashlight_25
+  - first:
+      213: -3533923112969379012
+    second: Player without a flashlight_26
+  - first:
+      213: -7342055691123248093
+    second: Player without a flashlight_27
+  - first:
+      213: 352673909437608628
+    second: Player without a flashlight_28
+  - first:
+      213: 102613732324485451
+    second: Player without a flashlight_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player without a flashlight_0
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 4457
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b8ec4507392b96f0800000000000000
+      internalID: -676902002700261200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_1
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 4457
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a2d86f80ad62d70800000000000000
+      internalID: 9018135035887037010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_2
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 4259
+        width: 80
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf28c1207b070e30800000000000000
+      internalID: 4469553731419516876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_3
+      rect:
+        serializedVersion: 2
+        x: 2627
+        y: 4259
+        width: 80
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f037ac9d816e7140800000000000000
+      internalID: 4719316720377344244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_4
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 4061
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6db4f9d7617ff3b0800000000000000
+      internalID: -5476533931006968470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_5
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 4061
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ba55efc7491d0570800000000000000
+      internalID: 8434425473356094137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_6
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 3863
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0a298ce069be3d0800000000000000
+      internalID: -3176280121940991790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_7
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 3863
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267f629f0115f89a0800000000000000
+      internalID: -6228670626288699550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_8
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 3665
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6b8f41c3e83696a0800000000000000
+      internalID: -6442899666054968468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_9
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 3665
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f3fcb424099669f0800000000000000
+      internalID: -475524467565726729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_10
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 3467
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a02d967fc0c68f6d0800000000000000
+      internalID: -2956494352422415862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_11
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 3467
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9779bbc6df04d6b0800000000000000
+      internalID: -5272571848528660582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_12
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 2855
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c3473c7be62e4bc0800000000000000
+      internalID: -3797054642983582777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_13
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 2843
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d5ad2060349f6530800000000000000
+      internalID: 3850459141918008786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_14
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 2657
+        width: 80
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 882ed38eb9e6e95f0800000000000000
+      internalID: -748038872201567608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_15
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 2645
+        width: 80
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0db3693c2466ee280800000000000000
+      internalID: -9012153367386506288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_16
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 2459
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b91a26ec8c45c30800000000000000
+      internalID: 4347320329062947653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_17
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 2447
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67fb7be375f90e9c0800000000000000
+      internalID: -3899942080239648906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_18
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 2261
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0081d45b2a984b460800000000000000
+      internalID: 7256576231520147456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_19
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 2249
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06563977e0c6b88e0800000000000000
+      internalID: -1690138425755998880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_20
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 2063
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fab52eaa5931bd80800000000000000
+      internalID: -8236739181852378383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_21
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 2051
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b79543bf92b669c0800000000000000
+      internalID: -3934260825484322891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_22
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 1865
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa07e18b37962550800000000000000
+      internalID: 6135757824177146617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_23
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 1853
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c0b8a54cc23b270800000000000000
+      internalID: 8264998962999266336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_24
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1199
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dba6e5c5f9d27c060800000000000000
+      internalID: 6973592710479243965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_25
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 1001
+        width: 80
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6723a8f76d880d7f0800000000000000
+      internalID: -589821096341392778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_26
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 803
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c33eaebf6abf4fec0800000000000000
+      internalID: -3533923112969379012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_27
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 605
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324b671bf37cb1a90800000000000000
+      internalID: -7342055691123248093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_28
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 407
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b2b3955d03f4e400800000000000000
+      internalID: 352673909437608628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player without a flashlight_29
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 209
+        width: 86
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b49274855ae8c6100800000000000000
+      internalID: 102613732324485451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

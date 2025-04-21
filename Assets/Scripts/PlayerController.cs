@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
@@ -32,17 +34,32 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 currentVelocity;
-
+    
+    private SpriteRenderer spriteRenderer;
+    public Sprite playerSpriteWithoutFlashlight;
     private const float RotationSpeed = 15f;
     private const float Acceleration = 10f;
     private static float _currentStamina;
     private static float _maxStamina;
     private float lastSprintTime;
     private bool canSprint = true;
+    private Light2D playerLight, roundLight;
     
     private static bool _isCrouching;
     private static bool _isPickingUp;
     private static bool _isNextSlotPicking;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerLight = GetComponentInChildren<Light2D>();
+        if (roundLight == null)
+        {
+            Transform lightTransform = transform.Find("RoundLight");
+            if (lightTransform != null)
+                roundLight = lightTransform.GetComponent<Light2D>();
+        }
+    }
 
     private void Awake()
     {
@@ -68,6 +85,7 @@ public class PlayerController : MonoBehaviour
     
     private void FixedUpdate()
     {
+        string currentScene = SceneManager.GetActiveScene().name;
         HandleStamina();
         _isPickingUp = interactAction.action.IsPressed();
         _isNextSlotPicking = nextSlotAction.action.IsPressed();
@@ -90,6 +108,14 @@ public class PlayerController : MonoBehaviour
         if (maxHealth <= 0)
         {
             SceneManager.LoadScene("Death");
+        }
+
+        if (currentScene == "Hub")
+        {
+            spriteRenderer.sprite = playerSpriteWithoutFlashlight;
+            CameraFollower.Target = transform;
+            playerLight.gameObject.SetActive(false);
+            roundLight.gameObject.SetActive(false);
         }
     }
     
