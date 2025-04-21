@@ -166,7 +166,7 @@ MonoBehaviour:
   inventorySlotPrefab: {fileID: 8380940464931368691, guid: d69030066a6032b4dbb68a6857ab6a1a, type: 3}
   interactionHint: {fileID: 247494687}
   inventorySlotAmount: 5
-  pickupRadius: 1.5
+  pickupRadius: 0.5
 --- !u!1 &247494687
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
     rid: 8005390552773689344
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 797316851}
+    m_Mesh: {fileID: 758609798}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
@@ -757,7 +757,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
---- !u!43 &797316851
+--- !u!43 &758609798
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1006,11 +1006,13 @@ MonoBehaviour:
   corridorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
   floorMap: {fileID: 1652884193}
   wallMap: {fileID: 547590379}
+  itemsAmount: 1000
   items:
   - {fileID: 5400348211248470655, guid: d04d5c55da570d14fa137a2625f1a6ca, type: 3}
+  - {fileID: 2149649561900887970, guid: 2f6e7decd8de52e42a99816f3f38f26e, type: 3}
   playerPrefab: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
   enemyPrefab: {fileID: 6542246911285775542, guid: fbfa1c4bc1623d24da3f95d2f6a1e3ae, type: 3}
-  enemiesNumber: 10
+  enemiesNumber: 0
 --- !u!4 &1399806140
 Transform:
   m_ObjectHideFlags: 0

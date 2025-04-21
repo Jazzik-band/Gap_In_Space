@@ -16,6 +16,8 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private TileBase corridorTile;
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
+
+    [SerializeField] private int itemsAmount;
     [SerializeField] private GameObject[] items;
 
     [Header("Creature settings")] [SerializeField]
@@ -271,7 +273,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnItems()
     {
-        for (var i = 0; i < 100; i++)
+        for (var i = 0; i < itemsAmount; i++)
         {
             var room = rooms[random.Next(0, rooms.Count)];
             if (room == playerRoom)
@@ -285,7 +287,7 @@ public class DungeonGenerator : MonoBehaviour
             var initialY = room.Center +
                            new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
             var position = new Vector3Int(initialX.x, initialY.y, 0);
-            Instantiate(items[0], position, Quaternion.identity);
+            Instantiate(items[random.Next(0,items.Length)], position, Quaternion.identity);
         }
     }
 }
