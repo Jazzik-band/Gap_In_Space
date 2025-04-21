@@ -183,6 +183,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -859,7 +872,37 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player without a flashlight_0: -676902002700261200
+      Player without a flashlight_1: 9018135035887037010
+      Player without a flashlight_10: -2956494352422415862
+      Player without a flashlight_11: -5272571848528660582
+      Player without a flashlight_12: -3797054642983582777
+      Player without a flashlight_13: 3850459141918008786
+      Player without a flashlight_14: -748038872201567608
+      Player without a flashlight_15: -9012153367386506288
+      Player without a flashlight_16: 4347320329062947653
+      Player without a flashlight_17: -3899942080239648906
+      Player without a flashlight_18: 7256576231520147456
+      Player without a flashlight_19: -1690138425755998880
+      Player without a flashlight_2: 4469553731419516876
+      Player without a flashlight_20: -8236739181852378383
+      Player without a flashlight_21: -3934260825484322891
+      Player without a flashlight_22: 6135757824177146617
+      Player without a flashlight_23: 8264998962999266336
+      Player without a flashlight_24: 6973592710479243965
+      Player without a flashlight_25: -589821096341392778
+      Player without a flashlight_26: -3533923112969379012
+      Player without a flashlight_27: -7342055691123248093
+      Player without a flashlight_28: 352673909437608628
+      Player without a flashlight_29: 102613732324485451
+      Player without a flashlight_3: 4719316720377344244
+      Player without a flashlight_4: -5476533931006968470
+      Player without a flashlight_5: 8434425473356094137
+      Player without a flashlight_6: -3176280121940991790
+      Player without a flashlight_7: -6228670626288699550
+      Player without a flashlight_8: -6442899666054968468
+      Player without a flashlight_9: -475524467565726729
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

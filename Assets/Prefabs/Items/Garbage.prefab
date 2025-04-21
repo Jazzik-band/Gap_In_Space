@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6523379752928274463}
   - component: {fileID: -8559258613994303865}
   m_Layer: 0
-  m_Name: Poop
+  m_Name: Garbage
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
