@@ -134,7 +134,7 @@ MonoBehaviour:
   moveSpeed: 4
   sprintSpeed: 10
   crouchSpeed: 1
-  maxHealth: 5
+  maxHealth: 55
   maxStamina: 100
   sprintPercentAvailability: 0.2
   staminaDrainRate: 50
