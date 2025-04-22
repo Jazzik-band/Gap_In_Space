@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -44,6 +45,11 @@ public class PlayerController : MonoBehaviour
     private float lastSprintTime;
     private bool canSprint = true;
     private Light2D playerLight, roundLight;
+    public GameObject door;
+    public float targetYPosition;
+    public bool isShown = false;
+    private bool isTriggered = false;
+    public float delayBeforeLoad = 2f;
     
     private static bool _isCrouching;
     private static bool _isPickingUp;
@@ -116,6 +122,17 @@ public class PlayerController : MonoBehaviour
             CameraFollower.Target = transform;
             playerLight.gameObject.SetActive(false);
             roundLight.gameObject.SetActive(false);
+            if (transform.position.y >= 65)
+            {
+                roundLight.gameObject.SetActive(true);
+                isTriggered = true;
+                StartCoroutine(LoadSceneAfterDelay());
+            }
+            if (!isShown && transform.position.y >= targetYPosition)
+            {
+                door.SetActive(true);
+                isShown = true;
+            }
         }
     }
     
@@ -168,5 +185,10 @@ public class PlayerController : MonoBehaviour
         {
             maxHealth -= 1;
         }
+    }
+    IEnumerator LoadSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(delayBeforeLoad);
+        SceneManager.LoadScene("Game");
     }
 }
