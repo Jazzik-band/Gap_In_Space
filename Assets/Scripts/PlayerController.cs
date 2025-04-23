@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
     private bool canSprint = true;
     private Light2D playerLight, roundLight;
     public GameObject door;
-    public float targetYPosition;
     public bool isShown = false;
     private bool isTriggered = false;
     public float delayBeforeLoad = 2f;
@@ -124,11 +123,19 @@ public class PlayerController : MonoBehaviour
             roundLight.gameObject.SetActive(false);
             if (transform.position.y >= 65)
             {
-                roundLight.gameObject.SetActive(true);
                 isTriggered = true;
-                StartCoroutine(LoadSceneAfterDelay());
+                if (isTriggered)
+                {
+                    roundLight.gameObject.SetActive(true);
+                    StartCoroutine(LoadSceneAfterDelay());
+                }
             }
-            if (!isShown && transform.position.y >= targetYPosition)
+
+            if (isTriggered && transform.position.y < 65)
+            {
+                roundLight.gameObject.SetActive(true);
+            }
+            if (!isShown && transform.position.y >= 45)
             {
                 door.SetActive(true);
                 isShown = true;

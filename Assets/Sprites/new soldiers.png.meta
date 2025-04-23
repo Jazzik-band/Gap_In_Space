@@ -1,82 +1,82 @@
 fileFormatVersion: 2
-guid: 9f127b6d5f211e64b9c2e828fb8e46b1
+guid: bb05d1cd3ada3914f908d66417e82787
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2337961310298916287
-    second: Soldiers_0
+      213: 6899604348198397084
+    second: new soldiers_0
   - first:
-      213: -3637557228772214577
-    second: Soldiers_1
+      213: 3827566610473299228
+    second: new soldiers_1
   - first:
-      213: -8819204307325172043
-    second: Soldiers_2
+      213: -6350981094604831232
+    second: new soldiers_2
   - first:
-      213: -723415951869367042
-    second: Soldiers_3
+      213: -618549561198948156
+    second: new soldiers_3
   - first:
-      213: 691541832035216576
-    second: Soldiers_4
+      213: -7640120879610232483
+    second: new soldiers_4
   - first:
-      213: -6974169846488611060
-    second: Soldiers_5
+      213: 6500867117490429755
+    second: new soldiers_5
   - first:
-      213: -1656330159112577998
-    second: Soldiers_6
+      213: -3282316589405093281
+    second: new soldiers_6
   - first:
-      213: -8314520785500522430
-    second: Soldiers_7
+      213: 6204010366049958126
+    second: new soldiers_7
   - first:
-      213: 4607213987148507816
-    second: Soldiers_8
+      213: -6384083470112429287
+    second: new soldiers_8
   - first:
-      213: 1615177707932864512
-    second: Soldiers_9
+      213: -6752954730188984840
+    second: new soldiers_9
   - first:
-      213: 4514382085967253504
-    second: Soldiers_10
+      213: -1800927276726002404
+    second: new soldiers_10
   - first:
-      213: 3540364597071465413
-    second: Soldiers_11
+      213: 8939094195203803598
+    second: new soldiers_11
   - first:
-      213: 2372931574901250576
-    second: Soldiers_12
+      213: -2197566674866672561
+    second: new soldiers_12
   - first:
-      213: 8382918622064019638
-    second: Soldiers_13
+      213: -4190565751231891384
+    second: new soldiers_13
   - first:
-      213: -3362597979101109925
-    second: Soldiers_14
+      213: 6810767273438697243
+    second: new soldiers_14
   - first:
-      213: -729278462116910982
-    second: Soldiers_15
+      213: 8306333817789090404
+    second: new soldiers_15
   - first:
-      213: 9097765134315691834
-    second: Soldiers_16
+      213: 7200884127313831275
+    second: new soldiers_16
   - first:
-      213: -8440200611600546245
-    second: Soldiers_17
+      213: 3776045162799006945
+    second: new soldiers_17
   - first:
-      213: -7454848664829739705
-    second: Soldiers_18
+      213: 2131165795685894898
+    second: new soldiers_18
   - first:
-      213: 4388911721663690275
-    second: Soldiers_19
+      213: -6981782535314699581
+    second: new soldiers_19
   - first:
-      213: 6900272639774412376
-    second: Soldiers_20
+      213: 6507189706285619141
+    second: new soldiers_20
   - first:
-      213: -7814624467447089022
-    second: Soldiers_21
+      213: -7201956796953767939
+    second: new soldiers_21
   - first:
-      213: 2359787783101836265
-    second: Soldiers_22
+      213: -8173180772223653979
+    second: new soldiers_22
   - first:
-      213: 5548457264611436535
-    second: Soldiers_23
+      213: -676134443755528158
+    second: new soldiers_23
   - first:
-      213: 5766898783809622503
-    second: Soldiers_24
+      213: -6559530058688314294
+    second: new soldiers_24
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -172,7 +172,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Soldiers_0
+      name: new soldiers_0
       rect:
         serializedVersion: 2
         x: 809
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14ab6094394ed8fd0800000000000000
-      internalID: -2337961310298916287
+      spriteID: c942b19599150cf50800000000000000
+      internalID: 6899604348198397084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_1
+      name: new soldiers_1
       rect:
         serializedVersion: 2
         x: 2609
@@ -209,14 +209,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc8b0e819fcc48dc0800000000000000
-      internalID: -3637557228772214577
+      spriteID: c1d286b8d8f3e1530800000000000000
+      internalID: 3827566610473299228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_2
+      name: new soldiers_2
       rect:
         serializedVersion: 2
         x: 809
@@ -231,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b6c94c9864eb9580800000000000000
-      internalID: -8819204307325172043
+      spriteID: 0068bd8e758ccd7a0800000000000000
+      internalID: -6350981094604831232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_3
+      name: new soldiers_3
       rect:
         serializedVersion: 2
         x: 2609
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efca9fb4609e5f5f0800000000000000
-      internalID: -723415951869367042
+      spriteID: 4c053c883787a67f0800000000000000
+      internalID: -618549561198948156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_4
+      name: new soldiers_4
       rect:
         serializedVersion: 2
         x: 803
@@ -275,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0cc28cdd1a9d89900800000000000000
-      internalID: 691541832035216576
+      spriteID: d5189c10a86d8f590800000000000000
+      internalID: -7640120879610232483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_5
+      name: new soldiers_5
       rect:
         serializedVersion: 2
         x: 2603
@@ -297,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c074ec0b975c63f90800000000000000
-      internalID: -6974169846488611060
+      spriteID: b3fd8064338b73a50800000000000000
+      internalID: 6500867117490429755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_6
+      name: new soldiers_6
       rect:
         serializedVersion: 2
         x: 803
@@ -319,14 +319,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 23c1453fe788309e0800000000000000
-      internalID: -1656330159112577998
+      spriteID: f524320d37ed272d0800000000000000
+      internalID: -3282316589405093281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_7
+      name: new soldiers_7
       rect:
         serializedVersion: 2
         x: 2603
@@ -341,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 248b3a6d563ec9c80800000000000000
-      internalID: -8314520785500522430
+      spriteID: ee8bf33ce82191650800000000000000
+      internalID: 6204010366049958126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_8
+      name: new soldiers_8
       rect:
         serializedVersion: 2
         x: 803
@@ -363,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8aaa23416bc10ff30800000000000000
-      internalID: 4607213987148507816
+      spriteID: 91b618388ed2767a0800000000000000
+      internalID: -6384083470112429287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_9
+      name: new soldiers_9
       rect:
         serializedVersion: 2
         x: 2603
@@ -385,14 +385,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 000d77a51934a6610800000000000000
-      internalID: 1615177707932864512
+      spriteID: 8fdaaca937fa842a0800000000000000
+      internalID: -6752954730188984840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_10
+      name: new soldiers_10
       rect:
         serializedVersion: 2
         x: 809
@@ -407,14 +407,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0001776c69e46ae30800000000000000
-      internalID: 4514382085967253504
+      spriteID: c1d5f6cfe22d107e0800000000000000
+      internalID: -1800927276726002404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_11
+      name: new soldiers_11
       rect:
         serializedVersion: 2
         x: 2609
@@ -429,14 +429,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cb40d7e7d6e12130800000000000000
-      internalID: 3540364597071465413
+      spriteID: ec901e62fca0e0c70800000000000000
+      internalID: 8939094195203803598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_12
+      name: new soldiers_12
       rect:
         serializedVersion: 2
         x: 809
@@ -451,14 +451,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01a1c4ee1b85ee020800000000000000
-      internalID: 2372931574901250576
+      spriteID: f4ce55e90cca081e0800000000000000
+      internalID: -2197566674866672561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_13
+      name: new soldiers_13
       rect:
         serializedVersion: 2
         x: 2609
@@ -473,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b80229721c165470800000000000000
-      internalID: 8382918622064019638
+      spriteID: 848b7edd6ae18d5c0800000000000000
+      internalID: -4190565751231891384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_14
+      name: new soldiers_14
       rect:
         serializedVersion: 2
         x: 803
@@ -495,14 +495,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b516b3d24f6a551d0800000000000000
-      internalID: -3362597979101109925
+      spriteID: b175b2d00c4b48e50800000000000000
+      internalID: 6810767273438697243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_15
+      name: new soldiers_15
       rect:
         serializedVersion: 2
         x: 2603
@@ -517,14 +517,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a78ad234a1511e5f0800000000000000
-      internalID: -729278462116910982
+      spriteID: 46a02233996064370800000000000000
+      internalID: 8306333817789090404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_16
+      name: new soldiers_16
       rect:
         serializedVersion: 2
         x: 803
@@ -539,14 +539,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3f12d80031c14e70800000000000000
-      internalID: 9097765134315691834
+      spriteID: b652a4d36fdaee360800000000000000
+      internalID: 7200884127313831275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_17
+      name: new soldiers_17
       rect:
         serializedVersion: 2
         x: 2603
@@ -561,14 +561,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b36c38803426eda80800000000000000
-      internalID: -8440200611600546245
+      spriteID: 1e48778b115376430800000000000000
+      internalID: 3776045162799006945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_18
+      name: new soldiers_18
       rect:
         serializedVersion: 2
         x: 803
@@ -583,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 74d378603ae0b8890800000000000000
-      internalID: -7454848664829739705
+      spriteID: 2fa0251fffb639d10800000000000000
+      internalID: 2131165795685894898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_19
+      name: new soldiers_19
       rect:
         serializedVersion: 2
         x: 2603
@@ -605,14 +605,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 326ff4815fb88ec30800000000000000
-      internalID: 4388911721663690275
+      spriteID: 3ca8a8376c9bb1f90800000000000000
+      internalID: -6981782535314699581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_20
+      name: new soldiers_20
       rect:
         serializedVersion: 2
         x: 809
@@ -627,14 +627,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85ec91b1861b2cf50800000000000000
-      internalID: 6900272639774412376
+      spriteID: 5c79b31bf8e2e4a50800000000000000
+      internalID: 6507189706285619141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_21
+      name: new soldiers_21
       rect:
         serializedVersion: 2
         x: 809
@@ -649,14 +649,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2887db45370ec8390800000000000000
-      internalID: -7814624467447089022
+      spriteID: dff4cd563728d0c90800000000000000
+      internalID: -7201956796953767939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_22
+      name: new soldiers_22
       rect:
         serializedVersion: 2
         x: 803
@@ -671,14 +671,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9eb671d6c76afb020800000000000000
-      internalID: 2359787783101836265
+      spriteID: 5a76e8a1467039e80800000000000000
+      internalID: -8173180772223653979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_23
+      name: new soldiers_23
       rect:
         serializedVersion: 2
         x: 803
@@ -693,14 +693,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f7a9943c74100d40800000000000000
-      internalID: 5548457264611436535
+      spriteID: 220ab834e43ed96f0800000000000000
+      internalID: -676134443755528158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soldiers_24
+      name: new soldiers_24
       rect:
         serializedVersion: 2
         x: 803
@@ -715,8 +715,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e1da98b3e3280050800000000000000
-      internalID: 5766898783809622503
+      spriteID: a44c26e5a2ed7f4a0800000000000000
+      internalID: -6559530058688314294
       vertices: []
       indices: 
       edges: []
@@ -734,32 +734,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Soldiers_0: -2337961310298916287
-      Soldiers_1: -3637557228772214577
-      Soldiers_10: 4514382085967253504
-      Soldiers_11: 3540364597071465413
-      Soldiers_12: 2372931574901250576
-      Soldiers_13: 8382918622064019638
-      Soldiers_14: -3362597979101109925
-      Soldiers_15: -729278462116910982
-      Soldiers_16: 9097765134315691834
-      Soldiers_17: -8440200611600546245
-      Soldiers_18: -7454848664829739705
-      Soldiers_19: 4388911721663690275
-      Soldiers_2: -8819204307325172043
-      Soldiers_20: 6900272639774412376
-      Soldiers_21: -7814624467447089022
-      Soldiers_22: 2359787783101836265
-      Soldiers_23: 5548457264611436535
-      Soldiers_24: 5766898783809622503
-      Soldiers_3: -723415951869367042
-      Soldiers_4: 691541832035216576
-      Soldiers_5: -6974169846488611060
-      Soldiers_6: -1656330159112577998
-      Soldiers_7: -8314520785500522430
-      Soldiers_8: 4607213987148507816
-      Soldiers_9: 1615177707932864512
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
