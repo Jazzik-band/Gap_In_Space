@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 799d719c96d69ad448d8755bc68d9fca
+guid: d5f88da92cb1ab24bb66fd891d162d69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3017979480325208809
-    second: Battery_0
+      213: -4793043402854019750
+    second: Battey_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Battery_0
+      name: Battey_0
       rect:
         serializedVersion: 2
-        x: 197
-        y: 113
-        width: 212
-        height: 386
+        x: 77
+        y: 35
+        width: 224
+        height: 296
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7154ccf07abfd16d0800000000000000
-      internalID: -3017979480325208809
+      spriteID: a5d4bd37b60bb7db0800000000000000
+      internalID: -4793043402854019750
       vertices: []
       indices: 
       edges: []
