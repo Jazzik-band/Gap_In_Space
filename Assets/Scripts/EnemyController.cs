@@ -1,4 +1,7 @@
+using System;
 using UnityEngine;
+using UnityEngine.Timeline;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -104,5 +107,13 @@ public class EnemyController : MonoBehaviour
             centerPoint,
             enemyReturnSpeed * Time.deltaTime
         );
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+             transform.position = new Vector3(transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
+        }
     }
 }

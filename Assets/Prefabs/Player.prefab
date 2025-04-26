@@ -147,6 +147,9 @@ MonoBehaviour:
   interactAction: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   nextSlotAction: {fileID: 2601004407269590109, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   playerSpriteWithoutFlashlight: {fileID: -589821096341392778, guid: 45acddbcfb173514d9b69f614ff4aca8, type: 3}
+  door: {fileID: 0}
+  isShown: 0
+  delayBeforeLoad: 2
 --- !u!60 &4219389643636756849
 PolygonCollider2D:
   m_ObjectHideFlags: 0
