@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
@@ -12,33 +13,48 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public float chaseDistance = 5f;
     [SerializeField] private float minWaitTime = 1f;
     [SerializeField] private float maxWaitTime = 3f;
+    [SerializeField] private float distance = 7;
     public float rotationSpeed = 5f;
+    public Rigidbody2D enemyRb;
+    public float delayAfterBite = 1;
     private Vector2 targetPosition;
     private Vector2 centerPoint;
     private float timer;
-
+    
     private float waitTime;
+    
 
     // private bool isChasing;
     private bool wasChasing;
+    private bool isBite = false;
+    private bool canMove = true;
     private Transform player;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         centerPoint = transform.position;
+        enemyRb = GetComponent<Rigidbody2D>();
         SetNewRandomTarget();
     }
 
     private void Update()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) <= 7)
+        if (PlayerController.IsCrouching())
+        {
+            distance = 5;
+        }
+        else
+        {
+            distance = 7;
+        }
+        if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
             RunTurn();
             // isChasing = true;
             wasChasing = true;
         }
-        else if (Vector2.Distance(player.transform.position, transform.position) > 7 && wasChasing)
+        else if (Vector2.Distance(player.transform.position, transform.position) > 7 && wasChasing && canMove)
         {
             // isChasing = false;
             wasChasing = false;
@@ -46,7 +62,10 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            WalkTurn();
+            if (canMove)
+            {
+                WalkTurn();
+            }
         }
     }
 
@@ -108,12 +127,25 @@ public class EnemyController : MonoBehaviour
             enemyReturnSpeed * Time.deltaTime
         );
     }
+    
+    private IEnumerator BiteAndWait()
+    {
+        isBite = true;
+        
+        canMove = false;
+        transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
+        enemyRb.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(1f);
+        canMove = true;
+        
+        isBite = false;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-             transform.position = new Vector3(transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
+            StartCoroutine(BiteAndWait());
         }
     }
 }
