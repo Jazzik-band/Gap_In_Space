@@ -168,6 +168,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -734,7 +747,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      new soldiers_0: 6899604348198397084
+      new soldiers_1: 3827566610473299228
+      new soldiers_10: -1800927276726002404
+      new soldiers_11: 8939094195203803598
+      new soldiers_12: -2197566674866672561
+      new soldiers_13: -4190565751231891384
+      new soldiers_14: 6810767273438697243
+      new soldiers_15: 8306333817789090404
+      new soldiers_16: 7200884127313831275
+      new soldiers_17: 3776045162799006945
+      new soldiers_18: 2131165795685894898
+      new soldiers_19: -6981782535314699581
+      new soldiers_2: -6350981094604831232
+      new soldiers_20: 6507189706285619141
+      new soldiers_21: -7201956796953767939
+      new soldiers_22: -8173180772223653979
+      new soldiers_23: -676134443755528158
+      new soldiers_24: -6559530058688314294
+      new soldiers_3: -618549561198948156
+      new soldiers_4: -7640120879610232483
+      new soldiers_5: 6500867117490429755
+      new soldiers_6: -3282316589405093281
+      new soldiers_7: 6204010366049958126
+      new soldiers_8: -6384083470112429287
+      new soldiers_9: -6752954730188984840
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

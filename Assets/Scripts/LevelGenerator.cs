@@ -271,7 +271,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnItems()
     {
-        for (var i = 0; i < 100; i++)
+        for (var i = 0; i < 20; i++)
         {
             var room = rooms[random.Next(0, rooms.Count)];
             if (room == playerRoom)

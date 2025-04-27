@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4
   enemyWalkSpeed: 1
-  enemyRunSpeed: 5.5
+  enemyRunSpeed: 4
   enemyReturnSpeed: 3
   chaseDistance: 5
   minWaitTime: 1
