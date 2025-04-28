@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,7 +7,7 @@ public class FlashlightController : MonoBehaviour
     private float flashlightIntensity;
     private float flashlightRadius;
     public float batteryLife = 100.0f;
-    private float drainRate = 10.0f;
+    private float drainRate = 2.0f;
     private bool isFlashLightOn = true;
     
     private void Start()
