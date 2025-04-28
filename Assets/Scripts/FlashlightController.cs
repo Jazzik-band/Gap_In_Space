@@ -37,18 +37,7 @@ public class FlashlightController : MonoBehaviour
                 isFlashLightOn = false;
             }
         }
-        else
-        {
-            if (batteryLife < 100)
-            {
-                batteryLife += drainRate * Time.deltaTime;
-            }
-            else
-            {
-                batteryLife = 100;
-            }
-        }
-        
+
         if (PlayerController.IsCrouching() && isFlashLightOn)
         {
             flashlight.intensity = flashlightIntensity - 7;
@@ -61,7 +50,7 @@ public class FlashlightController : MonoBehaviour
         }
         else
         {
-            flashlightIntensity = 0;
+            flashlight.intensity = 0;
             flashlight.pointLightOuterRadius = 0;
         }
         
