@@ -143,7 +143,10 @@ MonoBehaviour:
   chaseDistance: 5
   minWaitTime: 1
   maxWaitTime: 3
+  distance: 7
   rotationSpeed: 5
+  enemyRb: {fileID: 8701971965796199905}
+  delayAfterBite: 1
 --- !u!70 &1466595516667042909
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

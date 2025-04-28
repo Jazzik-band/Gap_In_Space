@@ -49,6 +49,11 @@ public class DungeonGenerator : MonoBehaviour
         SpawnPlayerInRandomRoom();
         SpawnEnemiesInRandomRoom();
         SpawnItems();
+        Room finalRoom = FindFinalRoom();
+        if (finalRoom != null)
+        {
+            SpawnPortal(finalRoom);
+        }
     }
 
     private void GenerateDungeon()
@@ -287,5 +292,46 @@ public class DungeonGenerator : MonoBehaviour
             var position = new Vector3Int(initialX.x, initialY.y, 0);
             Instantiate(items[0], position, Quaternion.identity);
         }
+    }
+    private Room FindFinalRoom()
+    {
+        if (rooms.Count == 0 || playerRoom == null) return null;
+    
+        Room farthestRoom = null;
+        float maxDistance = 0f;
+    
+        foreach (var room in rooms)
+        {
+            if (room == playerRoom) continue;
+        
+            float distance = Vector2Int.Distance(playerRoom.Center, room.Center);
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                farthestRoom = room;
+            }
+        }
+    
+        return farthestRoom;
+    }
+    private void SpawnPortal(Room room)
+    {
+        if (room == null) return;
+
+        GameObject circle = new GameObject("MagicCircle");
+        ParticleSystem ps = circle.AddComponent<ParticleSystem>();
+
+        var main = ps.main;
+        main.startSpeed = 0;
+        main.startSize = 0.5f;
+        main.startLifetime = 1f;
+        main.loop = true;
+        main.startColor = Color.blue;
+
+        var shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.radius = 1f;
+
+        circle.transform.position = new Vector3(room.Center.x, room.Center.y, 0);
     }
 }
