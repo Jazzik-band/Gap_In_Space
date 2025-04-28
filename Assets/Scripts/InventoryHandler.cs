@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryHandler : MonoBehaviour
 {
     public static Transform Target;
+    public TextMeshProUGUI costText;
     [SerializeField] private GameObject inventorySlotPrefab;
     [SerializeField] private GameObject interactionHint;
     [SerializeField, Range(1, 5)] private int inventorySlotAmount;
@@ -26,13 +28,19 @@ public class InventoryHandler : MonoBehaviour
             var slot = Instantiate(inventorySlotPrefab, transform);
             inventorySlots[inventorySlotAmount - 1 - i] = slot;
             slot.transform.localPosition = new Vector3(-120 * i, 0, 0);
-            var slotContent = new GameObject("SlotContent", typeof(RectTransform), typeof(CanvasRenderer))
+            var slotContent = new GameObject("SlotContent", typeof(RectTransform), typeof(CanvasRenderer), typeof(CanvasGroup))
                 {
                     layer = LayerMask.NameToLayer("UI")
                 };
             var rectTransform = slotContent.GetComponent<RectTransform>();
             rectTransform.SetParent(slot.transform);
             rectTransform.localPosition = Vector3.zero;
+            
+            var collider = slotContent.AddComponent<BoxCollider2D>();
+            collider.size = new Vector2(64, 64); 
+            
+            slotContent.AddComponent<DragAndDropHandler>();
+            
             slotContent.SetActive(false);
         }
         inventorySlots[selectedSlot].GetComponent<Image>().color = Color.yellow;
@@ -87,11 +95,36 @@ public class InventoryHandler : MonoBehaviour
         itemUI.transform.SetParent(slotContent.transform, false);
         var spriteRenderer = originalItem.GetComponent<SpriteRenderer>();
         var imageComponent = itemUI.GetComponent<Image>();
+        
         if (spriteRenderer)
         {
             imageComponent.sprite = spriteRenderer.sprite;
             imageComponent.rectTransform.transform.localScale = new Vector3(0.6f, 0.6f, 0);
         }
+        
+        Item item = originalItem.GetComponent<Item>();
+        Text costText = slotContent.GetComponentInChildren<Text>();
+        if (costText == null)
+        {
+            GameObject textObj = new GameObject("Cost", typeof(Text));
+            costText = textObj.GetComponent<Text>();
+            costText.transform.SetParent(slotContent.transform);
+            costText.rectTransform.anchoredPosition = new Vector2(5, -40);
+        }
+        costText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        costText.rectTransform.sizeDelta = new Vector2(40, 15);
+        costText.text = $"{item.cost.ToString()}$";
+        costText.fontSize = 10;
+        costText.color = Color.green;
+        
+        var dragHandler = slotContent.GetComponent<DragAndDropHandler>();
+        if (dragHandler == null)
+        {
+            dragHandler = slotContent.AddComponent<DragAndDropHandler>();
+        }
+        dragHandler.icon = imageComponent;
+        dragHandler.costText = costText;
+        
         slotContent.SetActive(true);
         Destroy(originalItem);
     }

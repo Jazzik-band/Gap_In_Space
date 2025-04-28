@@ -3,7 +3,7 @@ using TMPro;
 
 public class ItemTooltip : MonoBehaviour
 {
-    public TMP_Text tooltipText; // Ссылка на текст подсказки
+    public TMP_Text tooltipText;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,7 +24,6 @@ public class ItemTooltip : MonoBehaviour
 
     private void Update()
     {
-        // Обновляем позицию текста относительно курсора
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         tooltipText.transform.position = screenPosition + new Vector3(0, 30, 0);
     }
