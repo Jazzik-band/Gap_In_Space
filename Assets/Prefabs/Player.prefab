@@ -309,9 +309,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batteryLife: 100
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &5279746731292171152
 GameObject:
   m_ObjectHideFlags: 0

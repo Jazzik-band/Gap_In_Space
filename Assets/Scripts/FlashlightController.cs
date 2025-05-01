@@ -28,13 +28,32 @@ public class FlashlightController : MonoBehaviour
             isFlashLightOn = !isFlashLightOn;
         }
 
+        // Включение супер режима у фонарика
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isFlashLightSuper = true;
+            flashlightIntensity = 200;
+            // Collider[] hitColliders = Physics.OverlapSphere(transform.position, flashlight.pointLightOuterRadius);
+            //
+            // foreach (var hitCollider in hitColliders)
+            // {
+            //     if (hitCollider.CompareTag("Enemy"))
+            //     {
+            //         if (IsEnemyInSuperFlashlight(hitCollider.transform))
+            //         {
+            //             hitCollider.GetComponent<EnemyController>().Freeze();
+            //         }
+            //         else
+            //         {
+            //             hitCollider.GetComponent<EnemyController>().Unfreeze();
+            //         }
+            //     }
+            // }
         }
         else
         {
             isFlashLightSuper = false;
+            flashlightIntensity = 10;
         }
         
         if (isFlashLightOn)
@@ -55,7 +74,6 @@ public class FlashlightController : MonoBehaviour
                 batteryLife = 0;
                 isFlashLightOn = false;
             }
-            
         }
 
         if (PlayerController.IsCrouching() && isFlashLightOn)
@@ -73,14 +91,27 @@ public class FlashlightController : MonoBehaviour
             flashlight.intensity = 0;
             flashlight.pointLightOuterRadius = 0;
         }
-
-        if (isFlashLightSuper)
-        {
-            flashlightIntensity = 200;
-        }
-        else
-        {
-            flashlightIntensity = 10;
-        }
     }
+
+    // private bool IsEnemyInSuperFlashlight(Transform enemy)
+    // {
+    //     var directionToEnemy = enemy.position - transform.position;
+    //     float distance = directionToEnemy.magnitude;
+    //     
+    //     if (distance > flashlight.pointLightOuterRadius)
+    //         return false;
+    //     
+    //     float angle = Vector2.Angle(transform.rotation.eulerAngles, directionToEnemy);
+    //     if (angle > flashlight.pointLightOuterAngle / 2f)
+    //         return false;
+    //     
+    //     RaycastHit hit;
+    //     if (Physics.Raycast(transform.position, directionToEnemy, out hit, 15f))
+    //     {
+    //         if (hit.transform != enemy)
+    //             return false;
+    //     }
+    //
+    //     return true;
+    // }
 }

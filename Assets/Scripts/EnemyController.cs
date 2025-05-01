@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 targetPosition;
     private Vector2 centerPoint;
     private float timer;
+    private Vector2 currentVelocity;
     
     private float waitTime;
     private bool isStopped = false;
@@ -36,6 +37,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         centerPoint = transform.position;
         enemyRb = GetComponent<Rigidbody2D>();
+        currentVelocity = enemyRb.linearVelocity;
         SetNewRandomTarget();
     }
 
@@ -85,7 +87,8 @@ public class EnemyController : MonoBehaviour
     private void WalkTurn()
     {
         transform.position =
-            Vector2.MoveTowards(transform.position, targetPosition, enemyWalkSpeed * Time.deltaTime);
+            Vector2.MoveTowards(
+                transform.position, targetPosition, enemyWalkSpeed * Time.deltaTime);
         if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
         {
             timer += Time.deltaTime;
@@ -149,5 +152,16 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(BiteAndWait());
         }
     }
-    
+
+    // public void Freeze()
+    // {
+    //     canMove = false;
+    //     enemyRb.linearVelocity = Vector3.zero;
+    // }
+    //
+    // public void Unfreeze()
+    // {
+    //     canMove = true;
+    //     enemyRb.linearVelocity = currentVelocity;
+    // }
 }
