@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -9,6 +11,8 @@ public class FlashlightController : MonoBehaviour
     public float batteryLife = 100.0f;
     private float drainRate = 2.0f;
     private bool isFlashLightOn = true;
+    private bool isFlashLightSuper = false;
+    
     
     private void Start()
     {
@@ -24,17 +28,34 @@ public class FlashlightController : MonoBehaviour
             isFlashLightOn = !isFlashLightOn;
         }
 
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            isFlashLightSuper = true;
+        }
+        else
+        {
+            isFlashLightSuper = false;
+        }
+        
         if (isFlashLightOn)
         {
             if (batteryLife > 0)
             {
-                batteryLife -= drainRate / 2 * Time.deltaTime;
+                if (isFlashLightSuper)
+                {
+                    batteryLife -= drainRate * 4 * Time.deltaTime;
+                }
+                else
+                {
+                    batteryLife -= drainRate / 2 * Time.deltaTime;
+                }
             }
             else
             {
                 batteryLife = 0;
                 isFlashLightOn = false;
             }
+            
         }
 
         if (PlayerController.IsCrouching() && isFlashLightOn)
@@ -52,6 +73,14 @@ public class FlashlightController : MonoBehaviour
             flashlight.intensity = 0;
             flashlight.pointLightOuterRadius = 0;
         }
-        
+
+        if (isFlashLightSuper)
+        {
+            flashlightIntensity = 200;
+        }
+        else
+        {
+            flashlightIntensity = 10;
+        }
     }
 }

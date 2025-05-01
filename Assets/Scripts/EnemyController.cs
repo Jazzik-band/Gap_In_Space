@@ -17,12 +17,13 @@ public class EnemyController : MonoBehaviour
     public float rotationSpeed = 5f;
     public Rigidbody2D enemyRb;
     public float delayAfterBite = 1;
+    private Vector2 savedVelocity;
     private Vector2 targetPosition;
     private Vector2 centerPoint;
     private float timer;
     
     private float waitTime;
-    
+    private bool isStopped = false;
 
     // private bool isChasing;
     private bool wasChasing;
@@ -148,4 +149,5 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(BiteAndWait());
         }
     }
+    
 }
