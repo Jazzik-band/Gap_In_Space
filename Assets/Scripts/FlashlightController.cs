@@ -11,7 +11,7 @@ public class FlashlightController : MonoBehaviour
     public float batteryLife = 100.0f;
     private float drainRate = 2.0f;
     private bool isFlashLightOn = true;
-    private bool isFlashLightSuper = false;
+    public static bool isFlashLightSuper = false;
     
     
     private void Start()
@@ -33,22 +33,6 @@ public class FlashlightController : MonoBehaviour
         {
             isFlashLightSuper = true;
             flashlightIntensity = 200;
-            // Collider[] hitColliders = Physics.OverlapSphere(transform.position, flashlight.pointLightOuterRadius);
-            //
-            // foreach (var hitCollider in hitColliders)
-            // {
-            //     if (hitCollider.CompareTag("Enemy"))
-            //     {
-            //         if (IsEnemyInSuperFlashlight(hitCollider.transform))
-            //         {
-            //             hitCollider.GetComponent<EnemyController>().Freeze();
-            //         }
-            //         else
-            //         {
-            //             hitCollider.GetComponent<EnemyController>().Unfreeze();
-            //         }
-            //     }
-            // }
         }
         else
         {
@@ -93,25 +77,4 @@ public class FlashlightController : MonoBehaviour
         }
     }
 
-    // private bool IsEnemyInSuperFlashlight(Transform enemy)
-    // {
-    //     var directionToEnemy = enemy.position - transform.position;
-    //     float distance = directionToEnemy.magnitude;
-    //     
-    //     if (distance > flashlight.pointLightOuterRadius)
-    //         return false;
-    //     
-    //     float angle = Vector2.Angle(transform.rotation.eulerAngles, directionToEnemy);
-    //     if (angle > flashlight.pointLightOuterAngle / 2f)
-    //         return false;
-    //     
-    //     RaycastHit hit;
-    //     if (Physics.Raycast(transform.position, directionToEnemy, out hit, 15f))
-    //     {
-    //         if (hit.transform != enemy)
-    //             return false;
-    //     }
-    //
-    //     return true;
-    // }
 }

@@ -153,15 +153,20 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // public void Freeze()
-    // {
-    //     canMove = false;
-    //     enemyRb.linearVelocity = Vector3.zero;
-    // }
-    //
-    // public void Unfreeze()
-    // {
-    //     canMove = true;
-    //     enemyRb.linearVelocity = currentVelocity;
-    // }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.isFlashLightSuper)
+        {
+            canMove = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PlayerLightTester"))
+        {
+            canMove = true;
+        }
+    }
+
 }
