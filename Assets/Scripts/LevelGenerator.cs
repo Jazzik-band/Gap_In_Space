@@ -20,6 +20,10 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Creature settings")] [SerializeField]
     private GameObject playerPrefab;
+    
+    [Header("Teleport Settings")]
+    [SerializeField] private GameObject portalPrefab;
+    [SerializeField] private string teleportSceneName;
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
@@ -49,11 +53,7 @@ public class DungeonGenerator : MonoBehaviour
         SpawnPlayerInRandomRoom();
         SpawnEnemiesInRandomRoom();
         SpawnItems();
-        Room finalRoom = FindFinalRoom();
-        if (finalRoom != null)
-        {
-            SpawnPortal(finalRoom);
-        }
+        SpawnPortal();
     }
 
     private void GenerateDungeon()
@@ -314,24 +314,19 @@ public class DungeonGenerator : MonoBehaviour
     
         return farthestRoom;
     }
-    private void SpawnPortal(Room room)
+    private void SpawnPortal()
     {
-        if (room == null) return;
-
-        GameObject circle = new GameObject("MagicCircle");
-        ParticleSystem ps = circle.AddComponent<ParticleSystem>();
-
-        var main = ps.main;
-        main.startSpeed = 0;
-        main.startSize = 0.5f;
-        main.startLifetime = 1f;
-        main.loop = true;
-        main.startColor = Color.blue;
-
-        var shape = ps.shape;
-        shape.shapeType = ParticleSystemShapeType.Circle;
-        shape.radius = 1f;
-
-        circle.transform.position = new Vector3(room.Center.x, room.Center.y, 0);
+        Room farthestRoom = FindFinalRoom();
+        if (farthestRoom != null && portalPrefab != null)
+        {
+            Vector3 spawnPos = new Vector3(farthestRoom.Center.x, farthestRoom.Center.y, 0);
+            GameObject portal = Instantiate(portalPrefab, spawnPos, Quaternion.identity);
+        
+            Portal teleporter = portal.GetComponent<Portal>();
+            if (teleporter != null)
+            {
+                teleporter.targetSceneName = teleportSceneName;
+            }
+        }
     }
 }
