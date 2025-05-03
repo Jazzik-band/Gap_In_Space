@@ -1,12 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Portal: MonoBehaviour
 {
-    [SerializeField] public string targetSceneName = "Game2";
     [SerializeField] private float teleportDelay = 0.5f;
 
     private bool isPlayerInside = false;
+    public string currentLevel;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,11 +18,22 @@ public class Portal: MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        currentLevel = SceneManager.GetActiveScene().name;
+    }
+
     private void TeleportPlayer()
     {
-        if (isPlayerInside && !string.IsNullOrEmpty(targetSceneName))
+        if (isPlayerInside)
         {
-            SceneManager.LoadScene(targetSceneName);
+            switch (currentLevel)
+            {
+                case "Game": SceneManager.LoadScene("Game2"); break;
+                case "Game2": SceneManager.LoadScene("Game3"); break;
+                case "Game3": SceneManager.LoadScene("Game4"); break;
+                case "Game4": SceneManager.LoadScene("Game5"); break;
+            }
         }
     }
 }

@@ -325,7 +325,7 @@ public class DungeonGenerator : MonoBehaviour
             Portal teleporter = portal.GetComponent<Portal>();
             if (teleporter != null)
             {
-                teleporter.targetSceneName = teleportSceneName;
+                teleporter.currentLevel = teleportSceneName;
             }
         }
     }
