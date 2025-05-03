@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager: MonoBehaviour
 {
     public Button start, settings, quit, back;
-
+    
     public void StartGame()
     {
         SceneManager.LoadScene("Hub");  
@@ -31,5 +32,5 @@ public class GameManager: MonoBehaviour
     {
         SceneManager.LoadScene("Main menu");
     }
-    
+
 }

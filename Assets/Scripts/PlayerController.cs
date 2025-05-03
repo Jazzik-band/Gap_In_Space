@@ -3,8 +3,10 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public GameObject door;
     public bool isShown = false;
     private bool isTriggered = false;
+    private bool isOpenMenu = false;
     public float delayBeforeLoad = 2f;
     
     private static bool _isCrouching;
@@ -140,6 +143,15 @@ public class PlayerController : MonoBehaviour
                 door.SetActive(true);
                 isShown = true;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && !isOpenMenu)
+        {
+            isOpenMenu = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && isOpenMenu)
+        {
+            isOpenMenu = false;
         }
     }
     
