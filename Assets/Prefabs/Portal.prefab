@@ -125,8 +125,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.014249444, y: 0}
+  m_Radius: 0.9
 --- !u!199 &4878035388276697271
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4940,4 +4940,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: Game2
-  teleportDelay: 1
+  teleportDelay: 0.5

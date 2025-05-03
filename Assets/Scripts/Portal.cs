@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Portal: MonoBehaviour
 {
     [SerializeField] public string targetSceneName = "Game2";
-    [SerializeField] private float teleportDelay = 1f;
+    [SerializeField] private float teleportDelay = 0.5f;
 
     private bool isPlayerInside = false;
 
