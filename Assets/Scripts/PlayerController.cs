@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference interactAction;
     [SerializeField] private InputActionReference nextSlotAction;
     
-    private Rigidbody2D rb;
+    public static Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 currentVelocity;
     

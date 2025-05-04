@@ -10,8 +10,8 @@ public class GameManager: MonoBehaviour
     public Button start, settings, quit, back;
     public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue;
     public GameObject continueButton, restart, menuSettings, mainMenu, menuQuit, menuBack;
-    // private bool isOpenMenu = false;
-
+    private bool isPaused = false;
+    
     public void StartGame()
     {
         SceneManager.LoadScene("Hub");
@@ -19,18 +19,60 @@ public class GameManager: MonoBehaviour
 
     private void Update()
     {
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     menuPanel.SetActive(true);
+        //     staminaUI.SetActive(false);
+        //     inventoryPanel.SetActive(false);
+        //     batteryValue.SetActive(false);
+        //     FlashlightController.isFlashLightOn = false;
+        //     if (Time.timeScale == 0f)
+        //     {
+        //         Time.timeScale = 1f;
+        //     }
+        //     else
+        //     {
+        //         Time.timeScale = 0f;
+        //     }
+        //     
+        // }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            TogglePause();
+        }
+    }
+    
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            // Останавливаем время в игре
+            Time.timeScale = 0f;
+            AudioListener.pause = true;
             menuPanel.SetActive(true);
             staminaUI.SetActive(false);
             inventoryPanel.SetActive(false);
             batteryValue.SetActive(false);
-            FlashlightController.isFlashLightOn = false;
+        }
+        else
+        {
+            // Возобновляем игру
+            Time.timeScale = 1f;
+            AudioListener.pause = false;
+            menuPanel.SetActive(false);
+            staminaUI.SetActive(true);
+            inventoryPanel.SetActive(true);
+            batteryValue.SetActive(true);
         }
     }
 
     public void Continue()
     {
+        isPaused = false;
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
         menuPanel.SetActive(false);
         staminaUI.SetActive(true);
         inventoryPanel.SetActive(true);
