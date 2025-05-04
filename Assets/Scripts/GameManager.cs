@@ -25,6 +25,7 @@ public class GameManager: MonoBehaviour
             staminaUI.SetActive(false);
             inventoryPanel.SetActive(false);
             batteryValue.SetActive(false);
+            FlashlightController.isFlashLightOn = false;
         }
     }
 
