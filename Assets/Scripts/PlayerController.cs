@@ -48,9 +48,12 @@ public class PlayerController : MonoBehaviour
     private bool canSprint = true;
     private Light2D playerLight, roundLight;
     public GameObject door;
+    public float delayBeforeLoad = 2f;
+    
     public bool isShown = false;
     private bool isTriggered = false;
-    public float delayBeforeLoad = 2f;
+    private bool isLookAround = false;
+    
     
     private static bool _isCrouching;
     private static bool _isPickingUp;
@@ -142,6 +145,19 @@ public class PlayerController : MonoBehaviour
                 door.SetActive(true);
                 isShown = true;
             }
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && !isLookAround)
+        {
+            isLookAround = true;
+            rb.bodyType = RigidbodyType2D.Static;
+            transform.rotation = Quaternion.identity;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && isLookAround)
+        {
+            isLookAround = false;
+            rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
     
