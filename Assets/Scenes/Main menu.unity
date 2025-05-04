@@ -610,7 +610,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 626597349}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Settings
+        m_MethodName: MainMenuSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -691,6 +691,16 @@ MonoBehaviour:
   settings: {fileID: 526001862}
   quit: {fileID: 487961729}
   back: {fileID: 1844824995}
+  menuPanel: {fileID: 0}
+  staminaUI: {fileID: 0}
+  inventoryPanel: {fileID: 0}
+  batteryValue: {fileID: 0}
+  continueButton: {fileID: 0}
+  restart: {fileID: 0}
+  menuSettings: {fileID: 0}
+  mainMenu: {fileID: 0}
+  menuQuit: {fileID: 0}
+  menuBack: {fileID: 0}
 --- !u!4 &626597350
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,7 +1257,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 626597349}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Back
+        m_MethodName: MainMenuBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1376,8 +1386,8 @@ Transform:
   m_GameObject: {fileID: 1938475270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0152, y: 0.0024, z: 0}
-  m_LocalScale: {x: 19.222486, y: 12.014959, z: 9.4113}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 119.00065, y: 74.38101, z: 58.262535}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
