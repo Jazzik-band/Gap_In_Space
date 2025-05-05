@@ -10,7 +10,7 @@ public class FlashlightController : MonoBehaviour
     private float flashlightRadius;
     public float batteryLife = 100.0f;
     private float drainRate = 2.0f;
-    private bool isFlashLightOn = true;
+    public static bool isFlashLightOn = true;
     public static bool isFlashLightSuper = false;
     
     

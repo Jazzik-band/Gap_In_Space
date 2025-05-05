@@ -3,8 +3,10 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference interactAction;
     [SerializeField] private InputActionReference nextSlotAction;
     
-    private Rigidbody2D rb;
+    public static Rigidbody2D rb;
     private Camera mainCamera;
     private Vector2 currentVelocity;
     
@@ -46,9 +48,12 @@ public class PlayerController : MonoBehaviour
     private bool canSprint = true;
     private Light2D playerLight, roundLight;
     public GameObject door;
+    public float delayBeforeLoad = 2f;
+    
     public bool isShown = false;
     private bool isTriggered = false;
-    public float delayBeforeLoad = 2f;
+    private bool isLookAround = false;
+    
     
     private static bool _isCrouching;
     private static bool _isPickingUp;
@@ -140,6 +145,19 @@ public class PlayerController : MonoBehaviour
                 door.SetActive(true);
                 isShown = true;
             }
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && !isLookAround)
+        {
+            isLookAround = true;
+            rb.bodyType = RigidbodyType2D.Static;
+            transform.rotation = Quaternion.identity;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && isLookAround)
+        {
+            isLookAround = false;
+            rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
     
