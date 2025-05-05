@@ -19,23 +19,6 @@ public class GameManager: MonoBehaviour
 
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Escape))
-        // {
-        //     menuPanel.SetActive(true);
-        //     staminaUI.SetActive(false);
-        //     inventoryPanel.SetActive(false);
-        //     batteryValue.SetActive(false);
-        //     FlashlightController.isFlashLightOn = false;
-        //     if (Time.timeScale == 0f)
-        //     {
-        //         Time.timeScale = 1f;
-        //     }
-        //     else
-        //     {
-        //         Time.timeScale = 0f;
-        //     }
-        //     
-        // }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
