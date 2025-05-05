@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class SoldiersController: MonoBehaviour
