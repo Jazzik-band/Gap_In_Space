@@ -8,7 +8,7 @@ public class FlashlightController : MonoBehaviour
     private Light2D flashlight;
     private float flashlightIntensity;
     private float flashlightRadius;
-    public float batteryLife = 100.0f;
+    public static float batteryLife = 100.0f;
     private float drainRate = 2.0f;
     public static bool isFlashLightOn = true;
     public static bool isFlashLightSuper = false;

@@ -43,6 +43,26 @@ public class InventoryHandler : MonoBehaviour
         HandlePickingUp();
         if (PlayerController.IsNextSlot())
             HandleSlotSelection();
+            
+        // Добавляем проверку нажатия Q
+        if (Keyboard.current != null && Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            RemoveItemFromSelectedSlot();
+        }
+    }
+
+    private void RemoveItemFromSelectedSlot()
+    {
+        var slotContent = inventorySlots[selectedSlot].transform.GetChild(0);
+        if (slotContent.gameObject.activeSelf)
+        {
+            foreach (Transform child in slotContent.transform)
+            {
+                Destroy(child.gameObject);
+                FlashlightController.batteryLife = 100;
+            }
+            slotContent.gameObject.SetActive(false);
+        }
     }
 
     private void HandlePickingUp()
