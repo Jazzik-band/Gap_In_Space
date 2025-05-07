@@ -11,6 +11,6 @@ public class BatteryUI : MonoBehaviour
     {
         // после запуска сцены объект PlayerLight добавляется в компоненты
         flashlight = GameObject.Find("PlayerLight").GetComponent<FlashlightController>();
-        batteryText.text = Mathf.Round(flashlight.batteryLife) + "%";
+        batteryText.text = Mathf.Round(FlashlightController.batteryLife) + "%";
     }
 }
