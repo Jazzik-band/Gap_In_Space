@@ -10,7 +10,7 @@ public class DragAndDropHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     private CanvasGroup canvasGroup;
     private Transform originalParent;
     private GameObject dragGhost;
-
+    public GameObject itemPrefab; // 🔥 Ссылка на оригинальный префаб предмета
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();

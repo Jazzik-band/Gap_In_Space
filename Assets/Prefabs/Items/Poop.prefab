@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 6523379752928274463}
   - component: {fileID: -8559258613994303865}
   - component: {fileID: 5751977177087751797}
-  - component: {fileID: 653164397316177131}
+  - component: {fileID: 8882140164672064762}
   m_Layer: 0
   m_Name: Poop
   m_TagString: Item
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipText: {fileID: 7028159787641895961}
---- !u!114 &653164397316177131
+--- !u!114 &8882140164672064762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,8 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a383cc524d12854eb16d501fb24483b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 100
-  icon: {fileID: 1399537639, guid: 130fa9178b93eeb4c8f36c117826a076, type: 3}
+  data: {fileID: 11400000, guid: 3bcbd0dff55af524385f7928eabea3e5, type: 2}
 --- !u!1 &6359992896906438401
 GameObject:
   m_ObjectHideFlags: 0
