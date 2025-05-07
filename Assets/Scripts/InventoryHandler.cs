@@ -112,7 +112,7 @@ public class InventoryHandler : MonoBehaviour
         HandlePickingUp();
         if (PlayerController.IsNextSlot())
             HandleSlotSelection();
-        if (Keyboard.current.qKey.wasPressedThisFrame)
+        if (Keyboard.current.gKey.wasPressedThisFrame)
         {
             DropItemFromSlot(selectedSlot);
         }
