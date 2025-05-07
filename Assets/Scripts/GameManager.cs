@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager: MainMenuMusic
+public class GameManager: Sounds
 {
     public Button start, settings, quit, back;
     public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue;

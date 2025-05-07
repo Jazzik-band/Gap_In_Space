@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Sounds
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private bool isTriggered = false;
     private bool isLookAround = false;
     
-    
+    // private static bool _isWalking;
     private static bool _isCrouching;
     private static bool _isPickingUp;
     private static bool _isNextSlotPicking;
@@ -105,14 +105,18 @@ public class PlayerController : MonoBehaviour
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
+    
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var isSprinting = sprintAction.action.IsPressed() && canSprint && moveInput.magnitude > 0.1f;
         _isCrouching = crouchAction.action.IsPressed();
-        var currentSpeed =  moveSpeed;
+        // _isWalking = moveInput.magnitude > 0.1f && !isSprinting && !_isCrouching; // Новая проверка на ходьбу
+    
+        var currentSpeed = moveSpeed;
         if (isSprinting && !_isCrouching && _currentStamina > 0)
             currentSpeed = sprintSpeed;
         if (_isCrouching && !isSprinting)
             currentSpeed = crouchSpeed;
+        
         var targetVelocity = moveInput * currentSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
         if (maxHealth <= 0)
@@ -159,6 +163,10 @@ public class PlayerController : MonoBehaviour
             isLookAround = false;
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
+        // if (_isWalking && !IsPlaying())
+        // {
+        //     PlaySound(sounds[0], 0.5f, false);
+        // }
     }
     
     private void HandleStamina()

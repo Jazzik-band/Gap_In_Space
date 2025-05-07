@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainMenuMusic: MonoBehaviour
+public class Sounds: MonoBehaviour
 {
     public AudioClip[] sounds;
     private AudioSource audioSrc => GetComponent<AudioSource>();
