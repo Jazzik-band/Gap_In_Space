@@ -5,11 +5,12 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager: MonoBehaviour
+public class GameManager: MainMenuMusic
 {
     public Button start, settings, quit, back;
     public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue;
     public GameObject continueButton, restart, menuSettings, mainMenu, menuQuit, menuBack;
+    public string currentLevel;
     private bool isPaused = false;
     
     public void StartGame()
@@ -19,9 +20,15 @@ public class GameManager: MonoBehaviour
 
     private void Update()
     {
+        currentLevel = SceneManager.GetActiveScene().name;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
+        }
+
+        if (currentLevel == "Main menu")
+        {
+            PlaySound(sounds[0], 0.25f, false);
         }
     }
     
