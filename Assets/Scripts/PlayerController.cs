@@ -49,6 +49,8 @@ public class PlayerController : Sounds
     private Light2D playerLight, roundLight;
     public GameObject door;
     public float delayBeforeLoad = 2f;
+
+    public Animator animator;
     
     public bool isShown = false;
     private bool isTriggered = false;
@@ -116,6 +118,8 @@ public class PlayerController : Sounds
             currentSpeed = sprintSpeed;
         if (_isCrouching && !isSprinting)
             currentSpeed = crouchSpeed;
+        
+        animator.SetFloat("Move", Mathf.Abs(moveSpeed));
         
         var targetVelocity = moveInput * currentSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);

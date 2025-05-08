@@ -409,7 +409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f83120f1655ac4db6e9a5d9cf10b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryLife: 100
 --- !u!1 &5279746731292171152
 GameObject:
   m_ObjectHideFlags: 0
