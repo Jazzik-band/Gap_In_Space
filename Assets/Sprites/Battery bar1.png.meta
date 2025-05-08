@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329
+guid: 71fd996860120244c88d391c02cd7593
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5759106596478275484
-    second: Battery bar_0
+      213: -1976206957513903069
+    second: Battery bar1_0
   - first:
-      213: 9218094694676769583
-    second: Battery bar_1
+      213: -3252902985065882
+    second: Battery bar1_1
   - first:
-      213: 4811081295208164644
-    second: Battery bar_2
+      213: 2540297771623966752
+    second: Battery bar1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Battery bar_0
+      name: Battery bar1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c03212484c9abca4c891c1ae37a78f8c
-      internalID: 2023972119
+      spriteID: f33d03ab1163f9c4b9f249f8b48cc7d9
+      internalID: -1084745754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Battery bar_1
+      name: Battery bar1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -143,19 +143,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cfc8e255f454ef47834de6b7876f4a8
-      internalID: -1611182369
+      spriteID: 5c7c06cf9da347c4b92450b1a65e3bd9
+      internalID: 1915957613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Battery bar_2
+      name: Battery bar1_2
       rect:
         serializedVersion: 2
         x: 0
         y: 102
-        width: 384
+        width: 383
         height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,14 +165,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a63e10e42158f6409025f8aaa92bb22
-      internalID: -179411446
+      spriteID: 3bf9921e16fd48a46b239d7726b8ee44
+      internalID: -59464886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Battery bar_3
+      name: Battery bar1_3
       rect:
         serializedVersion: 2
         x: 384
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2b53de24de060848a681a9b373fef89
-      internalID: 1784515577
+      spriteID: 79cdad9bb12a27043aff93a45b2322f8
+      internalID: 80746114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Battery bar_4
+      name: Battery bar1_4
       rect:
         serializedVersion: 2
         x: 384
@@ -209,19 +209,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da1c145dabe7ec64890cc8d0a99a0ce4
-      internalID: -1606207463
+      spriteID: 646a33382640ceb4da5e63831a82d041
+      internalID: 521794364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Battery bar_5
+      name: Battery bar1_5
       rect:
         serializedVersion: 2
-        x: 384
+        x: 383
         y: 102
-        width: 384
+        width: 385
         height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -231,8 +231,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13ea43e90e1d7df4d8042d82079bcc7e
-      internalID: -49568108
+      spriteID: 3863670570248f94d8ee309545cab923
+      internalID: 640481181
       vertices: []
       indices: 
       edges: []
@@ -241,7 +241,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a001078a255a058498a30c4c288f2b4a
+    spriteID: 46e271417378cca4dbacd8a2f30b7cd6
     internalID: 0
     vertices: []
     indices: 
@@ -251,12 +251,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Battery bar_0: 2023972119
-      Battery bar_1: -1611182369
-      Battery bar_2: -179411446
-      Battery bar_3: 1784515577
-      Battery bar_4: -1606207463
-      Battery bar_5: -49568108
+      Battery bar1_0: -1084745754
+      Battery bar1_1: 1915957613
+      Battery bar1_2: -59464886
+      Battery bar1_3: 80746114
+      Battery bar1_4: 521794364
+      Battery bar1_5: 640481181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

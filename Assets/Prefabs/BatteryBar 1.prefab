@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8642867532762558707
+--- !u!1 &8149705630990820324
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 617351203976514962}
-  - component: {fileID: 6103672788269416002}
-  - component: {fileID: 8087033165537261785}
-  - component: {fileID: 6823582221053978714}
+  - component: {fileID: 7945638416089156178}
+  - component: {fileID: 1514824080126363518}
+  - component: {fileID: 6020737197438572333}
+  - component: {fileID: 5408853156250467682}
   m_Layer: 5
-  m_Name: BatteryBar
+  m_Name: BatteryBar 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &617351203976514962
+--- !u!224 &7945638416089156178
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8642867532762558707}
+  m_GameObject: {fileID: 8149705630990820324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,24 +35,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -605, y: 362}
-  m_SizeDelta: {x: 225, y: 100}
+  m_AnchoredPosition: {x: -637, y: 347}
+  m_SizeDelta: {x: 228, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6103672788269416002
+--- !u!222 &1514824080126363518
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8642867532762558707}
+  m_GameObject: {fileID: 8149705630990820324}
   m_CullTransparentMesh: 1
---- !u!114 &8087033165537261785
+--- !u!114 &6020737197438572333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8642867532762558707}
+  m_GameObject: {fileID: 8149705630990820324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2023972119, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
+  m_Sprite: {fileID: -1084745754, guid: 71fd996860120244c88d391c02cd7593, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,21 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6823582221053978714
+--- !u!114 &5408853156250467682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8642867532762558707}
+  m_GameObject: {fileID: 8149705630990820324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dbabc81059d5fc428bd928bd6216144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryBar5: {fileID: 2023972119, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
-  batteryBar4: {fileID: 1784515577, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
-  batteryBar3: {fileID: -1611182369, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
-  batteryBar2: {fileID: -1606207463, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
-  batteryBar1: {fileID: -179411446, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
-  batteryBar0: {fileID: -49568108, guid: 8c7f1d14cf7b63c40bbbbaccb7ac2329, type: 3}
+  batteryBar5: {fileID: -1084745754, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar4: {fileID: 80746114, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar3: {fileID: 1915957613, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar2: {fileID: 521794364, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar1: {fileID: -59464886, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar0: {fileID: 640481181, guid: 71fd996860120244c88d391c02cd7593, type: 3}
