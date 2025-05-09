@@ -52,11 +52,11 @@ public class PlayerController : Sounds
 
     public Animator animator;
     
-    public bool isShown = false;
-    private bool isTriggered = false;
-    private bool isLookAround = false;
+    public bool isShown;
+    private bool isTriggered;
+    private bool isLookAround;
     
-    // private static bool _isWalking;
+    private static bool _isWalking;
     private static bool _isCrouching;
     private static bool _isPickingUp;
     private static bool _isNextSlotPicking;
@@ -111,7 +111,7 @@ public class PlayerController : Sounds
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var isSprinting = sprintAction.action.IsPressed() && canSprint && moveInput.magnitude > 0.1f;
         _isCrouching = crouchAction.action.IsPressed();
-        // _isWalking = moveInput.magnitude > 0.1f && !isSprinting && !_isCrouching; // Новая проверка на ходьбу
+        _isWalking = moveInput.magnitude > 0.1f && !isSprinting && !_isCrouching;
     
         var currentSpeed = moveSpeed;
         if (isSprinting && !_isCrouching && _currentStamina > 0)
@@ -119,7 +119,9 @@ public class PlayerController : Sounds
         if (_isCrouching && !isSprinting)
             currentSpeed = crouchSpeed;
         
-        animator.SetFloat("Move", Mathf.Abs(moveSpeed));
+        animator.SetBool("IsWalking", _isWalking);
+        animator.SetBool("IsRunning", isSprinting);
+        animator.SetBool("IsCrouching", _isCrouching);
         
         var targetVelocity = moveInput * currentSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
