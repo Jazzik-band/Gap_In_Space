@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Input = UnityEngine.Windows.Input;
 
 public class CutsceneManager: MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class CutsceneManager: MonoBehaviour
     {
         StartCutscene("Cutscene_1");
     }
-    
+
     private void InitializeCutsceneDataBase()
     {
         cutsceneDataBase.Clear();
