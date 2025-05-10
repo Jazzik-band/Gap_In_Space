@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357d073fb7cca08479da8c6e0d8498a2, type: 3}
   m_Name: Poop
   m_EditorClassIdentifier: 
-  itemName: 
-  cost: 0
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  itemName: Poop
+  cost: 100
+  icon: {fileID: 1399537639, guid: 130fa9178b93eeb4c8f36c117826a076, type: 3}
+  prefab: {fileID: 5400348211248470655, guid: d04d5c55da570d14fa137a2625f1a6ca, type: 3}

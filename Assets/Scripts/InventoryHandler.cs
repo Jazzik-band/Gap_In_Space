@@ -1,5 +1,5 @@
+
 using System;
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InventoryHandler : MonoBehaviour
 {
     public static Transform Target;
-    public TextMeshProUGUI costText;
+    public Text costText;
     [SerializeField] private GameObject inventorySlotPrefab;
     [SerializeField] private GameObject interactionHint;
     [SerializeField, Range(1, 5)] private int inventorySlotAmount;
@@ -72,9 +72,7 @@ public class InventoryHandler : MonoBehaviour
         {
             dragHandler.itemPrefab = null;
         }
-
-        // Деактивируем слот
-        slotContent.gameObject.SetActive(false);
+        
         
         Debug.Log($"[DropItemFromSlot] Слот {slotIndex} очищен");
         // Отладка
@@ -100,9 +98,43 @@ public class InventoryHandler : MonoBehaviour
             var collider = slotContent.AddComponent<BoxCollider2D>();
             collider.size = new Vector2(64, 64); 
             
-            slotContent.AddComponent<DragAndDropHandler>();
+            var dragHandler = slotContent.AddComponent<DragAndDropHandler>();
             
-            slotContent.SetActive(false);
+            var image = slotContent.AddComponent<Image>();
+            image.raycastTarget = true; // Важно для UI-событий
+            image.color = new Color(0, 0, 0, 0); // Прозрачный цвет
+            
+            var itemUI = new GameObject("Item", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            itemUI.transform.SetParent(slotContent.transform, false);
+            var imageComponent = itemUI.GetComponent<Image>();
+            
+            imageComponent.sprite = null;
+            imageComponent.color = new Color(0, 0, 0, 0);
+            imageComponent.rectTransform.transform.localScale = new Vector3(0.6f, 0.6f, 0);
+            
+            GameObject textObj = new GameObject("Cost", typeof(Text));
+            costText = textObj.GetComponent<Text>();
+            costText.transform.SetParent(slotContent.transform);
+            
+            var textRect = textObj.GetComponent<RectTransform>();
+            
+            costText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            
+            var textComponent = textObj.GetComponent<Text>();
+            textComponent.text = "";
+            textComponent.fontSize = 10;
+            textComponent.color = new Color(0, 1, 0, 0); // Прозрачный зелёный текст
+
+            // Настройка RectTransform для текста
+            textRect.anchorMin = new Vector2(0.5f, 0f); // Привязка к нижнему центру
+            textRect.anchorMax = new Vector2(0.5f, 0f);
+            textRect.pivot = new Vector2(0.5f, 0.5f);
+            textRect.anchoredPosition = new Vector2(0, 10); // Смещение от нижней границы
+            textRect.sizeDelta = new Vector2(60, 20); // Ширина и высота текста
+            
+            dragHandler.icon = imageComponent;
+            dragHandler.costText = costText;
+            
         }
         inventorySlots[selectedSlot].GetComponent<Image>().color = Color.yellow;
     }
@@ -154,49 +186,39 @@ public class InventoryHandler : MonoBehaviour
     private void TryPickupItem(GameObject item)
     {
         var slotContent = inventorySlots[selectedSlot].transform.GetChild(0);
-        if (slotContent.gameObject.activeSelf == false)
+        if (slotContent.GetComponentInChildren<Image>().color == new Color(0, 0, 0, 0))
+        {
             PutItemInSlot(item, slotContent.gameObject);
+            Debug.Log("!!!");
+        }
+        
     }
 
     private void PutItemInSlot(GameObject originalItem, GameObject slotContent)
     {
-        if (slotContent.transform.childCount > 0 && slotContent.GameObject().activeSelf)
+        if (slotContent.transform.childCount > 0 && slotContent.GetComponentInChildren<Image>().color != new Color(0, 0, 0, 0))
         {
             Debug.LogWarning("Слот уже содержит предмет");
             return;
         }
-        slotContent.SetActive(true);
-        var itemUI = new GameObject("Item", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        itemUI.transform.SetParent(slotContent.transform, false);
         var spriteRenderer = originalItem.GetComponent<SpriteRenderer>();
-        var imageComponent = itemUI.GetComponent<Image>();
-        
+        var imageComponent = slotContent.GetComponentInChildren<Image>();
+        var image = slotContent.GetComponent<Image>();
+        imageComponent.color = Color.white;
+        image.color = Color.white;
         if (spriteRenderer)
         {
+            image.sprite = spriteRenderer.sprite;
             imageComponent.sprite = spriteRenderer.sprite;
             imageComponent.rectTransform.transform.localScale = new Vector3(0.6f, 0.6f, 0);
         }
         
         Item item = originalItem.GetComponent<Item>();
         Text costText = slotContent.GetComponentInChildren<Text>();
-        if (costText == null)
-        {
-            GameObject textObj = new GameObject("Cost", typeof(Text));
-            costText = textObj.GetComponent<Text>();
-            costText.transform.SetParent(slotContent.transform);
-            costText.rectTransform.anchoredPosition = new Vector2(5, -40);
-        }
-        costText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        costText.rectTransform.sizeDelta = new Vector2(40, 15);
         costText.text = $"{item.data.cost.ToString()}$";
-        costText.fontSize = 10;
         costText.color = Color.green;
         
         var dragHandler = slotContent.GetComponent<DragAndDropHandler>();
-        if (dragHandler == null)
-        {
-            dragHandler = slotContent.AddComponent<DragAndDropHandler>();
-        }
         dragHandler.icon = imageComponent;
         dragHandler.costText = costText;
         if (item == null || item.data.prefab == null)
