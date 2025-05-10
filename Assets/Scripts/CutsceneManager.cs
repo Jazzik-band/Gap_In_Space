@@ -36,7 +36,20 @@ public class CutsceneManager: MonoBehaviour
             cutsceneDataBase.Add(cutscenes[i].cutSceneKey, cutscenes[i].cutSceneObject);
         }
     }
-
+    
+    public void EndCutscene(string sceneName = "")
+    {
+        if (activeCutscene != null)
+        {
+            if (!string.IsNullOrEmpty(sceneName))
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+            activeCutscene.SetActive(false);
+            activeCutscene = null;
+        }
+    }
+    
     public void StartCutscene(string cutsceneKey)
     {
         if (!cutsceneDataBase.ContainsKey(cutsceneKey))
@@ -64,21 +77,7 @@ public class CutsceneManager: MonoBehaviour
     }
     
 
-    public void EnableCanvas(string canvasKey)
-    {
-        if (cutsceneDataBase.ContainsKey(canvasKey))
-        {
-            cutsceneDataBase[canvasKey].SetActive(true);
-        }
-        else
-        {
-            Debug.LogError($"Canvas с ключом \"{canvasKey}\" не найден в cutsceneDataBase");
-        }
-        if (activeCutscene != null)
-        {
-            
-        }
-    }
+    
 }
 
 [System.Serializable]
