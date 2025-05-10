@@ -14,6 +14,7 @@ public class CutsceneManager: MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        InitializeCutsceneDataBase();
 
         foreach (var cutscene in cutsceneDataBase)
         {
@@ -21,6 +22,11 @@ public class CutsceneManager: MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        StartCutscene("Cutscene_1");
+    }
+    
     private void InitializeCutsceneDataBase()
     {
         cutsceneDataBase.Clear();
@@ -56,14 +62,21 @@ public class CutsceneManager: MonoBehaviour
         
         cutsceneDataBase[cutsceneKey].SetActive(true);
     }
+    
 
-    public void EndCutscene()
+    public void EnableCanvas(string canvasKey)
     {
+        if (cutsceneDataBase.ContainsKey(canvasKey))
+        {
+            cutsceneDataBase[canvasKey].SetActive(true);
+        }
+        else
+        {
+            Debug.LogError($"Canvas с ключом \"{canvasKey}\" не найден в cutsceneDataBase");
+        }
         if (activeCutscene != null)
         {
-            SceneManager.LoadScene("Main menu");
-            activeCutscene.SetActive(false);
-            activeCutscene = null;
+            
         }
     }
 }
