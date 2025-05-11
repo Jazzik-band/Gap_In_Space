@@ -6,7 +6,7 @@ public class Portal: MonoBehaviour
 {
     [SerializeField] private float teleportDelay = 0.5f;
 
-    private bool isPlayerInside = false;
+    private bool isPlayerInside;
     public string currentLevel;
 
     private void OnTriggerEnter2D(Collider2D other)

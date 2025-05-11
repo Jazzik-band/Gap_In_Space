@@ -59,7 +59,7 @@ public class InventoryHandler : MonoBehaviour
             foreach (Transform child in slotContent.transform)
             {
                 Destroy(child.gameObject);
-                FlashlightController.batteryLife = 100;
+                FlashlightController.BatteryLife = 100;
             }
             slotContent.gameObject.SetActive(false);
         }

@@ -155,7 +155,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.isFlashLightSuper)
+        if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
             canMove = false;
         }

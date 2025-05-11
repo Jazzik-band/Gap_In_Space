@@ -11,7 +11,7 @@ public class GameManager: Sounds
     public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue;
     public GameObject continueButton, restart, menuSettings, mainMenu, menuQuit, menuBack;
     public string currentLevel;
-    private bool isPaused = false;
+    private bool isPaused;
     
     public void StartGame()
     {
@@ -113,5 +113,4 @@ public class GameManager: Sounds
     {
         Application.Quit();
     }
-
 }

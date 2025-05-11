@@ -8,10 +8,10 @@ public class FlashlightController : MonoBehaviour
     private Light2D flashlight;
     private float flashlightIntensity;
     private float flashlightRadius;
-    public static float batteryLife = 100.0f;
-    private float drainRate = 2.0f;
-    public static bool isFlashLightOn = true;
-    public static bool isFlashLightSuper = false;
+    public static float BatteryLife = 100.0f;
+    private readonly float drainRate = 2.0f;
+    public static bool IsFlashLightOn = true;
+    public static bool IsFlashLightSuper;
     
     
     private void Start()
@@ -19,54 +19,54 @@ public class FlashlightController : MonoBehaviour
         flashlight = GetComponent<Light2D>();
         flashlightIntensity = flashlight.intensity;
         flashlightRadius = flashlight.pointLightOuterRadius;
-        batteryLife = 100;
+        BatteryLife = 100;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            isFlashLightOn = !isFlashLightOn;
+            IsFlashLightOn = !IsFlashLightOn;
         }
 
         // Включение супер режима у фонарика
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            isFlashLightSuper = true;
+            IsFlashLightSuper = true;
             flashlightIntensity = 200;
         }
         else
         {
-            isFlashLightSuper = false;
+            IsFlashLightSuper = false;
             flashlightIntensity = 10;
         }
         
-        if (isFlashLightOn)
+        if (IsFlashLightOn)
         {
-            if (batteryLife > 0)
+            if (BatteryLife > 0)
             {
-                if (isFlashLightSuper)
+                if (IsFlashLightSuper)
                 {
-                    batteryLife -= drainRate * 4 * Time.deltaTime;
+                    BatteryLife -= drainRate * 4 * Time.deltaTime;
                 }
                 else
                 {
-                    batteryLife -= drainRate / 2 * Time.deltaTime;
+                    BatteryLife -= drainRate / 2 * Time.deltaTime;
                 }
             }
             else
             {
-                batteryLife = 0;
-                isFlashLightOn = false;
+                BatteryLife = 0;
+                IsFlashLightOn = false;
             }
         }
 
-        if (PlayerController.IsCrouching() && isFlashLightOn)
+        if (PlayerController.IsCrouching() && IsFlashLightOn)
         {
             flashlight.intensity = flashlightIntensity - 7;
             flashlight.pointLightOuterRadius = flashlightRadius - 4;
         }
-        else if (isFlashLightOn)
+        else if (IsFlashLightOn)
         {
             flashlight.intensity = flashlightIntensity;
             flashlight.pointLightOuterRadius = flashlightRadius;

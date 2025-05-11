@@ -3,82 +3,84 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Input = UnityEngine.Windows.Input;
+using System.Linq;
 
 public class CutsceneManager: MonoBehaviour
 {
     public static CutsceneManager Instance;
-    [SerializeField] private List<CutsceneStruct> cutscenes = new List<CutsceneStruct>();
-    public static Dictionary<string, GameObject> cutsceneDataBase = new Dictionary<string, GameObject>();
-    public static GameObject activeCutscene;
+    [SerializeField] private List<CutsceneStruct> cutscenes = new ();
+    private static readonly Dictionary<string, GameObject> CutsceneDataBase = new ();
+    public static GameObject ActiveCutscene;
 
     private void Awake()
     {
         Instance = this;
         InitializeCutsceneDataBase();
 
-        foreach (var cutscene in cutsceneDataBase)
+        foreach (var cutscene in CutsceneDataBase)
         {
             cutscene.Value.SetActive(false);
         }
     }
 
+    private void InitializeCutsceneDataBase()
+    {
+        CutsceneDataBase.Clear();
+
+        for (int i = 0; i < cutscenes.Count; i++)
+        {
+            CutsceneDataBase.Add(cutscenes[i].cutSceneKey, cutscenes[i].cutSceneObject);
+        }
+    }
+    
     private void Start()
     {
         StartCutscene("Cutscene_1");
     }
-
-    private void InitializeCutsceneDataBase()
-    {
-        cutsceneDataBase.Clear();
-
-        for (int i = 0; i < cutscenes.Count; i++)
-        {
-            cutsceneDataBase.Add(cutscenes[i].cutSceneKey, cutscenes[i].cutSceneObject);
-        }
-    }
     
-    public void EndCutscene(string sceneName = "")
+    private void Update()
     {
-        if (activeCutscene != null)
+        if (CutsceneDataBase.All(c => c.Value == false))
+            EndCutscene("Main menu");
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!string.IsNullOrEmpty(sceneName))
-            {
-                SceneManager.LoadScene(sceneName);
-            }
-            activeCutscene.SetActive(false);
-            activeCutscene = null;
+            EndCutscene("Main menu");
         }
     }
     
     public void StartCutscene(string cutsceneKey)
     {
-        if (!cutsceneDataBase.ContainsKey(cutsceneKey))
+        if (!CutsceneDataBase.ContainsKey(cutsceneKey))
         {
-            Debug.LogError($"Катсцены с ключом \"{cutsceneKey}\" нету в cutsceneDataBase");
             return;
         }
 
-        if (activeCutscene != null)
+        if (ActiveCutscene != null && ActiveCutscene == CutsceneDataBase[cutsceneKey])
         {
-            if (activeCutscene == cutsceneDataBase[cutsceneKey])
-            {
-                return;
-            }
+            return;
         }
 
-        activeCutscene = cutsceneDataBase[cutsceneKey];
-
-        foreach (var cutscenes in cutsceneDataBase)
+        ActiveCutscene = CutsceneDataBase[cutsceneKey];
+        foreach (var cutscene in CutsceneDataBase)
         {
-            cutscenes.Value.SetActive(false);
+            if (cutscene.Value != ActiveCutscene)
+                cutscene.Value.SetActive(false);
         }
-        
-        cutsceneDataBase[cutsceneKey].SetActive(true);
+        CutsceneDataBase[cutsceneKey].SetActive(true);
     }
     
-
-    
+    public void EndCutscene(string sceneName)
+    {
+        if (ActiveCutscene != null)
+        {
+            if (!string.IsNullOrEmpty(sceneName))
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+            ActiveCutscene.SetActive(false);
+            ActiveCutscene = null;
+        }
+    }
 }
 
 [System.Serializable]

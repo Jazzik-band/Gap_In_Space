@@ -14,17 +14,17 @@ public class EnergyBar: MonoBehaviour
 
     private void Update()
     {
-        if (FlashlightController.batteryLife >= 80)
+        if (FlashlightController.BatteryLife >= 80)
             spriteRenderer.sprite = batteryBar5;
-        if (FlashlightController.batteryLife >= 60 && FlashlightController.batteryLife < 79)
+        else if (FlashlightController.BatteryLife >= 60 && FlashlightController.BatteryLife < 79)
             spriteRenderer.sprite = batteryBar4;
-        if (FlashlightController.batteryLife >= 40 && FlashlightController.batteryLife < 59)
+        else if (FlashlightController.BatteryLife >= 40 && FlashlightController.BatteryLife < 59)
             spriteRenderer.sprite = batteryBar3;
-        if (FlashlightController.batteryLife >= 20 && FlashlightController.batteryLife < 39)
+        else if (FlashlightController.BatteryLife >= 20 && FlashlightController.BatteryLife < 39)
             spriteRenderer.sprite = batteryBar2;
-        if (FlashlightController.batteryLife >= 1 && FlashlightController.batteryLife < 19)
+        else if (FlashlightController.BatteryLife >= 1 && FlashlightController.BatteryLife < 19)
             spriteRenderer.sprite = batteryBar1;
-        if (FlashlightController.batteryLife <= 0)
+        else if (FlashlightController.BatteryLife <= 0)
             spriteRenderer.sprite = batteryBar0;
     }
 }
