@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
 
+[System.Serializable]
+public struct CutsceneStruct
+{
+    public string cutSceneKey;
+    public GameObject cutSceneObject;
+}
+
 public class CutsceneManager: MonoBehaviour
 {
     public static CutsceneManager Instance;
@@ -40,12 +47,9 @@ public class CutsceneManager: MonoBehaviour
     
     private void Update()
     {
-        if (CutsceneDataBase.All(c => c.Value == false))
+        if (Input.GetKeyDown(KeyCode.Escape)
+            || CutsceneDataBase.All(c => c.Value == false))
             EndCutscene("Main menu");
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EndCutscene("Main menu");
-        }
     }
     
     public void StartCutscene(string cutsceneKey)
@@ -81,11 +85,4 @@ public class CutsceneManager: MonoBehaviour
             ActiveCutscene = null;
         }
     }
-}
-
-[System.Serializable]
-public struct CutsceneStruct
-{
-    public string cutSceneKey;
-    public GameObject cutSceneObject;
 }

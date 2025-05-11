@@ -77,5 +77,4 @@ public class FlashlightController : MonoBehaviour
             flashlight.pointLightOuterRadius = 0;
         }
     }
-
 }
