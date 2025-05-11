@@ -17,7 +17,7 @@ public class PlayerController : Sounds
     [SerializeField] private float crouchSpeed = 2f;
     
     [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 10f;
+    public static float maxHealth = 10f;
     
     [Header("Stamina Settings")]
     [SerializeField] private float maxStamina = 100f;
@@ -61,6 +61,7 @@ public class PlayerController : Sounds
 
     private void Start()
     {
+        maxHealth = 10f;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerLight = GetComponentInChildren<Light2D>();
         if (roundLight == null)
