@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8322270556596455593}
   - component: {fileID: 4219389643636756849}
   - component: {fileID: -1166379312432403404}
+  - component: {fileID: -6357229897198731027}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,6 +154,8 @@ MonoBehaviour:
   playerSpriteWithoutFlashlight: {fileID: -589821096341392778, guid: 45acddbcfb173514d9b69f614ff4aca8, type: 3}
   door: {fileID: 0}
   delayBeforeLoad: 2
+  playerFlashlightAnimator: {fileID: 22100000, guid: efd1ef4e32caead48a4b5676fc53380f, type: 2}
+  playerAnimator: {fileID: -6357229897198731027}
   isShown: 0
 --- !u!60 &4219389643636756849
 PolygonCollider2D:
@@ -312,6 +315,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &-6357229897198731027
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953371295555048844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c0026771cae6804289188bd7e27e4cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3854318478881413282
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f83120f1655ac4db6e9a5d9cf10b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryLife: 100
 --- !u!1 &5279746731292171152
 GameObject:
   m_ObjectHideFlags: 0

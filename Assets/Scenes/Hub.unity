@@ -702,7 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 199342398}
   m_Layer: 0
-  m_Name: Soldiers
+  m_Name: Soliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3810,6 +3810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63a908e69f9f8248ad65b20450da9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds: []
   start: {fileID: 0}
   settings: {fileID: 0}
   quit: {fileID: 0}
@@ -3824,6 +3825,7 @@ MonoBehaviour:
   mainMenu: {fileID: 116960229}
   menuQuit: {fileID: 1020371304}
   menuBack: {fileID: 212531063}
+  currentLevel: 
 --- !u!4 &819108497
 Transform:
   m_ObjectHideFlags: 0
@@ -4482,9 +4484,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1738414342}
     - target: {fileID: 8322270556596455593, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1561546334}
+    - target: {fileID: 8322270556596455593, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8322270556596455593, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 1561546334}
     - target: {fileID: 8322270556596455593, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: targetYPosition
       value: 50
@@ -4492,7 +4502,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1561546334}
   m_SourcePrefab: {fileID: 100100000, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
 --- !u!1 &1020371304
 GameObject:
@@ -6468,7 +6481,7 @@ Transform:
   m_GameObject: {fileID: 1413727937}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7346,6 +7359,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1561546327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+  m_PrefabInstance: {fileID: 992306624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1561546334
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561546327}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c0026771cae6804289188bd7e27e4cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1563623035
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -49,12 +50,15 @@ public class PlayerController : Sounds
     private Light2D playerLight, roundLight;
     public GameObject door;
     public float delayBeforeLoad = 2f;
+
+    public AnimatorOverrideController playerFlashlightAnimator;
+    public Animator playerAnimator;
     
-    public bool isShown = false;
-    private bool isTriggered = false;
-    private bool isLookAround = false;
+    public bool isShown;
+    private bool isTriggered;
+    private bool isLookAround;
     
-    // private static bool _isWalking;
+    private static bool _isWalking;
     private static bool _isCrouching;
     private static bool _isPickingUp;
     private static bool _isNextSlotPicking;
@@ -64,6 +68,9 @@ public class PlayerController : Sounds
         maxHealth = 10f;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerLight = GetComponentInChildren<Light2D>();
+        playerAnimator = GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().name != "Hub")
+            playerAnimator.runtimeAnimatorController = playerFlashlightAnimator;
         if (roundLight == null)
         {
             Transform lightTransform = transform.Find("RoundLight");
@@ -96,7 +103,7 @@ public class PlayerController : Sounds
     
     private void FixedUpdate()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        var currentScene = SceneManager.GetActiveScene().name;
         HandleStamina();
         _isPickingUp = interactAction.action.IsPressed();
         _isNextSlotPicking = nextSlotAction.action.IsPressed();
@@ -106,12 +113,16 @@ public class PlayerController : Sounds
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
-    
+        
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var isSprinting = sprintAction.action.IsPressed() && canSprint && moveInput.magnitude > 0.1f;
         _isCrouching = crouchAction.action.IsPressed();
-        // _isWalking = moveInput.magnitude > 0.1f && !isSprinting && !_isCrouching; // Новая проверка на ходьбу
-    
+        _isWalking = moveInput.magnitude > 0.1f && !isSprinting && !_isCrouching;
+        
+        playerAnimator.SetBool("IsWalking", _isWalking);
+        playerAnimator.SetBool("IsRunning", isSprinting);
+        playerAnimator.SetBool("IsCrouching", _isCrouching);
+        
         var currentSpeed = moveSpeed;
         if (isSprinting && !_isCrouching && _currentStamina > 0)
             currentSpeed = sprintSpeed;
@@ -131,6 +142,12 @@ public class PlayerController : Sounds
             CameraFollower.Target = transform;
             playerLight.gameObject.SetActive(false);
             roundLight.gameObject.SetActive(false);
+            //
+            //
+            // playerAnimator.SetBool("IsWalking", _isWalking);
+            // playerAnimator.SetBool("IsRunning", isSprinting);
+            // playerAnimator.SetBool("IsCrouching", _isCrouching);
+            //
             if (transform.position.y >= 65)
             {
                 isTriggered = true;
