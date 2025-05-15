@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3889228357427941473}
   - component: {fileID: 8390115125343333779}
-  - component: {fileID: -4396777812956883183}
   - component: {fileID: 6832343586812992084}
+  - component: {fileID: 1583332172115297587}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3040780894656623365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.431732, y: 36.818787, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 8703572384849947414, guid: 15e5c50249c628e488ff41e1f8e98335, type: 3}
+  m_Sprite: {fileID: 1357945687, guid: 16d96f9493a1d584c878e4d9f621ab3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,7 +89,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-4396777812956883183
+--- !u!114 &6832343586812992084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3040780894656623365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09ea19f1ab5d5743baec6e2a674e2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportDelay: 0.3
+  currentLevel: 
+--- !u!58 &1583332172115297587
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,23 +133,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.014249444, y: 0}
-  m_Radius: 0.9
---- !u!114 &6832343586812992084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3040780894656623365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d09ea19f1ab5d5743baec6e2a674e2a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDelay: 0.3
-  currentLevel: 
+  m_Offset: {x: 0.4034233, y: -0.7942009}
+  m_Radius: 8.333217
