@@ -56,7 +56,6 @@ public class PlayerController : Sounds
     
     public bool isShown;
     private bool isTriggered;
-    private bool isLookAround;
     
     private static bool _isWalking;
     private static bool _isCrouching;
@@ -77,6 +76,7 @@ public class PlayerController : Sounds
             if (lightTransform != null)
                 roundLight = lightTransform.GetComponent<Light2D>();
         }
+        FixedUpdate();
     }
 
     private void Awake()
@@ -142,12 +142,7 @@ public class PlayerController : Sounds
             CameraFollower.Target = transform;
             playerLight.gameObject.SetActive(false);
             roundLight.gameObject.SetActive(false);
-            //
-            //
-            // playerAnimator.SetBool("IsWalking", _isWalking);
-            // playerAnimator.SetBool("IsRunning", isSprinting);
-            // playerAnimator.SetBool("IsCrouching", _isCrouching);
-            //
+
             if (transform.position.y >= 65)
             {
                 isTriggered = true;
@@ -169,18 +164,6 @@ public class PlayerController : Sounds
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && !isLookAround)
-        {
-            isLookAround = true;
-            rb.bodyType = RigidbodyType2D.Static;
-            transform.rotation = Quaternion.identity;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && isLookAround)
-        {
-            isLookAround = false;
-            rb.bodyType = RigidbodyType2D.Dynamic;
-        }
         // if (_isWalking && !IsPlaying())
         // {
         //     PlaySound(sounds[0], 0.5f, false);

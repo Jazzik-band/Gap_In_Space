@@ -33,5 +33,5 @@ public class HealthBar: MonoBehaviour
     void Update()
     {
         spriteRenderer.sprite = healthDict[(int)PlayerController.maxHealth];
-    } 
+    }
 }

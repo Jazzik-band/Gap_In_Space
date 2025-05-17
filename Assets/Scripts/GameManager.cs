@@ -42,9 +42,12 @@ public class GameManager: Sounds
             Time.timeScale = 0f;
             AudioListener.pause = true;
             menuPanel.SetActive(true);
-            staminaUI.SetActive(false);
-            inventoryPanel.SetActive(false);
-            batteryValue.SetActive(false);
+            if (SceneManager.GetActiveScene().name != "Hub")
+            {
+                staminaUI.SetActive(false);
+                inventoryPanel.SetActive(false);
+                batteryValue.SetActive(false);
+            }
         }
         else
         {
@@ -52,9 +55,12 @@ public class GameManager: Sounds
             Time.timeScale = 1f;
             AudioListener.pause = false;
             menuPanel.SetActive(false);
-            staminaUI.SetActive(true);
-            inventoryPanel.SetActive(true);
-            batteryValue.SetActive(true);
+            if (SceneManager.GetActiveScene().name != "Hub")
+            {
+                staminaUI.SetActive(true);
+                inventoryPanel.SetActive(true);
+                batteryValue.SetActive(true);
+            }
         }
     }
 
@@ -64,11 +70,14 @@ public class GameManager: Sounds
         Time.timeScale = 1f;
         AudioListener.pause = false;
         menuPanel.SetActive(false);
-        staminaUI.SetActive(true);
-        inventoryPanel.SetActive(true);
-        batteryValue.SetActive(true);
+        if (SceneManager.GetActiveScene().name != "Hub")
+        {
+            staminaUI.SetActive(true);
+            inventoryPanel.SetActive(true);
+            batteryValue.SetActive(true);
+        }
     }
-
+    
     public void MainMenuSettings()
     {
         start.gameObject.SetActive(false);

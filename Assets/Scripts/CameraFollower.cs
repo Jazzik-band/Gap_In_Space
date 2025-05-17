@@ -12,6 +12,7 @@ public class CameraFollower : MonoBehaviour
     private void Start()
     {
         mainCamera = GetComponent<Camera>();
+        Time.timeScale = 1f;
     }
     
     private void LateUpdate()
