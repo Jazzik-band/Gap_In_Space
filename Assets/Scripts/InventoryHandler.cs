@@ -11,6 +11,7 @@ public class InventoryHandler : MonoBehaviour
     [SerializeField, Range(1, 5)] private int inventorySlotAmount;
     [SerializeField] private float pickupRadius = 1.5f;
     private GameObject[] inventorySlots;
+    private Transform playerTransform;
     
     private int selectedSlot;
     private int previousSelectedSlot;
@@ -43,15 +44,19 @@ public class InventoryHandler : MonoBehaviour
         HandlePickingUp();
         if (PlayerController.IsNextSlot())
             HandleSlotSelection();
-            
-        // Добавляем проверку нажатия Q
+        
         if (Keyboard.current != null && Keyboard.current.qKey.wasPressedThisFrame)
         {
-            RemoveItemFromSelectedSlot();
+            UseItem();
+        }
+        
+        if (Keyboard.current != null && Keyboard.current.gKey.wasPressedThisFrame)
+        {
+            DropItem();
         }
     }
 
-    private void RemoveItemFromSelectedSlot()
+    private void UseItem()
     {
         var slotContent = inventorySlots[selectedSlot].transform.GetChild(0);
         if (slotContent.gameObject.activeSelf)
@@ -63,6 +68,11 @@ public class InventoryHandler : MonoBehaviour
             }
             slotContent.gameObject.SetActive(false);
         }
+    }
+
+    private void DropItem()
+    {
+
     }
 
     private void HandlePickingUp()
