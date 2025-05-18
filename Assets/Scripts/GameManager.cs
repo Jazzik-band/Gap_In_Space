@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager: Sounds
 {
     public Button start, settings, quit, back;
-    public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue;
+    public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue, healthBar;
     public GameObject continueButton, restart, menuSettings, mainMenu, menuQuit, menuBack;
     public string currentLevel;
     private bool isPaused;
@@ -47,6 +47,7 @@ public class GameManager: Sounds
                 staminaUI.SetActive(false);
                 inventoryPanel.SetActive(false);
                 batteryValue.SetActive(false);
+                healthBar.SetActive(false);
             }
         }
         else
@@ -60,6 +61,7 @@ public class GameManager: Sounds
                 staminaUI.SetActive(true);
                 inventoryPanel.SetActive(true);
                 batteryValue.SetActive(true);
+                healthBar.SetActive(true);
             }
         }
     }
@@ -75,6 +77,7 @@ public class GameManager: Sounds
             staminaUI.SetActive(true);
             inventoryPanel.SetActive(true);
             batteryValue.SetActive(true);
+            healthBar.SetActive(true);
         }
     }
     

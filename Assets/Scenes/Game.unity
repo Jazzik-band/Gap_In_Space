@@ -1202,7 +1202,7 @@ MonoBehaviour:
     rid: 8005390552773689344
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1579586961}
+    m_Mesh: {fileID: 1543308891}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
@@ -2242,7 +2242,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400258503}
   m_CullTransparentMesh: 1
---- !u!43 &1579586961
+--- !u!43 &1543308891
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3486,6 +3486,7 @@ MonoBehaviour:
   staminaUI: {fileID: 2128278207}
   inventoryPanel: {fileID: 137796540}
   batteryValue: {fileID: 1693504521}
+  healthBar: {fileID: 1629614523}
   continueButton: {fileID: 296186477}
   restart: {fileID: 1733857982}
   menuSettings: {fileID: 2015846287}
