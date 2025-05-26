@@ -8,9 +8,10 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : Sounds
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -53,6 +54,8 @@ public class PlayerController : Sounds
 
     public AnimatorOverrideController playerFlashlightAnimator;
     public Animator playerAnimator;
+    public AudioClip[] stepSounds;
+    private AudioSource audioSource;
     
     public bool isShown;
     private bool isTriggered;
@@ -64,6 +67,7 @@ public class PlayerController : Sounds
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         maxHealth = 10f;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerLight = GetComponentInChildren<Light2D>();
@@ -78,6 +82,20 @@ public class PlayerController : Sounds
         }
         FixedUpdate();
     }
+    
+    private void StepSoundPlay()
+    {
+        audioSource.volume = 1f;
+        audioSource.PlayOneShot(stepSounds[Random.Range(0, stepSounds.Length)]);
+    }
+        
+    private void QuietStepSoundPlay()
+    {
+        audioSource.volume = 0.5f;
+        audioSource.PlayOneShot(stepSounds[Random.Range(0, stepSounds.Length)]);
+    }
+    
+    
 
     private void Awake()
     {
@@ -164,10 +182,6 @@ public class PlayerController : Sounds
             }
         }
 
-        // if (_isWalking && !IsPlaying())
-        // {
-        //     PlaySound(sounds[0], 0.5f, false);
-        // }
     }
     
     private void HandleStamina()
