@@ -20,13 +20,22 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Creature settings")] [SerializeField]
     private GameObject playerPrefab;
-    
-    [Header("Teleport Settings")]
-    [SerializeField] private GameObject portalPrefab;
+
+    [Header("Teleport Settings")] [SerializeField]
+    private GameObject portalPrefab;
+
     [SerializeField] private string teleportSceneName;
 
+    [Header("Furniture settings")] [SerializeField]
+    private GameObject[] furniturePrefabs;
+    [SerializeField, Range(0, 5)] private int minFurniturePerRoom = 1;
+    [SerializeField, Range(0, 5)] private int maxFurniturePerRoom = 3;
+
+    [Header("Enemies settings")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
+    
+    
     private readonly List<Room> rooms = new();
     private readonly System.Random random = new();
     private HashSet<Room> availableRooms;
@@ -53,6 +62,7 @@ public class DungeonGenerator : MonoBehaviour
         SpawnPlayerInRandomRoom();
         SpawnEnemiesInRandomRoom();
         SpawnItems();
+        SpawnFurnitureInRooms();
         SpawnPortal();
     }
 
@@ -271,7 +281,7 @@ public class DungeonGenerator : MonoBehaviour
             Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
             spawnedEnemies++;
             availableRooms.Remove(enemySpawnRoom);
-            
+
         }
     }
 
@@ -294,17 +304,18 @@ public class DungeonGenerator : MonoBehaviour
             Instantiate(items[0], position, Quaternion.identity);
         }
     }
+
     private Room FindFinalRoom()
     {
         if (rooms.Count == 0 || playerRoom == null) return null;
-    
+
         Room farthestRoom = null;
         float maxDistance = 0f;
-    
+
         foreach (var room in rooms)
         {
             if (room == playerRoom) continue;
-        
+
             float distance = Vector2Int.Distance(playerRoom.Center, room.Center);
             if (distance > maxDistance)
             {
@@ -312,9 +323,10 @@ public class DungeonGenerator : MonoBehaviour
                 farthestRoom = room;
             }
         }
-    
+
         return farthestRoom;
     }
+
     private void SpawnPortal()
     {
         Room farthestRoom = FindFinalRoom();
@@ -322,11 +334,31 @@ public class DungeonGenerator : MonoBehaviour
         {
             Vector3 spawnPos = new Vector3(farthestRoom.Center.x, farthestRoom.Center.y, 0);
             GameObject portal = Instantiate(portalPrefab, spawnPos, Quaternion.identity);
-        
+
             Portal teleporter = portal.GetComponent<Portal>();
             if (teleporter != null)
             {
                 teleporter.currentLevel = teleportSceneName;
+            }
+        }
+    }
+
+    private void SpawnFurnitureInRooms()
+    {
+        foreach (var room in rooms)
+        {
+            if (room == playerRoom) continue;
+            var furnitureCount = random.Next(minFurniturePerRoom, maxFurniturePerRoom + 1);
+            for (var i = 0; i < furnitureCount; i++)
+            {
+                var furniturePrefab = furniturePrefabs[random.Next(0, furniturePrefabs.Length)];
+                var position = new Vector2Int(
+                    random.Next(room.Bounds.x + 1, room.Bounds.x + room.Bounds.width - 1),
+                    random.Next(room.Bounds.y + 1, room.Bounds.y + room.Bounds.height - 1)
+                );
+                var colliders = Physics2D.OverlapCircleAll(position, 1f);
+                if (colliders.Length == 0)
+                    Instantiate(furniturePrefab, new Vector3(position.x, position.y, 0), Quaternion.identity);
             }
         }
     }
