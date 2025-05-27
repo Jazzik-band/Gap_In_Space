@@ -22,6 +22,8 @@ public class EnemyController : MonoBehaviour
     private Vector2 centerPoint;
     private float timer;
     private Vector2 currentVelocity;
+    public AudioClip[] enemySounds;
+    private AudioSource audioSource;
     
     private float waitTime;
     private bool isStopped = false;
@@ -34,6 +36,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         centerPoint = transform.position;
         enemyRb = GetComponent<Rigidbody2D>();
@@ -54,12 +57,10 @@ public class EnemyController : MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
             RunTurn();
-            // isChasing = true;
             wasChasing = true;
         }
         else if (Vector2.Distance(player.transform.position, transform.position) > 7 && wasChasing && canMove)
         {
-            // isChasing = false;
             wasChasing = false;
             ReturnToSpawn();
         }
@@ -81,6 +82,7 @@ public class EnemyController : MonoBehaviour
             Vector2 direction = player.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            audioSource.Stop();
         }
     }
 
@@ -110,6 +112,15 @@ public class EnemyController : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
+        if (Vector2.Distance(player.transform.position, transform.position) <= 8)
+        {
+            audioSource.PlayOneShot(enemySounds[0]);
+            audioSource.UnPause();
+        }
+        else
+        {
+            audioSource.Pause();
+        }
     }
 
     private void SetNewRandomTarget()
@@ -130,6 +141,15 @@ public class EnemyController : MonoBehaviour
             centerPoint,
             enemyReturnSpeed * Time.deltaTime
         );
+        if (Vector2.Distance(player.transform.position, transform.position) <= 8)
+        {
+            audioSource.PlayOneShot(enemySounds[0]);
+            audioSource.UnPause();
+        }
+        else
+        {
+            audioSource.Pause();
+        }
     }
     
     private IEnumerator BiteAndWait()

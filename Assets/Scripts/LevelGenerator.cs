@@ -271,6 +271,7 @@ public class DungeonGenerator : MonoBehaviour
             Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
             spawnedEnemies++;
             availableRooms.Remove(enemySpawnRoom);
+            
         }
     }
 
