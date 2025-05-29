@@ -150,6 +150,8 @@ MonoBehaviour:
   delayAfterBite: 1
   enemySounds:
   - {fileID: 8300000, guid: 54df63e0009218d43be62a8795f5c61b, type: 3}
+  - {fileID: 8300000, guid: 2132411a07f5ec7488be27ab06e17026, type: 3}
+  - {fileID: 8300000, guid: ae0cb91cc6a63f44fa70a96c38ce5b4d, type: 3}
 --- !u!70 &1466595516667042909
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -522,7 +524,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.03
+  m_Volume: 0.07
   m_Pitch: 1
   Loop: 0
   Mute: 0

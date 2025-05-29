@@ -28,7 +28,6 @@ public class EnemyController : MonoBehaviour
     private float waitTime;
     private bool isStopped = false;
 
-    // private bool isChasing;
     private bool wasChasing;
     private bool isBite = false;
     private bool canMove = true;
@@ -115,11 +114,10 @@ public class EnemyController : MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= 8)
         {
             audioSource.PlayOneShot(enemySounds[0]);
-            audioSource.UnPause();
         }
         else
         {
-            audioSource.Pause();
+            audioSource.Stop();
         }
     }
 
@@ -144,11 +142,10 @@ public class EnemyController : MonoBehaviour
         if (Vector2.Distance(player.transform.position, transform.position) <= 8)
         {
             audioSource.PlayOneShot(enemySounds[0]);
-            audioSource.UnPause();
         }
         else
         {
-            audioSource.Pause();
+            audioSource.Stop();
         }
     }
     
@@ -178,6 +175,12 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
             canMove = false;
+            audioSource.UnPause();
+            audioSource.PlayOneShot(enemySounds[2]);
+        }
+        else
+        {
+            audioSource.Pause();
         }
     }
 
