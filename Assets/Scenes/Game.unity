@@ -778,7 +778,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296186477}
   m_CullTransparentMesh: 1
---- !u!43 &496417705
+--- !u!43 &496058189
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1368,7 +1368,7 @@ MonoBehaviour:
     rid: 8005390552773689344
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 496417705}
+    m_Mesh: {fileID: 496058189}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
@@ -2244,7 +2244,7 @@ MonoBehaviour:
   roomCount: 20
   minRoomSize: {x: 10, y: 10}
   maxRoomSize: {x: 15, y: 15}
-  dungeonSize: 100
+  dungeonSize: 80
   floorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
   wallTile: {fileID: 11400000, guid: 382f909926fb5f448a9947405eb37bd1, type: 2}
   corridorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
