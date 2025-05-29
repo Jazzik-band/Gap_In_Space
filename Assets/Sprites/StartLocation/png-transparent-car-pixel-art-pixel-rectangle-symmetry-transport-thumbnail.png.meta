@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      png-transparent-car-pixel-art-pixel-rectangle-symmetry-transport-thumbnail_0: -1989828520042489443
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
