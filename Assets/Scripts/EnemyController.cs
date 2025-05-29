@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,8 @@ public class EnemyController : MonoBehaviour
     public AudioClip[] enemySounds;
     private AudioSource audioSource;
     
+    [FormerlySerializedAs("playerAnimator")] public Animator enemyAnimator;
+    
     private float waitTime;
     private bool isStopped = false;
 
@@ -38,6 +41,7 @@ public class EnemyController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyAnimator = GetComponent<Animator>();
         centerPoint = transform.position;
         enemyRb = GetComponent<Rigidbody2D>();
         currentVelocity = enemyRb.linearVelocity;
@@ -71,6 +75,9 @@ public class EnemyController : MonoBehaviour
                 WalkTurn();
             }
         }
+        
+        // enemyAnimator.SetBool("IsWalking", _isWalking);
+        // enemyAnimator.SetBool("IsRunning", isSprinting);
     }
 
     private void RunTurn()
