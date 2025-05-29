@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: ec35ed27ca8fe684680f2fc745ec2cf0
+guid: 03f8375f80efc4242ac79f8c94c6c825
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4344576266573323728
-    second: white-grey-tile-wall-high-resolution-wallpaper-brick-seamless-texture-interior-background
-      1_0
+      213: -4373184736405950995
+    second: floor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,28 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: white-grey-tile-wall-high-resolution-wallpaper-brick-seamless-texture-interior-background
-        1_0
+      name: floor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1750
-        height: 3500
+        width: 1088
+        height: 1190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0dd12bc88190b4c30800000000000000
-      internalID: 4344576266573323728
+      spriteID: dedec5107a35f43c0800000000000000
+      internalID: -4373184736405950995
       vertices: []
       indices: 
       edges: []
@@ -127,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ee7b047f74e6e2b4a8c59999a298c485
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -136,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      white-grey-tile-wall-high-resolution-wallpaper-brick-seamless-texture-interior-background 1_0: 4344576266573323728
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

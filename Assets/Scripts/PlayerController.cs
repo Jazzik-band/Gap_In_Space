@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
             {
                 roundLight.gameObject.SetActive(true);
             }
-            if (!isShown && transform.position.y >= 45)
+            if (!isShown && transform.position.y >= 50)
             {
                 door.SetActive(true);
                 isShown = true;
