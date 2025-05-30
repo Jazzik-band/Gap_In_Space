@@ -26,13 +26,13 @@ public class EnemyController : MonoBehaviour
     public AudioClip[] enemySounds;
     private AudioSource audioSource;
     
-    [FormerlySerializedAs("playerAnimator")] public Animator enemyAnimator;
+    public Animator enemyAnimator;
     
     private float waitTime;
     private bool isStopped = false;
 
     private bool wasChasing;
-    private bool isBite = false;
+    private bool isBite;
     private bool canMove = true;
     private bool isWalking;
     private bool isSprinting;
@@ -79,12 +79,17 @@ public class EnemyController : MonoBehaviour
             {
                 WalkTurn();
                 isSprinting = false;
-                isWalking = true;
             }
         }
-        
+
+        if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
+        {
+            isBite = false;
+        }
+
         enemyAnimator.SetBool("IsWalking", isWalking);
         enemyAnimator.SetBool("IsRunning", isSprinting);
+        enemyAnimator.SetBool("IsAtacking", isBite);
     }
 
     private void RunTurn()
@@ -107,6 +112,7 @@ public class EnemyController : MonoBehaviour
                 transform.position, targetPosition, enemyWalkSpeed * Time.deltaTime);
         if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
         {
+            isWalking = false;
             timer += Time.deltaTime;
             if (timer >= waitTime)
             {
@@ -118,6 +124,7 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = targetPosition - (Vector2)transform.position;
         if (direction.magnitude > 0.01f)
         {
+            isWalking = true;
             var targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             var targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(
@@ -168,15 +175,14 @@ public class EnemyController : MonoBehaviour
     
     private IEnumerator BiteAndWait()
     {
-        isBite = true;
-        
         canMove = false;
-        transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
+        //transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
+        isBite = true;
         yield return new WaitForSeconds(1f);
+
+        enemyRb.bodyType = RigidbodyType2D.Dynamic;
         canMove = true;
-        
-        isBite = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -192,6 +198,8 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
             canMove = false;
+            isWalking = false;
+            isSprinting = false;
         }
     }
 
