@@ -31,10 +31,11 @@ public class EnemyController : MonoBehaviour
     private float waitTime;
     private bool isStopped = false;
 
-    // private bool isChasing;
     private bool wasChasing;
     private bool isBite = false;
     private bool canMove = true;
+    private bool isWalking;
+    private bool isSprinting;
     private Transform player;
 
     private void Start()
@@ -62,10 +63,14 @@ public class EnemyController : MonoBehaviour
         {
             RunTurn();
             wasChasing = true;
+            isWalking = false;
+            isSprinting = true;
         }
         else if (Vector2.Distance(player.transform.position, transform.position) > 7 && wasChasing && canMove)
         {
             wasChasing = false;
+            isSprinting = false;
+            isWalking = true;
             ReturnToSpawn();
         }
         else
@@ -73,11 +78,13 @@ public class EnemyController : MonoBehaviour
             if (canMove)
             {
                 WalkTurn();
+                isSprinting = false;
+                isWalking = true;
             }
         }
         
-        // enemyAnimator.SetBool("IsWalking", _isWalking);
-        // enemyAnimator.SetBool("IsRunning", isSprinting);
+        enemyAnimator.SetBool("IsWalking", isWalking);
+        enemyAnimator.SetBool("IsRunning", isSprinting);
     }
 
     private void RunTurn()
