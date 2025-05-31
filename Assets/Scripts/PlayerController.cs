@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     private static float _maxStamina;
     private float lastSprintTime;
     private bool canSprint = true;
+    public static bool IsBoosted;
+    private float boostTimeLeft = 7f;
     private Light2D playerLight, roundLight;
     public GameObject door;
     public float delayBeforeLoad = 2f;
@@ -156,6 +158,8 @@ public class PlayerController : MonoBehaviour
             maxHealth = 10;
         }
 
+        
+        
         if (currentScene == "Hub")
         {
             spriteRenderer.sprite = playerSpriteWithoutFlashlight;
@@ -189,7 +193,19 @@ public class PlayerController : MonoBehaviour
     private void HandleStamina()
     {
         var isSprinting = sprintAction.action.IsPressed() && moveAction.action.ReadValue<Vector2>().magnitude > 0.1f;
-        if (isSprinting && canSprint)
+        if (IsBoosted)
+        {
+            boostTimeLeft -= Time.deltaTime;
+            if (boostTimeLeft <= 0)
+            {
+                IsBoosted = false;
+                boostTimeLeft = 7;
+            }
+            _currentStamina += staminaRegenRate * Time.deltaTime;
+            _currentStamina = Mathf.Min(_currentStamina, maxStamina);
+            canSprint = true;
+        }
+        else if (isSprinting && canSprint)
         {
             _currentStamina -= staminaDrainRate * Time.deltaTime;
             lastSprintTime = Time.time;

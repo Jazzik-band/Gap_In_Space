@@ -10,6 +10,7 @@ public class InventoryHandler : MonoBehaviour
     [SerializeField] private GameObject interactionHint;
     [SerializeField] public GameObject batteryPrefab;
     [SerializeField] public GameObject injectorPrefab;
+    [SerializeField] public GameObject energyDrinkPrefab;
     [SerializeField, Range(1, 5)] private int inventorySlotAmount;
     [SerializeField] private float pickupRadius = 1.5f;
     private GameObject[] inventorySlots;
@@ -76,6 +77,10 @@ public class InventoryHandler : MonoBehaviour
                         PlayerController.maxHealth += 5;
                     }
                 }
+                else if (slotContent.gameObject.name == "EnergyDrink(Clone)")
+                {
+                    PlayerController.IsBoosted = true;
+                }
                 Destroy(child.gameObject);
             }
             slotContent.gameObject.SetActive(false);
@@ -85,13 +90,26 @@ public class InventoryHandler : MonoBehaviour
     private void DropItem()
     {
         var slotContent = inventorySlots[selectedSlot].transform.GetChild(0);
-        GameObject battery = Instantiate(batteryPrefab, transform.position, Quaternion.identity);
+        var item = new GameObject();
+        if (slotContent.gameObject.name == "Battery(Clone)")
+        {
+            item = Instantiate(batteryPrefab, transform.position, Quaternion.identity);
+        }
+        else if (slotContent.gameObject.name == "Injector(Clone)")
+        {
+            item = Instantiate(injectorPrefab, transform.position, Quaternion.identity);
+        }
+        else if (slotContent.gameObject.name == "EnergyDrink(Clone)")
+        {
+            item = Instantiate(energyDrinkPrefab, transform.position, Quaternion.identity);
+        }
+        
         if (slotContent.gameObject.activeSelf)
         {
             foreach (Transform child in slotContent.transform)
             {
                 Destroy(child.gameObject);
-                battery.transform.position = new Vector3(PlayerController.rb.transform.position.x, PlayerController.rb.transform.position.y, 0);
+                item.transform.position = new Vector3(PlayerController.rb.transform.position.x, PlayerController.rb.transform.position.y, 0);
             }
             slotContent.gameObject.SetActive(false);
         }

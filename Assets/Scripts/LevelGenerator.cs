@@ -287,7 +287,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnItems()
     {
-        for (var i = 0; i < 20; i++)
+        for (var i = 0; i < 25; i++)
         {
             var room = rooms[random.Next(0, rooms.Count)];
             if (room == playerRoom)
@@ -301,7 +301,7 @@ public class DungeonGenerator : MonoBehaviour
             var initialY = room.Center +
                            new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
             var position = new Vector3Int(initialX.x, initialY.y, 0);
-            var itemIndex = Random.Range(0, 2);
+            var itemIndex = Random.Range(0, 3);
             Instantiate(items[itemIndex], position, Quaternion.identity);
         }
     }

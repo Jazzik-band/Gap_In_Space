@@ -695,6 +695,7 @@ MonoBehaviour:
   items:
   - {fileID: 5400348211248470655, guid: d04d5c55da570d14fa137a2625f1a6ca, type: 3}
   - {fileID: 1512840477944657666, guid: 3710bf6e33a83e9458ed65d1ca11a3ff, type: 3}
+  - {fileID: 7270381915857006444, guid: 477ccca56b70a164d8eb0f0dd2b8a3c3, type: 3}
   playerPrefab: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
   portalPrefab: {fileID: 3040780894656623365, guid: fe3f0b9b9914dc14caca1fae1a719234, type: 3}
   teleportSceneName: Game2
@@ -1001,8 +1002,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySlotPrefab: {fileID: 8380940464931368691, guid: d69030066a6032b4dbb68a6857ab6a1a, type: 3}
   interactionHint: {fileID: 1010763134}
-  batteryPrefab: {fileID: 0}
-  injectorPrefab: {fileID: 0}
+  batteryPrefab: {fileID: 5400348211248470655, guid: d04d5c55da570d14fa137a2625f1a6ca, type: 3}
+  injectorPrefab: {fileID: 1512840477944657666, guid: 3710bf6e33a83e9458ed65d1ca11a3ff, type: 3}
+  energyDrinkPrefab: {fileID: 7270381915857006444, guid: 477ccca56b70a164d8eb0f0dd2b8a3c3, type: 3}
   inventorySlotAmount: 5
   pickupRadius: 1.5
 --- !u!4 &544341680
@@ -1602,7 +1604,7 @@ MonoBehaviour:
     rid: 8005390552773689344
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1166755164}
+    m_Mesh: {fileID: 1456171326}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
@@ -1878,7 +1880,162 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154921583}
   m_CullTransparentMesh: 1
---- !u!43 &1166755164
+--- !u!1 &1203329365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203329366}
+  - component: {fileID: 1203329369}
+  - component: {fileID: 1203329368}
+  - component: {fileID: 1203329367}
+  m_Layer: 5
+  m_Name: BatteryBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1203329366
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203329365}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1925180640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -650.5, y: 249}
+  m_SizeDelta: {x: 170.6268, y: 55.0339}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1203329367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203329365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbabc81059d5fc428bd928bd6216144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batteryBar5: {fileID: -1084745754, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar4: {fileID: 80746114, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar3: {fileID: 1915957613, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar2: {fileID: 521794364, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar1: {fileID: -59464886, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  batteryBar0: {fileID: 640481181, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+--- !u!114 &1203329368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203329365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1084745754, guid: 71fd996860120244c88d391c02cd7593, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1203329369
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203329365}
+  m_CullTransparentMesh: 1
+--- !u!1 &1306666927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1306666929}
+  - component: {fileID: 1306666928}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1306666928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306666927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63a908e69f9f8248ad65b20450da9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
+  start: {fileID: 0}
+  settings: {fileID: 0}
+  quit: {fileID: 0}
+  back: {fileID: 0}
+  menuPanel: {fileID: 1154921583}
+  staminaUI: {fileID: 712954899}
+  inventoryPanel: {fileID: 544341678}
+  batteryValue: {fileID: 1203329365}
+  healthBar: {fileID: 1695187850}
+  continueButton: {fileID: 19049201}
+  restart: {fileID: 1760976218}
+  menuSettings: {fileID: 1979524579}
+  mainMenu: {fileID: 59002589}
+  menuQuit: {fileID: 1594279778}
+  menuBack: {fileID: 319934694}
+  currentLevel: 
+--- !u!4 &1306666929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306666927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!43 &1456171326
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2043,161 +2200,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1203329365
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1203329366}
-  - component: {fileID: 1203329369}
-  - component: {fileID: 1203329368}
-  - component: {fileID: 1203329367}
-  m_Layer: 5
-  m_Name: BatteryBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1203329366
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203329365}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1925180640}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650.5, y: 249}
-  m_SizeDelta: {x: 170.6268, y: 55.0339}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1203329367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203329365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dbabc81059d5fc428bd928bd6216144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  batteryBar5: {fileID: -1084745754, guid: 71fd996860120244c88d391c02cd7593, type: 3}
-  batteryBar4: {fileID: 80746114, guid: 71fd996860120244c88d391c02cd7593, type: 3}
-  batteryBar3: {fileID: 1915957613, guid: 71fd996860120244c88d391c02cd7593, type: 3}
-  batteryBar2: {fileID: 521794364, guid: 71fd996860120244c88d391c02cd7593, type: 3}
-  batteryBar1: {fileID: -59464886, guid: 71fd996860120244c88d391c02cd7593, type: 3}
-  batteryBar0: {fileID: 640481181, guid: 71fd996860120244c88d391c02cd7593, type: 3}
---- !u!114 &1203329368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203329365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -1084745754, guid: 71fd996860120244c88d391c02cd7593, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1203329369
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203329365}
-  m_CullTransparentMesh: 1
---- !u!1 &1306666927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1306666929}
-  - component: {fileID: 1306666928}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1306666928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306666927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63a908e69f9f8248ad65b20450da9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds: []
-  start: {fileID: 0}
-  settings: {fileID: 0}
-  quit: {fileID: 0}
-  back: {fileID: 0}
-  menuPanel: {fileID: 1154921583}
-  staminaUI: {fileID: 712954899}
-  inventoryPanel: {fileID: 544341678}
-  batteryValue: {fileID: 1203329365}
-  healthBar: {fileID: 1695187850}
-  continueButton: {fileID: 19049201}
-  restart: {fileID: 1760976218}
-  menuSettings: {fileID: 1979524579}
-  mainMenu: {fileID: 59002589}
-  menuQuit: {fileID: 1594279778}
-  menuBack: {fileID: 319934694}
-  currentLevel: 
---- !u!4 &1306666929
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306666927}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1572064337
 GameObject:
   m_ObjectHideFlags: 0
