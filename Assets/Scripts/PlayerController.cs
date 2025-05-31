@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Hub")
+            maxHealth = 10;
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerLight = GetComponentInChildren<Light2D>();
@@ -151,6 +153,7 @@ public class PlayerController : MonoBehaviour
         if (maxHealth <= 0)
         {
             SceneManager.LoadScene("Death");
+            maxHealth = 10;
         }
 
         if (currentScene == "Hub")
