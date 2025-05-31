@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 7052e6ec838b0df48a38287a05c7f3ed
+guid: 71fd996860120244c88d391c02cd7593
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6342256184007546172
-    second: InteractionHint_0
+      213: -1976206957513903069
+    second: Battery bar1_0
+  - first:
+      213: -3252902985065882
+    second: Battery bar1_1
+  - first:
+      213: 2540297771623966752
+    second: Battery bar1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,7 +103,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,23 +119,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: InteractionHint_0
+      name: Battery bar1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 128
-        height: 128
+        y: 870
+        width: 384
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c355b4a8568340850800000000000000
-      internalID: 6342256184007546172
+      spriteID: f33d03ab1163f9c4b9f249f8b48cc7d9
+      internalID: -1084745754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battery bar1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 384
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7c06cf9da347c4b92450b1a65e3bd9
+      internalID: 1915957613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battery bar1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102
+        width: 383
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bf9921e16fd48a46b239d7726b8ee44
+      internalID: -59464886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battery bar1_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 870
+        width: 384
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cdad9bb12a27043aff93a45b2322f8
+      internalID: 80746114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battery bar1_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 486
+        width: 384
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 646a33382640ceb4da5e63831a82d041
+      internalID: 521794364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battery bar1_5
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 102
+        width: 385
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3863670570248f94d8ee309545cab923
+      internalID: 640481181
       vertices: []
       indices: 
       edges: []
@@ -138,7 +254,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 46e271417378cca4dbacd8a2f30b7cd6
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +264,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      InteractionHint_0: 6342256184007546172
+      Battery bar1_0: -1084745754
+      Battery bar1_1: 1915957613
+      Battery bar1_2: -59464886
+      Battery bar1_3: 80746114
+      Battery bar1_4: 521794364
+      Battery bar1_5: 640481181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

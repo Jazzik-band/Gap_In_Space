@@ -38,7 +38,7 @@ public class GameManager: Sounds
 
         if (isPaused)
         {
-            // Останавливаем время в игре
+            // Остановка времени в игре
             Time.timeScale = 0f;
             AudioListener.pause = true;
             menuPanel.SetActive(true);
@@ -52,7 +52,7 @@ public class GameManager: Sounds
         }
         else
         {
-            // Возобновляем игру
+            // Возобновление игры
             Time.timeScale = 1f;
             AudioListener.pause = false;
             menuPanel.SetActive(false);

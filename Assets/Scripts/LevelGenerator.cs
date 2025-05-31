@@ -301,7 +301,8 @@ public class DungeonGenerator : MonoBehaviour
             var initialY = room.Center +
                            new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
             var position = new Vector3Int(initialX.x, initialY.y, 0);
-            Instantiate(items[0], position, Quaternion.identity);
+            var itemIndex = Random.Range(0, 2);
+            Instantiate(items[itemIndex], position, Quaternion.identity);
         }
     }
 

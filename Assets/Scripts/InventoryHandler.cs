@@ -9,6 +9,7 @@ public class InventoryHandler : MonoBehaviour
     [SerializeField] private GameObject inventorySlotPrefab;
     [SerializeField] private GameObject interactionHint;
     [SerializeField] public GameObject batteryPrefab;
+    [SerializeField] public GameObject injectorPrefab;
     [SerializeField, Range(1, 5)] private int inventorySlotAmount;
     [SerializeField] private float pickupRadius = 1.5f;
     private GameObject[] inventorySlots;
@@ -64,8 +65,18 @@ public class InventoryHandler : MonoBehaviour
         {
             foreach (Transform child in slotContent.transform)
             {
+                if (slotContent.gameObject.name == "Battery(Clone)")
+                    FlashlightController.BatteryLife = 100;
+                else if (slotContent.gameObject.name == "Injector(Clone)")
+                {
+                    if (PlayerController.maxHealth >= 5)
+                        PlayerController.maxHealth = 10f;
+                    else
+                    {
+                        PlayerController.maxHealth += 5;
+                    }
+                }
                 Destroy(child.gameObject);
-                FlashlightController.BatteryLife = 100;
             }
             slotContent.gameObject.SetActive(false);
         }
@@ -133,6 +144,8 @@ public class InventoryHandler : MonoBehaviour
             imageComponent.sprite = spriteRenderer.sprite;
             imageComponent.rectTransform.transform.localScale = new Vector3(0.6f, 0.6f, 0);
         }
+
+        slotContent.name = originalItem.name;
         slotContent.SetActive(true);
         Destroy(originalItem);
     }
