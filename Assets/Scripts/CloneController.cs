@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
 
-public class EnemyController : MonoBehaviour
+public class CloneController : MonoBehaviour
 {
     [SerializeField] private float radius = 4f;
     [SerializeField] public float enemyWalkSpeed;
@@ -89,7 +89,7 @@ public class EnemyController : MonoBehaviour
 
         enemyAnimator.SetBool("IsWalking", isWalking);
         enemyAnimator.SetBool("IsRunning", isSprinting);
-        enemyAnimator.SetBool("IsAtacking", isBite);
+        //enemyAnimator.SetBool("IsAtacking", isBite);
     }
 
     private void RunTurn()
@@ -133,15 +133,15 @@ public class EnemyController : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
-        if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        {
-            audioSource.PlayOneShot(enemySounds[0]);
-            audioSource.UnPause();
-        }
-        else
-        {
-            audioSource.Pause();
-        }
+        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
+        // {
+        //     audioSource.PlayOneShot(enemySounds[0]);
+        //     audioSource.UnPause();
+        // }
+        // else
+        // {
+        //     audioSource.Pause();
+        // }
     }
 
     private void SetNewRandomTarget()

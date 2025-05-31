@@ -155,7 +155,6 @@ public class PlayerController : MonoBehaviour
         if (maxHealth <= 0)
         {
             SceneManager.LoadScene("Death");
-            maxHealth = 10;
         }
 
         
