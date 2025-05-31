@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        maxHealth = 10f;
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerLight = GetComponentInChildren<Light2D>();
         playerAnimator = GetComponent<Animator>();

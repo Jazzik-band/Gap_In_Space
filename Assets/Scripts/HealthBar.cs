@@ -11,27 +11,28 @@ public class HealthBar: MonoBehaviour
                     healthBar8, healthBar9,
                     healthBar10;
     private Image spriteRenderer;
-    private Dictionary<int, Sprite> healthDict = new();
     
     
     void Start()
     {
         spriteRenderer = GetComponent<Image>();
-        healthDict[0] = healthBar0;
-        healthDict[1] = healthBar1;
-        healthDict[2] = healthBar2;
-        healthDict[3] = healthBar3;
-        healthDict[4] = healthBar4;
-        healthDict[5] = healthBar5;
-        healthDict[6] = healthBar6;
-        healthDict[7] = healthBar7;
-        healthDict[8] = healthBar8;
-        healthDict[9] = healthBar9;
-        healthDict[10] = healthBar10;
     }
 
     void Update()
     {
-        spriteRenderer.sprite = healthDict[(int)PlayerController.maxHealth];
+        switch (PlayerController.maxHealth)
+        {
+            case 10: spriteRenderer.sprite = healthBar10; break;
+            case 9: spriteRenderer.sprite = healthBar9; break;
+            case 8: spriteRenderer.sprite = healthBar8; break;
+            case 7: spriteRenderer.sprite = healthBar7; break;
+            case 6: spriteRenderer.sprite = healthBar6; break;
+            case 5: spriteRenderer.sprite = healthBar5; break;
+            case 4: spriteRenderer.sprite = healthBar4; break;
+            case 3: spriteRenderer.sprite = healthBar3; break;
+            case 2: spriteRenderer.sprite = healthBar2; break;
+            case 1: spriteRenderer.sprite = healthBar1; break;
+            case <= 0: spriteRenderer.sprite = healthBar0; break;
+        }
     }
 }
