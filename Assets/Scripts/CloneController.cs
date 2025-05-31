@@ -162,15 +162,15 @@ public class CloneController : MonoBehaviour
             centerPoint,
             enemyReturnSpeed * Time.deltaTime
         );
-        if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        {
-            audioSource.PlayOneShot(enemySounds[0]);
-            audioSource.UnPause();
-        }
-        else
-        {
-            audioSource.Pause();
-        }
+        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
+        // {
+        //     audioSource.PlayOneShot(enemySounds[0]);
+        //     audioSource.UnPause();
+        // }
+        // else
+        // {
+        //     audioSource.Pause();
+        // }
     }
     
     private IEnumerator BiteAndWait()
