@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      injection krest_0: -7118803632568127165
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
