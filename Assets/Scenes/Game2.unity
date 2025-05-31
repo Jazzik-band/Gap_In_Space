@@ -687,9 +687,9 @@ MonoBehaviour:
   minRoomSize: {x: 10, y: 10}
   maxRoomSize: {x: 15, y: 15}
   dungeonSize: 80
-  floorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
-  wallTile: {fileID: 11400000, guid: 382f909926fb5f448a9947405eb37bd1, type: 2}
-  corridorTile: {fileID: 11400000, guid: 162580b899f496242b0a727865a7aec6, type: 2}
+  floorTile: {fileID: 11400000, guid: 694a99dc1cf87fc4bb46917693a612a3, type: 2}
+  wallTile: {fileID: 11400000, guid: adfa47a5afb223b478da3d8ad8815a7d, type: 2}
+  corridorTile: {fileID: 11400000, guid: 694a99dc1cf87fc4bb46917693a612a3, type: 2}
   floorMap: {fileID: 1770763604}
   wallMap: {fileID: 1054962065}
   items:
@@ -1604,7 +1604,7 @@ MonoBehaviour:
     rid: 8005390552773689344
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1456171326}
+    m_Mesh: {fileID: 1232465924}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
@@ -1974,68 +1974,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203329365}
   m_CullTransparentMesh: 1
---- !u!1 &1306666927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1306666929}
-  - component: {fileID: 1306666928}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1306666928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306666927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63a908e69f9f8248ad65b20450da9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds: []
-  start: {fileID: 0}
-  settings: {fileID: 0}
-  quit: {fileID: 0}
-  back: {fileID: 0}
-  menuPanel: {fileID: 1154921583}
-  staminaUI: {fileID: 712954899}
-  inventoryPanel: {fileID: 544341678}
-  batteryValue: {fileID: 1203329365}
-  healthBar: {fileID: 1695187850}
-  continueButton: {fileID: 19049201}
-  restart: {fileID: 1760976218}
-  menuSettings: {fileID: 1979524579}
-  mainMenu: {fileID: 59002589}
-  menuQuit: {fileID: 1594279778}
-  menuBack: {fileID: 319934694}
-  currentLevel: 
---- !u!4 &1306666929
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306666927}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1456171326
+--- !u!43 &1232465924
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2200,6 +2139,67 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1306666927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1306666929}
+  - component: {fileID: 1306666928}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1306666928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306666927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63a908e69f9f8248ad65b20450da9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
+  start: {fileID: 0}
+  settings: {fileID: 0}
+  quit: {fileID: 0}
+  back: {fileID: 0}
+  menuPanel: {fileID: 1154921583}
+  staminaUI: {fileID: 712954899}
+  inventoryPanel: {fileID: 544341678}
+  batteryValue: {fileID: 1203329365}
+  healthBar: {fileID: 1695187850}
+  continueButton: {fileID: 19049201}
+  restart: {fileID: 1760976218}
+  menuSettings: {fileID: 1979524579}
+  mainMenu: {fileID: 59002589}
+  menuQuit: {fileID: 1594279778}
+  menuBack: {fileID: 319934694}
+  currentLevel: 
+--- !u!4 &1306666929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306666927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1572064337
 GameObject:
   m_ObjectHideFlags: 0
