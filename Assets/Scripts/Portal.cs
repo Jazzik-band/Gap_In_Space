@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 public class Portal: MonoBehaviour
 {
     [SerializeField] private float teleportDelay = 0.5f;
+    [SerializeField] private GameObject player;
 
     private bool isPlayerInside;
+    private OrbHandler orbHandler;
     public string currentLevel;
 
+    private void Start()
+    {
+        orbHandler = player.GetComponent<OrbHandler>();
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -27,6 +34,7 @@ public class Portal: MonoBehaviour
     {
         if (isPlayerInside)
         {
+            orbHandler.ResetOrbs();
             switch (currentLevel)
             {
                 case "Game": SceneManager.LoadScene("Game2"); break;

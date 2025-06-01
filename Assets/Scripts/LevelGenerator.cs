@@ -16,8 +16,9 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private TileBase corridorTile;
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
+    [SerializeField, Range(0, float.MaxValue)] private float overlapRadius = 1.5f;
     [SerializeField] private GameObject[] items;
-    [SerializeField] private int itemCount;
+    [SerializeField] private int itemsCount;
     [SerializeField] private int orbsCount;
     [SerializeField] private GameObject orbPrefab;
 
@@ -46,6 +47,8 @@ public class DungeonGenerator : MonoBehaviour
     private const int MapPadding = 20;
     private Room playerRoom;
     private Room portalRoom;
+    private Transform playerTransform;
+    private Transform portalTransform;
 
     private class Room
     {
@@ -68,6 +71,7 @@ public class DungeonGenerator : MonoBehaviour
         SpawnOrbs();
         SpawnItems();
         SpawnFurnitureInRooms();
+        PortalTracker.Initialize(playerTransform, portalTransform);
     }
 
     private void GenerateDungeon()
@@ -268,6 +272,7 @@ public class DungeonGenerator : MonoBehaviour
         availableRooms.Remove(spawnRoom);
         var spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
         var player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        playerTransform = player.transform;
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPosition + new Vector3(0, 0, -10);
         CameraFollower.Target = player.transform;
         InventoryHandler.Target = player.transform;
@@ -291,7 +296,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnItems()
     {
-        for (var i = 0; i < itemCount; i++)
+        for (var i = 0; i < itemsCount; i++)
         {
             var room = rooms[random.Next(0, rooms.Count)];
             if (room == playerRoom || room == portalRoom)
@@ -306,7 +311,7 @@ public class DungeonGenerator : MonoBehaviour
                            new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
             var position = new Vector3Int(initialX.x, initialY.y, 0);
             var itemIndex = Random.Range(0, items.Length);
-            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), 3f);
+            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), overlapRadius);
             if (colliders.Length > 0)
             {
                 i--;
@@ -343,6 +348,8 @@ public class DungeonGenerator : MonoBehaviour
             portalRoom = farthestRoom;
             var spawnPos = new Vector3(farthestRoom.Center.x, farthestRoom.Center.y, 0);
             var portal = Instantiate(portalPrefab, spawnPos, Quaternion.identity);
+            portalTransform = portal.transform;
+            UIHandler.SetPortal(portal);
             portal.SetActive(false);
             var teleporter = portal.GetComponent<Portal>();
             if (teleporter != null)
@@ -386,7 +393,7 @@ public class DungeonGenerator : MonoBehaviour
             var initialY = room.Center +
                            new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
             var position = new Vector3Int(initialX.x, initialY.y, 0);
-            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), 3f);
+            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), overlapRadius);
             if (colliders.Length > 0)
             {
                 i--;

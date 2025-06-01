@@ -4932,7 +4932,7 @@ GameObject:
   - component: {fileID: 8910361152141930333}
   m_Layer: 0
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5022,6 +5022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportDelay: 0.1
+  player: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
   currentLevel: 
 --- !u!58 &1583332172115297587
 CircleCollider2D:
