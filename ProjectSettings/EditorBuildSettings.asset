@@ -23,15 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game3.unity
     guid: 3fd6dfb48af0b344ab0dd2c9ad3a675b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game4.unity
     guid: cc66e3c69f4a72449930d6b7d651fa4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game5.unity
     guid: 4853133efec6626438d4a02d91b12cc1
   - enabled: 1
     path: Assets/Scenes/Death.unity
     guid: 620b652f933d669458e05d18f06447e5
+  - enabled: 1
+    path: Assets/Scenes/FinalCutScene.unity
+    guid: 39c278de7e2e39d4db5125a8af4b55e3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

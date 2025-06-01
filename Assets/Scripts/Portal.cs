@@ -31,8 +31,7 @@ public class Portal: MonoBehaviour
             {
                 case "Game": SceneManager.LoadScene("Game2"); break;
                 case "Game2": SceneManager.LoadScene("Game3"); break;
-                case "Game3": SceneManager.LoadScene("Game4"); break;
-                case "Game4": SceneManager.LoadScene("Game5"); break;
+                case "Game3": SceneManager.LoadScene("FinalCutScene"); break;
             }
         }
     }
