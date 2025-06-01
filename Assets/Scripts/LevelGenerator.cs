@@ -18,6 +18,8 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private Tilemap wallMap;
     [SerializeField] private GameObject[] items;
     [SerializeField] private int itemCount;
+    [SerializeField] private int orbsCount;
+    [SerializeField] private GameObject orbPrefab;
 
     [Header("Creature settings")] [SerializeField]
     private GameObject playerPrefab;
@@ -35,7 +37,6 @@ public class DungeonGenerator : MonoBehaviour
     [Header("Enemies settings")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
-    
     
     private readonly List<Room> rooms = new();
     private readonly System.Random random = new();
@@ -64,7 +65,7 @@ public class DungeonGenerator : MonoBehaviour
         SpawnPlayerInRandomRoom();
         SpawnEnemiesInRandomRoom();
         SpawnPortal();
-        // SpawnOrbs();
+        SpawnOrbs();
         SpawnItems();
         SpawnFurnitureInRooms();
     }
@@ -366,6 +367,32 @@ public class DungeonGenerator : MonoBehaviour
                 if (colliders.Length == 0)
                     Instantiate(furniturePrefab, new Vector3(position.x, position.y, 0),Quaternion.Euler(0, 0, Random.Range(0, 360)));
             }
+        }
+    }
+
+    private void SpawnOrbs()
+    {
+        for (var i = 0; i < orbsCount; i++)
+        {
+            var room = rooms[random.Next(0, rooms.Count)];
+            if (room == playerRoom || room == portalRoom)
+            {
+                i--;
+                continue;
+            }
+
+            var initialX = room.Center +
+                           new Vector2Int(random.Next(-room.Bounds.width / 2 + 1, room.Bounds.width / 2 - 1), 0);
+            var initialY = room.Center +
+                           new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
+            var position = new Vector3Int(initialX.x, initialY.y, 0);
+            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), 3f);
+            if (colliders.Length > 0)
+            {
+                i--;
+                continue;
+            }
+            Instantiate(orbPrefab, position, Quaternion.identity);
         }
     }
 }
