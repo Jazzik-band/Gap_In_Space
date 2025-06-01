@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Tooltips;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
@@ -61,6 +62,11 @@ public class CloneController : MonoBehaviour
         }
         if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
+            if (!PlayerController.IsSeeingEnemy)
+            {
+                PlayerController.IsSeeingEnemy = true;
+                TooltipsSystem.Instance.ShowTooltip("ПКМ - усилить фонарик", 5);
+            }
             RunTurn();
             wasChasing = true;
             isWalking = false;

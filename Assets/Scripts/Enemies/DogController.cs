@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Tooltips;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
@@ -61,6 +62,11 @@ public class DogController : MonoBehaviour
         }
         if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
+            if (!PlayerController.IsSeeingEnemy)
+            {
+                PlayerController.IsSeeingEnemy = true;
+                TooltipsSystem.Instance.ShowTooltip("ПКМ - усилить фонарик", 5);
+            }
             RunTurn();
             wasChasing = true;
             isWalking = false;
@@ -177,11 +183,11 @@ public class DogController : MonoBehaviour
     {
         canMove = false;
         transform.position = new Vector3 (
-            transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f,
-            transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
+            transform.position.x - (player.transform.position.x - transform.position.x) * 0.8f,
+            transform.position.y - (player.transform.position.y - transform.position.y) * 0.8f, 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
         IsBite = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         enemyRb.bodyType = RigidbodyType2D.Dynamic;
         canMove = true;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Tooltips;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
@@ -61,6 +62,11 @@ public class BossController : MonoBehaviour
         }
         if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
+            if (!PlayerController.IsSeeingEnemy)
+            {
+                PlayerController.IsSeeingEnemy = true;
+                TooltipsSystem.Instance.ShowTooltip("ПКМ - усилить фонарик", 5);
+            }
             RunTurn();
             wasChasing = true;
             isWalking = false;
@@ -177,8 +183,8 @@ public class BossController : MonoBehaviour
     {
         canMove = false;
         transform.position = new Vector3 (
-            transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f,
-            transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
+            transform.position.x - (player.transform.position.x - transform.position.x) * 0.5f,
+            transform.position.y - (player.transform.position.y - transform.position.y) * 0.5f, 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
         isBite = true;
         yield return new WaitForSeconds(1f);
@@ -202,6 +208,11 @@ public class BossController : MonoBehaviour
             canMove = false;
             isWalking = false;
             isSprinting = false;
+        }
+        
+        if (!FlashlightController.IsFlashLightSuper)
+        {
+            canMove = true;
         }
     }
 
