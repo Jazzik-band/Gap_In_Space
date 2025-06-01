@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
@@ -8,12 +10,25 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private float hideDelay = 1f;
     [SerializeField] private Gradient colorGradient;
     
+    [FormerlySerializedAs("Arrow")]
+    [Header("Orb Counter Settings")]
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private TextMeshProUGUI orbCounter;
+    [SerializeField] private GameObject player;
+    
+    private static GameObject _portal;
     private Image sliderFillImage;
+    private OrbHandler orbHandler;
     private float lastStaminaChangeTime;
     private bool wasFullLastFrame;
+    private int currentOrbs;
+    private int necessaryOrbs;
 
     private void Start()
     {
+        orbHandler = player.GetComponent<OrbHandler>();
+        necessaryOrbs = orbHandler.GetNecessaryOrbs();
+        orbCounter.text = $"0 / {necessaryOrbs}";
         sliderFillImage = slider.fillRect.GetComponent<Image>();
         sliderFillImage.enabled = false;
         lastStaminaChangeTime = Time.time;
@@ -23,6 +38,7 @@ public class UIHandler : MonoBehaviour
     private void Update()
     {
         HandleStamina();
+        HandleOrbs();
     }
 
     private void HandleStamina()
@@ -41,5 +57,25 @@ public class UIHandler : MonoBehaviour
         if (isFullNow && sliderFillImage && 
             Time.time >= lastStaminaChangeTime + hideDelay)
             sliderFillImage.enabled = false;
+    }
+
+    private void HandleOrbs()
+    {
+        if (currentOrbs < orbHandler.GetCurrentOrbs())
+        {
+            currentOrbs = orbHandler.GetCurrentOrbs();
+            orbCounter.text = $"{currentOrbs} / {necessaryOrbs}";
+        }
+
+        if (currentOrbs >= necessaryOrbs)
+        {
+            _portal.SetActive(true);
+            arrow.SetActive(true);
+        }
+    }
+
+    public static void SetPortal(GameObject portal)
+    {
+        _portal = portal;
     }
 }

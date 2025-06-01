@@ -16,7 +16,11 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private TileBase corridorTile;
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap wallMap;
+    [SerializeField, Range(0, float.MaxValue)] private float overlapRadius = 1.5f;
     [SerializeField] private GameObject[] items;
+    [SerializeField] private int itemsCount;
+    [SerializeField] private int orbsCount;
+    [SerializeField] private GameObject orbPrefab;
 
     [Header("Creature settings")] [SerializeField]
     private GameObject playerPrefab;
@@ -28,13 +32,12 @@ public class DungeonGenerator : MonoBehaviour
 
     [Header("Furniture settings")] [SerializeField]
     private GameObject[] furniturePrefabs;
-    [SerializeField, Range(0, 5)] private int minFurniturePerRoom = 1;
-    [SerializeField, Range(0, 5)] private int maxFurniturePerRoom = 3;
+    [SerializeField, Range(0, 30)] private int minFurniturePerRoom;
+    [SerializeField, Range(0, 30)] private int maxFurniturePerRoom;
 
     [Header("Enemies settings")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField, Range(0, 10)] private int enemiesNumber;
-    
     
     private readonly List<Room> rooms = new();
     private readonly System.Random random = new();
@@ -43,6 +46,9 @@ public class DungeonGenerator : MonoBehaviour
     private int height;
     private const int MapPadding = 20;
     private Room playerRoom;
+    private Room portalRoom;
+    private Transform playerTransform;
+    private Transform portalTransform;
 
     private class Room
     {
@@ -61,9 +67,11 @@ public class DungeonGenerator : MonoBehaviour
         GenerateDungeon();
         SpawnPlayerInRandomRoom();
         SpawnEnemiesInRandomRoom();
+        SpawnPortal();
+        SpawnOrbs();
         SpawnItems();
         SpawnFurnitureInRooms();
-        SpawnPortal();
+        PortalTracker.Initialize(playerTransform, portalTransform);
     }
 
     private void GenerateDungeon()
@@ -264,6 +272,7 @@ public class DungeonGenerator : MonoBehaviour
         availableRooms.Remove(spawnRoom);
         var spawnPosition = new Vector3(spawnRoom.Center.x, spawnRoom.Center.y, 0);
         var player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        playerTransform = player.transform;
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = spawnPosition + new Vector3(0, 0, -10);
         CameraFollower.Target = player.transform;
         InventoryHandler.Target = player.transform;
@@ -287,10 +296,10 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnItems()
     {
-        for (var i = 0; i < 25; i++)
+        for (var i = 0; i < itemsCount; i++)
         {
             var room = rooms[random.Next(0, rooms.Count)];
-            if (room == playerRoom)
+            if (room == playerRoom || room == portalRoom)
             {
                 i--;
                 continue;
@@ -301,23 +310,26 @@ public class DungeonGenerator : MonoBehaviour
             var initialY = room.Center +
                            new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
             var position = new Vector3Int(initialX.x, initialY.y, 0);
-            var itemIndex = Random.Range(0, 3);
-            Instantiate(items[itemIndex], position, Quaternion.identity);
+            var itemIndex = Random.Range(0, items.Length);
+            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), overlapRadius);
+            if (colliders.Length > 0)
+            {
+                i--;
+                continue;
+            }
+            Instantiate(items[itemIndex], position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
         }
     }
 
     private Room FindFinalRoom()
     {
         if (rooms.Count == 0 || playerRoom == null) return null;
-
         Room farthestRoom = null;
-        float maxDistance = 0f;
-
+        var maxDistance = 0f;
         foreach (var room in rooms)
         {
             if (room == playerRoom) continue;
-
-            float distance = Vector2Int.Distance(playerRoom.Center, room.Center);
+            var distance = Vector2Int.Distance(playerRoom.Center, room.Center);
             if (distance > maxDistance)
             {
                 maxDistance = distance;
@@ -330,17 +342,18 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SpawnPortal()
     {
-        Room farthestRoom = FindFinalRoom();
+        var farthestRoom = FindFinalRoom();
         if (farthestRoom != null && portalPrefab != null)
         {
-            Vector3 spawnPos = new Vector3(farthestRoom.Center.x, farthestRoom.Center.y, 0);
-            GameObject portal = Instantiate(portalPrefab, spawnPos, Quaternion.identity);
-
-            Portal teleporter = portal.GetComponent<Portal>();
+            portalRoom = farthestRoom;
+            var spawnPos = new Vector3(farthestRoom.Center.x, farthestRoom.Center.y, 0);
+            var portal = Instantiate(portalPrefab, spawnPos, Quaternion.identity);
+            portalTransform = portal.transform;
+            UIHandler.SetPortal(portal);
+            portal.SetActive(false);
+            var teleporter = portal.GetComponent<Portal>();
             if (teleporter != null)
-            {
                 teleporter.currentLevel = teleportSceneName;
-            }
         }
     }
 
@@ -348,19 +361,45 @@ public class DungeonGenerator : MonoBehaviour
     {
         foreach (var room in rooms)
         {
-            if (room == playerRoom) continue;
+            if (room == playerRoom || room == portalRoom) continue;
             var furnitureCount = random.Next(minFurniturePerRoom, maxFurniturePerRoom + 1);
             for (var i = 0; i < furnitureCount; i++)
             {
                 var furniturePrefab = furniturePrefabs[random.Next(0, furniturePrefabs.Length)];
                 var position = new Vector2Int(
-                    random.Next(room.Bounds.x + 1, room.Bounds.x + room.Bounds.width - 1),
-                    random.Next(room.Bounds.y + 1, room.Bounds.y + room.Bounds.height - 1)
+                    random.Next(room.Bounds.x + 2, room.Bounds.x + room.Bounds.width - 2),
+                    random.Next(room.Bounds.y + 2, room.Bounds.y + room.Bounds.height - 2)
                 );
-                var colliders = Physics2D.OverlapCircleAll(position, 1f);
+                var colliders = Physics2D.OverlapCircleAll(position, 3f);
                 if (colliders.Length == 0)
-                    Instantiate(furniturePrefab, new Vector3(position.x, position.y, 0), Quaternion.identity);
+                    Instantiate(furniturePrefab, new Vector3(position.x, position.y, 0),Quaternion.Euler(0, 0, Random.Range(0, 360)));
             }
+        }
+    }
+
+    private void SpawnOrbs()
+    {
+        for (var i = 0; i < orbsCount; i++)
+        {
+            var room = rooms[random.Next(0, rooms.Count)];
+            if (room == playerRoom || room == portalRoom)
+            {
+                i--;
+                continue;
+            }
+
+            var initialX = room.Center +
+                           new Vector2Int(random.Next(-room.Bounds.width / 2 + 1, room.Bounds.width / 2 - 1), 0);
+            var initialY = room.Center +
+                           new Vector2Int(0, random.Next(-room.Bounds.height / 2 + 1, room.Bounds.height / 2 - 1));
+            var position = new Vector3Int(initialX.x, initialY.y, 0);
+            var colliders = Physics2D.OverlapCircleAll(new Vector2(initialX.x, initialY.y), overlapRadius);
+            if (colliders.Length > 0)
+            {
+                i--;
+                continue;
+            }
+            Instantiate(orbPrefab, position, Quaternion.identity);
         }
     }
 }
