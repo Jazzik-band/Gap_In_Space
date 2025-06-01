@@ -32,7 +32,7 @@ public class DogController : MonoBehaviour
     private bool isStopped = false;
 
     private bool wasChasing;
-    private bool isBite;
+    public static bool IsBite;
     private bool canMove = true;
     private bool isWalking;
     private bool isSprinting;
@@ -84,12 +84,12 @@ public class DogController : MonoBehaviour
 
         if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
         {
-            isBite = false;
+            IsBite = false;
         }
 
         enemyAnimator.SetBool("IsWalking", isWalking);
         enemyAnimator.SetBool("IsRunning", isSprinting);
-        enemyAnimator.SetBool("IsAtacking", isBite);
+        enemyAnimator.SetBool("IsAtacking", IsBite);
     }
 
     private void RunTurn()
@@ -176,9 +176,9 @@ public class DogController : MonoBehaviour
     private IEnumerator BiteAndWait()
     {
         canMove = false;
-        //transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
+        transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f, transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
-        isBite = true;
+        IsBite = true;
         yield return new WaitForSeconds(1f);
 
         enemyRb.bodyType = RigidbodyType2D.Dynamic;
@@ -189,6 +189,7 @@ public class DogController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            IsBite = true;
             StartCoroutine(BiteAndWait());
         }
     }

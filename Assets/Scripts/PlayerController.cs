@@ -248,7 +248,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            maxHealth -= 1;
+            DogController.IsBite = true;
+            maxHealth -= 0.5f;
         }
     }
     IEnumerator LoadSceneAfterDelay()
