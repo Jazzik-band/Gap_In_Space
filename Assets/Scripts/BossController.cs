@@ -176,7 +176,9 @@ public class BossController : MonoBehaviour
     private IEnumerator BiteAndWait()
     {
         canMove = false;
-        //transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x), transform.position.y - (player.transform.position.y - transform.position.y), 0);
+        transform.position = new Vector3 (
+            transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f,
+            transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
         isBite = true;
         yield return new WaitForSeconds(1f);

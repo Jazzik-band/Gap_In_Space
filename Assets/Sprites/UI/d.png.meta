@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5c7c36fe90728dd40ba7b7620704ee5b
+guid: 8e8e7c95001a56945b3216ed27094ae4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9085329464345055985
-    second: tiger_0
+      213: 2957404852419100943
+    second: d_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,133 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tiger_0
+      name: d_0
       rect:
         serializedVersion: 2
-        x: 806
-        y: 202
-        width: 109
-        height: 104
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f25dadf203951e70800000000000000
-      internalID: 9085329464345055985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiger_1
-      rect:
-        serializedVersion: 2
-        x: 806
-        y: 405
-        width: 109
-        height: 103
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 376eb13c62468cf44b87184a8b65dc62
-      internalID: -1653250611
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiger_2
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 3
-        width: 106
-        height: 105
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3258b61e1a69a044897a536b991e7d01
-      internalID: 1111371815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiger_3
-      rect:
-        serializedVersion: 2
-        x: 485
-        y: 806
-        width: 106
-        height: 105
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e347d103046445418de1aa65eb760a4
-      internalID: 895067104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiger_4
-      rect:
-        serializedVersion: 2
-        x: 484
-        y: 922
-        width: 109
-        height: 104
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 112dbcef1af4df746b3f880c1c8ca041
-      internalID: -975592461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tiger_5
-      rect:
-        serializedVersion: 2
-        x: 484
-        y: 1034
-        width: 109
-        height: 102
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e204834047c2a7a49ab304e60560ec7d
-      internalID: -1024945369
+      spriteID: f0105755b00da0920800000000000000
+      internalID: 2957404852419100943
       vertices: []
       indices: 
       edges: []
@@ -248,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e5ab07db015eee94e8de5534a972bf93
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -257,13 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      tiger_0: 9085329464345055985
-      tiger_1: -1653250611
-      tiger_2: 1111371815
-      tiger_3: 895067104
-      tiger_4: -975592461
-      tiger_5: -1024945369
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

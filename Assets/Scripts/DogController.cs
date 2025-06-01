@@ -176,7 +176,9 @@ public class DogController : MonoBehaviour
     private IEnumerator BiteAndWait()
     {
         canMove = false;
-        transform.position = new Vector3 (transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f, transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
+        transform.position = new Vector3 (
+            transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f,
+            transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
         IsBite = true;
         yield return new WaitForSeconds(1f);
@@ -202,6 +204,12 @@ public class DogController : MonoBehaviour
             isWalking = false;
             isSprinting = false;
         }
+
+        if (!FlashlightController.IsFlashLightSuper)
+        {
+            canMove = true;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)

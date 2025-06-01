@@ -70,7 +70,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "Hub")
-            maxHealth = 10;
+        {
+            maxHealth = 10f;
+            IsBoosted = false;
+        }
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerLight = GetComponentInChildren<Light2D>();
@@ -152,7 +155,7 @@ public class PlayerController : MonoBehaviour
         
         var targetVelocity = moveInput * currentSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
-        if (maxHealth <= 0)
+        if (maxHealth < 1f)
         {
             SceneManager.LoadScene("Death");
         }
