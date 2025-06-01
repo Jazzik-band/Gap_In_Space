@@ -134,13 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fd5a565821d174b87dfc93524c24bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  sprintSpeed: 10
+  moveSpeed: 3
+  sprintSpeed: 7
   crouchSpeed: 1
   maxStamina: 100
   sprintPercentAvailability: 0.2
-  staminaDrainRate: 50
-  staminaRegenRate: 15
+  staminaDrainRate: 30
+  staminaRegenRate: 8
   staminaRegenDelay: 2
   moveAction: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
