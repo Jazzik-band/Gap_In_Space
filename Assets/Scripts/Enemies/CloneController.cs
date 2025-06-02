@@ -160,6 +160,20 @@ public class CloneController : MonoBehaviour
         );
     }
     
+    private void CloneStepSoundPlay()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) <= 8)
+        {
+            audioSource.UnPause();
+            audioSource.PlayOneShot(cloneSounds[Random.Range(0, cloneSounds.Length)]);
+        }
+        else
+        {
+            audioSource.Pause();
+        }
+        
+    }
+    
     private IEnumerator BiteAndWait()
     {
         canMove = false;

@@ -226,7 +226,11 @@ MonoBehaviour:
   rotationSpeed: 5
   enemyRb: {fileID: 0}
   delayAfterBite: 1
-  enemySounds: []
+  cloneSounds:
+  - {fileID: 8300000, guid: 53032ab1c90a48d4bbfcf125a2279f75, type: 3}
+  - {fileID: 8300000, guid: 9961d5cedc641c74ea8cf2dc81f2599d, type: 3}
+  - {fileID: 8300000, guid: 7c53a861e7fdbdc4eaca36630e91b460, type: 3}
+  - {fileID: 8300000, guid: 682392479bde14c4298999dbf6c67b4a, type: 3}
   enemyAnimator: {fileID: 0}
 --- !u!95 &553510705125727377
 Animator:
@@ -263,7 +267,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
