@@ -24,7 +24,7 @@ public class DogController : MonoBehaviour
     private Vector2 centerPoint;
     private float timer;
     private Vector2 currentVelocity;
-    public AudioClip[] enemySounds;
+    public AudioClip[] dogSounds;
     private AudioSource audioSource;
     
     public Animator enemyAnimator;
@@ -107,7 +107,7 @@ public class DogController : MonoBehaviour
             Vector2 direction = player.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            audioSource.Stop();
+            // audioSource.Stop();
         }
     }
 
@@ -139,15 +139,15 @@ public class DogController : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
-        if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        {
-            audioSource.PlayOneShot(enemySounds[0]);
-            audioSource.UnPause();
-        }
-        else
-        {
-            audioSource.Pause();
-        }
+        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
+        // {
+        //     audioSource.PlayOneShot(enemySounds[0]);
+        //     audioSource.UnPause();
+        // }
+        // else
+        // {
+        //     audioSource.Pause();
+        // }
     }
 
     private void SetNewRandomTarget()
@@ -168,15 +168,15 @@ public class DogController : MonoBehaviour
             centerPoint,
             enemyReturnSpeed * Time.deltaTime
         );
-        if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        {
-            audioSource.PlayOneShot(enemySounds[0]);
-            audioSource.UnPause();
-        }
-        else
-        {
-            audioSource.Pause();
-        }
+        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
+        // {
+        //     audioSource.PlayOneShot(enemySounds[0]);
+        //     audioSource.UnPause();
+        // }
+        // else
+        // {
+        //     audioSource.Pause();
+        // }
     }
     
     private IEnumerator BiteAndWait()
@@ -199,6 +199,11 @@ public class DogController : MonoBehaviour
         {
             IsBite = true;
             StartCoroutine(BiteAndWait());
+            audioSource.PlayOneShot(dogSounds[0]);
+        }
+        else
+        {
+            audioSource.Pause();
         }
     }
 

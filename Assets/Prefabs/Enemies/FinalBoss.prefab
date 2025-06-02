@@ -132,7 +132,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -239,7 +239,8 @@ MonoBehaviour:
   rotationSpeed: 5
   enemyRb: {fileID: 0}
   delayAfterBite: 1
-  enemySounds: []
+  bossSounds:
+  - {fileID: 8300000, guid: cdbab491411d542449a2ba75f327f19d, type: 3}
   enemyAnimator: {fileID: 0}
 --- !u!95 &9168226882563685577
 Animator:

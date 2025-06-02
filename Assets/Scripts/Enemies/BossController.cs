@@ -24,7 +24,7 @@ public class BossController : MonoBehaviour
     private Vector2 centerPoint;
     private float timer;
     private Vector2 currentVelocity;
-    public AudioClip[] enemySounds;
+    public AudioClip[] bossSounds;
     private AudioSource audioSource;
     
     public Animator enemyAnimator;
@@ -107,7 +107,6 @@ public class BossController : MonoBehaviour
             Vector2 direction = player.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            audioSource.Stop();
         }
     }
 
@@ -139,15 +138,6 @@ public class BossController : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
-        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        // {
-        //     audioSource.PlayOneShot(enemySounds[0]);
-        //     audioSource.UnPause();
-        // }
-        // else
-        // {
-        //     audioSource.Pause();
-        // }
     }
 
     private void SetNewRandomTarget()
@@ -168,15 +158,6 @@ public class BossController : MonoBehaviour
             centerPoint,
             enemyReturnSpeed * Time.deltaTime
         );
-        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        // {
-        //     audioSource.PlayOneShot(enemySounds[0]);
-        //     audioSource.UnPause();
-        // }
-        // else
-        // {
-        //     audioSource.Pause();
-        // }
     }
     
     private IEnumerator BiteAndWait()
@@ -198,6 +179,12 @@ public class BossController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(BiteAndWait());
+            audioSource.UnPause();
+            audioSource.PlayOneShot(bossSounds[0]);
+        }
+        else
+        {
+            audioSource.Pause();
         }
     }
 

@@ -24,7 +24,7 @@ public class CloneController : MonoBehaviour
     private Vector2 centerPoint;
     private float timer;
     private Vector2 currentVelocity;
-    public AudioClip[] enemySounds;
+    public AudioClip[] cloneSounds;
     private AudioSource audioSource;
     
     public Animator enemyAnimator;
