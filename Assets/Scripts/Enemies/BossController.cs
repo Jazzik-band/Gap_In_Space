@@ -158,6 +158,19 @@ public class BossController : MonoBehaviour
         );
     }
     
+    private void BossStepSoundPlay()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) <= 8)
+        {
+            audioSource.UnPause();
+            audioSource.PlayOneShot(bossSounds[Random.Range(1, bossSounds.Length)]);
+        }
+        else
+        {
+            audioSource.Pause();
+        }
+    }
+    
     private IEnumerator BiteAndWait()
     {
         canMove = false;

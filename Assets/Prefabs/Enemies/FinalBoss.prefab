@@ -241,6 +241,8 @@ MonoBehaviour:
   delayAfterBite: 1
   bossSounds:
   - {fileID: 8300000, guid: cdbab491411d542449a2ba75f327f19d, type: 3}
+  - {fileID: 8300000, guid: 96c5b636de4dae94f97fd8e73d7ffcea, type: 3}
+  - {fileID: 8300000, guid: 321307cea0816b04d931d145d182bbf4, type: 3}
   enemyAnimator: {fileID: 0}
 --- !u!95 &9168226882563685577
 Animator:
