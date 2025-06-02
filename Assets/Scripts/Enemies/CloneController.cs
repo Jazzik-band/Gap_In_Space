@@ -107,7 +107,6 @@ public class CloneController : MonoBehaviour
             Vector2 direction = player.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            audioSource.Stop();
         }
     }
 
@@ -139,15 +138,6 @@ public class CloneController : MonoBehaviour
                 rotationSpeed * Time.deltaTime
             );
         }
-        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        // {
-        //     audioSource.PlayOneShot(enemySounds[0]);
-        //     audioSource.UnPause();
-        // }
-        // else
-        // {
-        //     audioSource.Pause();
-        // }
     }
 
     private void SetNewRandomTarget()
@@ -168,15 +158,6 @@ public class CloneController : MonoBehaviour
             centerPoint,
             enemyReturnSpeed * Time.deltaTime
         );
-        // if (Vector2.Distance(player.transform.position, transform.position) <= 8)
-        // {
-        //     audioSource.PlayOneShot(enemySounds[0]);
-        //     audioSource.UnPause();
-        // }
-        // else
-        // {
-        //     audioSource.Pause();
-        // }
     }
     
     private IEnumerator BiteAndWait()

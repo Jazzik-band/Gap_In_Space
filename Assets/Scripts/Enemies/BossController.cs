@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using Tooltips;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour

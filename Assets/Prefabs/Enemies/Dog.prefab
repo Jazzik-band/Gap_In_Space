@@ -143,7 +143,7 @@ MonoBehaviour:
   enemyRb: {fileID: 8701971965796199905}
   delayAfterBite: 1
   dogSounds:
-  - {fileID: 8300000, guid: 54df63e0009218d43be62a8795f5c61b, type: 3}
+  - {fileID: 8300000, guid: 40bd9bbdaae8d6a4eaa3b4166f40b0bb, type: 3}
   enemyAnimator: {fileID: 0}
 --- !u!82 &-4258862030590720974
 AudioSource:
@@ -158,7 +158,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
