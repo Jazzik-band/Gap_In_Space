@@ -15,6 +15,7 @@ public class GameManager : Sounds
     
     public void StartGame()
     {
+        AudioListener.pause = false;
         SceneManager.LoadScene("Hub");
     }
 
@@ -122,6 +123,7 @@ public class GameManager : Sounds
 
     public void QuitToMainMenu()
     {
+        AudioListener.pause = false;
         SceneManager.LoadScene("Main menu");
     }
 
