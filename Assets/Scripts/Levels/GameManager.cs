@@ -10,7 +10,6 @@ public class GameManager : Sounds
     public Button start, settings, quit, back;
     public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue, healthBar, orbImage, orbs, arrow, tooltipPanel;
     public GameObject continueButton, restart, menuSettings, mainMenu, menuQuit, menuBack;
-    public GameObject walkingTooltip;
     public string currentLevel;
     private bool isPaused;
     
