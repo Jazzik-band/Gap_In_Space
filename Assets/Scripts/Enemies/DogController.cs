@@ -160,6 +160,21 @@ public class DogController : MonoBehaviour
         );
     }
     
+    private void DogStepSoundPlay()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) <= 8)
+        {
+            audioSource.volume = 0.1f;
+            audioSource.UnPause();
+            audioSource.PlayOneShot(dogSounds[1]);
+        }
+        else
+        {
+            audioSource.volume = 0.5f;
+            audioSource.Pause();
+        }
+    }
+    
     private IEnumerator BiteAndWait()
     {
         canMove = false;

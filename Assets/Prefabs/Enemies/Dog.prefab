@@ -144,6 +144,7 @@ MonoBehaviour:
   delayAfterBite: 1
   dogSounds:
   - {fileID: 8300000, guid: 40bd9bbdaae8d6a4eaa3b4166f40b0bb, type: 3}
+  - {fileID: 8300000, guid: 4a0b6fb49cc0dd74e8604649a4d6e0ef, type: 3}
   enemyAnimator: {fileID: 0}
 --- !u!82 &-4258862030590720974
 AudioSource:
