@@ -8,7 +8,7 @@ public class CheatCodeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F8))
+        if (Input.GetKeyDown(KeyCode.F9))
         {
             cheatPanel.SetActive(!cheatPanel.activeSelf);
         }
