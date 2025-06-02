@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Tooltips;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;

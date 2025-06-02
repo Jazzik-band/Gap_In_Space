@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Tooltips;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
