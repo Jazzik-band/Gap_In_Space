@@ -26,7 +26,7 @@ public class GameManager : Sounds
             TogglePause();
         }
 
-        if (currentLevel == "Main menu")
+        if (currentLevel != "CutScene" && currentLevel != "FinalCutScene" && currentLevel != "Hub" && currentLevel != "Death")
         {
             PlaySound(sounds[0], 0.25f, false);
         }

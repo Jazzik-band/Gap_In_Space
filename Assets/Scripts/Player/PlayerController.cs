@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             maxHealth = 10f;
             IsBoosted = false;
             OrbHandler.CurrentOrbs = 0;
-            TooltipsSystem.Instance.ShowTooltip("WASD - движение\nShift - ускорение\nCtrl - присесть", 6);
+            TooltipsSystem.Instance.ShowTooltip("WASD - движение\nL. Shift - ускорение\nL. Ctrl - присесть", 6);
         }
         else
         {
