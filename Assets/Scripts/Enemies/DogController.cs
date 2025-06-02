@@ -51,7 +51,7 @@ public class DogController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.IsCrouching())
+        if (PlayerController.IsCrouching() || !FlashlightController.IsFlashLightOn)
         {
             distance = 5;
         }
@@ -196,6 +196,7 @@ public class DogController : MonoBehaviour
             StartCoroutine(BiteAndWait());
             audioSource.UnPause();
             audioSource.PlayOneShot(dogSounds[0]);
+            PlayerController.maxHealth -= 1f;
         }
         else
         {

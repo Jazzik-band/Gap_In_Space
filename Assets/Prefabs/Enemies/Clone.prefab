@@ -231,6 +231,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9961d5cedc641c74ea8cf2dc81f2599d, type: 3}
   - {fileID: 8300000, guid: 7c53a861e7fdbdc4eaca36630e91b460, type: 3}
   - {fileID: 8300000, guid: 682392479bde14c4298999dbf6c67b4a, type: 3}
+  - {fileID: 8300000, guid: bc782801a14194e4780ccb91d84b57de, type: 3}
   enemyAnimator: {fileID: 0}
 --- !u!95 &553510705125727377
 Animator:

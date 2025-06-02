@@ -51,7 +51,7 @@ public class CloneController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.IsCrouching())
+        if (PlayerController.IsCrouching() || !FlashlightController.IsFlashLightOn)
         {
             distance = 5;
         }
@@ -102,7 +102,10 @@ public class CloneController : MonoBehaviour
         if (player)
         {
             transform.position =
-                Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
+                Vector2.MoveTowards(
+                    transform.position,
+                    player.position,
+                    enemyRunSpeed * Time.deltaTime);
             Vector2 direction = player.position - transform.position;
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -164,7 +167,7 @@ public class CloneController : MonoBehaviour
         if (Vector2.Distance(transform.position, player.transform.position) <= 8)
         {
             audioSource.UnPause();
-            audioSource.PlayOneShot(cloneSounds[Random.Range(0, cloneSounds.Length)]);
+            audioSource.PlayOneShot(cloneSounds[Random.Range(0, 4)]);
         }
         else
         {
@@ -177,8 +180,8 @@ public class CloneController : MonoBehaviour
     {
         canMove = false;
         transform.position = new Vector3 (
-            transform.position.x - (player.transform.position.x - transform.position.x) * 0.2f,
-            transform.position.y - (player.transform.position.y - transform.position.y) * 0.2f, 0);
+            transform.position.x - (player.transform.position.x - transform.position.x) * 0.4f,
+            transform.position.y - (player.transform.position.y - transform.position.y) * 0.4f, 0);
         enemyRb.bodyType = RigidbodyType2D.Static;
         isBite = true;
         yield return new WaitForSeconds(1f);
@@ -192,6 +195,13 @@ public class CloneController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(BiteAndWait());
+            audioSource.UnPause();
+            audioSource.PlayOneShot(cloneSounds[4]);
+            PlayerController.maxHealth -= 0.5f;
+        }
+        else
+        {
+            audioSource.Pause();
         }
     }
 
@@ -199,15 +209,19 @@ public class CloneController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
-            canMove = false;
+            //canMove = false;
+            enemyRunSpeed = -1;
             isWalking = false;
             isSprinting = false;
         }
-        
-        if (!FlashlightController.IsFlashLightSuper)
-        {
-            canMove = true;
-        }
+
+        if (Vector2.Distance(player.transform.position, transform.position) >= 6 || !FlashlightController.IsFlashLightSuper)
+            enemyRunSpeed = 5;
+        // if (!FlashlightController.IsFlashLightSuper)
+        // {
+        //     canMove = true;
+        //     enemyRunSpeed = 5;
+        // }
     }
 
     private void OnTriggerExit2D(Collider2D other)

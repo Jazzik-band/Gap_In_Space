@@ -19,7 +19,7 @@ public class FlashlightController : MonoBehaviour
         flashlight = GetComponent<Light2D>();
         flashlightIntensity = flashlight.intensity;
         flashlightRadius = flashlight.pointLightOuterRadius;
-        BatteryLife = 100;
+        //BatteryLife = 100;
     }
 
     private void Update()

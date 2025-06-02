@@ -49,7 +49,7 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerController.IsCrouching())
+        if (PlayerController.IsCrouching() || !FlashlightController.IsFlashLightOn)
         {
             distance = 5;
         }
@@ -191,6 +191,7 @@ public class BossController : MonoBehaviour
             StartCoroutine(BiteAndWait());
             audioSource.UnPause();
             audioSource.PlayOneShot(bossSounds[0]);
+            PlayerController.maxHealth -= 2f;
         }
         else
         {
@@ -202,14 +203,16 @@ public class BossController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
-            canMove = false;
+            //canMove = false;
+            enemyRunSpeed = 2;
             isWalking = false;
             isSprinting = false;
         }
         
         if (!FlashlightController.IsFlashLightSuper)
         {
-            canMove = true;
+            //canMove = true;
+            enemyRunSpeed = 5;
         }
     }
 

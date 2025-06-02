@@ -229,10 +229,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 7
-  enemyWalkSpeed: 3
+  enemyWalkSpeed: 1
   enemyRunSpeed: 5
-  enemyReturnSpeed: 4
-  chaseDistance: 5
+  enemyReturnSpeed: 3
+  chaseDistance: 6
   minWaitTime: 1
   maxWaitTime: 3
   distance: 7
@@ -370,7 +370,7 @@ PolygonCollider2D:
       - {x: 0.56884074, y: -0.3472662}
       - {x: 0.545, y: -0.285}
       - {x: 0.44301838, y: -0.23209834}
-    - - {x: 0.21838611, y: 0.26090038}
-      - {x: 0.21422824, y: 0.25447986}
-      - {x: 0.20928058, y: 0.26218435}
+    - - {x: 0.21884164, y: 0.25259858}
+      - {x: 0.21882701, y: 0.25260094}
+      - {x: 0.21882698, y: 0.25259054}
   m_UseDelaunayMesh: 0
