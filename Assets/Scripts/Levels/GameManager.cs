@@ -17,6 +17,7 @@ public class GameManager : Sounds
     {
         AudioListener.pause = false;
         SceneManager.LoadScene("Hub");
+        FlashlightController.BatteryLife = 100;
     }
 
     private void Update()
