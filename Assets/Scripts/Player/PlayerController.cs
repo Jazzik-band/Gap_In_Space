@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private Light2D playerLight, roundLight;
     public Light2D mainLight;
     public GameObject door;
+    public Light2D[] lamps;
     public float delayBeforeLoad = 2f;
 
     public AnimatorOverrideController playerFlashlightAnimator;
@@ -191,7 +193,10 @@ public class PlayerController : MonoBehaviour
             isTriggered = true;
             if (isTriggered)
             {
-                mainLight.gameObject.SetActive(false);
+                for (int i = 0; i < lamps.Length; i++)
+                {
+                    lamps[i].gameObject.SetActive(false);
+                }
                 roundLight.gameObject.SetActive(true);
                 StartCoroutine(LoadSceneAfterDelay());
             }
@@ -201,10 +206,15 @@ public class PlayerController : MonoBehaviour
         {
             roundLight.gameObject.SetActive(true);
         }
-        if (!isShown && transform.position.y >= 50)
+        if (!isShown && transform.position.y >= 47.5f)
         {
             door.SetActive(true);
             isShown = true;
+            mainLight.intensity = 0f;
+            for (int j = 0; j < lamps.Length; j++)
+            {
+                lamps[j].gameObject.SetActive(true);
+            }
         }
     }
     private void HandleStamina()
