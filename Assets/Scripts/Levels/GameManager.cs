@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class GameManager : Sounds
         AudioListener.pause = false;
         SceneManager.LoadScene("Hub");
         FlashlightController.BatteryLife = 100;
+        
     }
 
     private void Update()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
     public static bool IsBoosted;
     private float boostTimeLeft = 7f;
     private Light2D playerLight, roundLight;
+    public Light2D mainLight;
     public GameObject door;
     public float delayBeforeLoad = 2f;
 
@@ -189,6 +191,7 @@ public class PlayerController : MonoBehaviour
             isTriggered = true;
             if (isTriggered)
             {
+                mainLight.gameObject.SetActive(false);
                 roundLight.gameObject.SetActive(true);
                 StartCoroutine(LoadSceneAfterDelay());
             }
