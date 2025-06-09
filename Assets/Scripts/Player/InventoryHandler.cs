@@ -66,9 +66,9 @@ public class InventoryHandler : MonoBehaviour
         {
             foreach (Transform child in slotContent.transform)
             {
-                if (slotContent.gameObject.name == "Battery(Clone)")
+                if (slotContent.gameObject.name == "Battery(Clone)" || slotContent.gameObject.name == "Battery")
                     FlashlightController.BatteryLife = 100;
-                else if (slotContent.gameObject.name == "Injector(Clone)")
+                else if (slotContent.gameObject.name == "Injector(Clone)" || slotContent.gameObject.name == "Injector")
                 {
                     if (PlayerController.maxHealth >= 5)
                         PlayerController.maxHealth = 10f;
@@ -77,7 +77,7 @@ public class InventoryHandler : MonoBehaviour
                         PlayerController.maxHealth += 5;
                     }
                 }
-                else if (slotContent.gameObject.name == "EnergyDrink(Clone)")
+                else if (slotContent.gameObject.name == "EnergyDrink(Clone)" || slotContent.gameObject.name == "EnergyDrink")
                 {
                     PlayerController.IsBoosted = true;
                 }
@@ -91,15 +91,15 @@ public class InventoryHandler : MonoBehaviour
     {
         var slotContent = inventorySlots[selectedSlot].transform.GetChild(0);
         var item = new GameObject();
-        if (slotContent.gameObject.name == "Battery(Clone)")
+        if (slotContent.gameObject.name == "Battery(Clone)" || slotContent.gameObject.name == "Battery")
         {
             item = Instantiate(batteryPrefab, transform.position, Quaternion.identity);
         }
-        else if (slotContent.gameObject.name == "Injector(Clone)")
+        else if (slotContent.gameObject.name == "Injector(Clone)" || slotContent.gameObject.name == "Injector")
         {
             item = Instantiate(injectorPrefab, transform.position, Quaternion.identity);
         }
-        else if (slotContent.gameObject.name == "EnergyDrink(Clone)")
+        else if (slotContent.gameObject.name == "EnergyDrink(Clone)" || slotContent.gameObject.name == "EnergyDrink")
         {
             item = Instantiate(energyDrinkPrefab, transform.position, Quaternion.identity);
         }

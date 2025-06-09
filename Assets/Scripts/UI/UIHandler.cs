@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject player;
     
     private static GameObject _portal;
+    public GameObject learningPortalPrefab;
     private Image sliderFillImage;
     private OrbHandler orbHandler;
     private float lastStaminaChangeTime;
