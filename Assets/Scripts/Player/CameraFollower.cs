@@ -9,6 +9,7 @@ public class CameraFollower : MonoBehaviour
     private const float CursorInfluence = 0.5f;
     private Camera mainCamera;
 
+    
     private void Start()
     {
         mainCamera = GetComponent<Camera>();

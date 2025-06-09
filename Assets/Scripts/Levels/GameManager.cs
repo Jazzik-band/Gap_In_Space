@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameManager : Sounds
 {
-    public Button start, settings, quit, back;
+    public Button start, learning, settings, quit, back;
     public GameObject menuPanel, staminaUI, inventoryPanel, batteryValue, healthBar, orbImage, orbs, arrow, tooltipPanel;
     public GameObject continueButton, restart, menuSettings, mainMenu, menuQuit, menuBack;
     public string currentLevel;
@@ -20,6 +20,13 @@ public class GameManager : Sounds
         SceneManager.LoadScene("Hub");
         FlashlightController.BatteryLife = 100;
         
+    }
+
+    public void LoadLearning()
+    {
+        AudioListener.pause = false;
+        SceneManager.LoadScene("Education");
+        FlashlightController.BatteryLife = 100;
     }
 
     private void Update()
@@ -95,6 +102,7 @@ public class GameManager : Sounds
     {
         start.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        learning.gameObject.SetActive(false);
         quit.gameObject.SetActive(false);
         back.gameObject.SetActive(true);
     }
@@ -122,6 +130,7 @@ public class GameManager : Sounds
     {
         start.gameObject.SetActive(true);
         settings.gameObject.SetActive(true);
+        learning.gameObject.SetActive(true);
         quit.gameObject.SetActive(true);
         back.gameObject.SetActive(false);
     }

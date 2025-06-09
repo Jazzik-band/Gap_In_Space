@@ -179,6 +179,11 @@ public class PlayerController : MonoBehaviour
         {
             HandleStartScene();
         }
+        if (currentScene == "Education")
+        {
+            CameraFollower.Target = transform;
+            InventoryHandler.Target = transform;
+        }
     }
 
     private void HandleStartScene()
