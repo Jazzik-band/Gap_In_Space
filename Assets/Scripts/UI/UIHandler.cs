@@ -18,7 +18,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject player;
     
     private static GameObject _portal;
-    public GameObject learningPortalPrefab;
+    public GameObject learningPortalPrefab, learningArrow;
     private Image sliderFillImage;
     private OrbHandler orbHandler;
     private float lastStaminaChangeTime;
@@ -71,6 +71,8 @@ public class UIHandler : MonoBehaviour
 
         if (currentOrbs >= necessaryOrbs)
         {
+            learningPortalPrefab.SetActive(true);
+            learningArrow.SetActive(true);
             _portal.SetActive(true);
             arrow.SetActive(true);
         }

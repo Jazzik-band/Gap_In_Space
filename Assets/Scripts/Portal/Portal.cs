@@ -37,6 +37,7 @@ public class Portal: MonoBehaviour
             orbHandler.ResetOrbs();
             switch (currentLevel)
             {
+                case "Education": SceneManager.LoadScene("Main menu"); break;
                 case "Game": SceneManager.LoadScene("Game2"); break;
                 case "Game2": SceneManager.LoadScene("Game3"); break;
                 case "Game3": SceneManager.LoadScene("FinalCutScene"); break;
