@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private static bool _isCrouching;
     private static bool _isPickingUp;
     private static bool _isNextSlotPicking;
+    public static bool isDieOnLearning;
 
     private void Start()
     {
@@ -170,8 +171,10 @@ public class PlayerController : MonoBehaviour
         
         var targetVelocity = moveInput * currentSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, Acceleration * Time.fixedDeltaTime);
-        if (maxHealth < 1f)
+        if (maxHealth < 0.5f)
         {
+            if (currentScene == "Education")
+                isDieOnLearning = true;
             SceneManager.LoadScene("Death");
         }
 

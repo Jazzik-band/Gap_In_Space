@@ -17,9 +17,17 @@ public class GameManager : Sounds
     public void StartGame()
     {
         AudioListener.pause = false;
-        SceneManager.LoadScene("Hub");
         FlashlightController.BatteryLife = 100;
-        
+        PlayerController.maxHealth = 10f;
+        if (currentLevel == "Education" || PlayerController.isDieOnLearning)
+        {
+            PlayerController.isDieOnLearning = false;
+            SceneManager.LoadScene("Education");
+        }
+        else
+        {
+            SceneManager.LoadScene("Hub");
+        }
     }
 
     public void LoadLearning()
