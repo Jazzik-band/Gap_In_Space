@@ -61083,6 +61083,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2953371295555048844, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
   m_PrefabInstance: {fileID: 1849429267}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &880623761 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
+  m_PrefabInstance: {fileID: 1849429267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &911595525
 GameObject:
   m_ObjectHideFlags: 0
@@ -61369,6 +61374,11 @@ RectTransform:
   m_AnchoredPosition: {x: 718.55054, y: 429}
   m_SizeDelta: {x: 153.6914, y: 45.984}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1067860955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3040780894656623365, guid: fe3f0b9b9914dc14caca1fae1a719234, type: 3}
+  m_PrefabInstance: {fileID: 1635486227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1075645139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61635,7 +61645,7 @@ MonoBehaviour:
   arrow: {fileID: 1859344221}
   orbCounter: {fileID: 1034698086}
   player: {fileID: 880623753}
-  learningPortalPrefab: {fileID: 2121850490}
+  learningPortalPrefab: {fileID: 1067860955}
   learningArrow: {fileID: 1859344221}
 --- !u!114 &1108946398
 MonoBehaviour:
@@ -62468,7 +62478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3889228357427941473, guid: fe3f0b9b9914dc14caca1fae1a719234, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3889228357427941473, guid: fe3f0b9b9914dc14caca1fae1a719234, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62976,11 +62986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.8166695
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7394363428311168942, guid: 4ee5ba0d5fbfb014d8a9e6a9fe1f4fec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63105,26 +63115,14 @@ GameObject:
   - component: {fileID: 1859344225}
   - component: {fileID: 1859344224}
   - component: {fileID: 1859344223}
-  - component: {fileID: 1859344222}
+  - component: {fileID: 1859344226}
   m_Layer: 5
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1859344222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859344221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2743476be18cb4747b2f3b32d969a04a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1859344223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63182,6 +63180,20 @@ RectTransform:
   m_AnchoredPosition: {x: 845.4, y: 267}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1859344226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859344221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0ecdb77fc56d14386572007edadcbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 880623761}
+  portalTransform: {fileID: 2121850495}
 --- !u!1 &1876025121
 GameObject:
   m_ObjectHideFlags: 0
@@ -64159,9 +64171,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074262426}
   m_CullTransparentMesh: 1
---- !u!1 &2121850490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3040780894656623365, guid: fe3f0b9b9914dc14caca1fae1a719234, type: 3}
+--- !u!4 &2121850495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3889228357427941473, guid: fe3f0b9b9914dc14caca1fae1a719234, type: 3}
   m_PrefabInstance: {fileID: 1635486227}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

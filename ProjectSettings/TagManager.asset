@@ -11,6 +11,7 @@ TagManager:
   - PlayerLightTester
   - Portal
   - Walls
+  - Arrow
   layers:
   - Default
   - TransparentFX

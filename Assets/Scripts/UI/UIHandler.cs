@@ -71,10 +71,16 @@ public class UIHandler : MonoBehaviour
 
         if (currentOrbs >= necessaryOrbs)
         {
-            learningPortalPrefab.SetActive(true);
-            learningArrow.SetActive(true);
-            _portal.SetActive(true);
-            arrow.SetActive(true);
+            if (SceneManager.GetActiveScene().name == "Education")
+            {
+                learningPortalPrefab.SetActive(true);
+                learningArrow.SetActive(true);
+            }
+            else
+            {
+                _portal.SetActive(true);
+                arrow.SetActive(true);
+            }
         }
     }
 
