@@ -284,10 +284,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            DogController.IsBite = true;
-            //maxHealth -= 0.5f;
+            DogController.isBite = true;
         }
     }
+    
+    public void ApplyBounce(Vector2 direction)
+    {
+        if (rb != null)
+        {
+            float bounceForce = 9f;
+            rb.AddForce(direction * bounceForce, ForceMode2D.Impulse);
+        }
+    }
+    
     IEnumerator LoadSceneAfterDelay()
     {
         yield return new WaitForSeconds(delayBeforeLoad);

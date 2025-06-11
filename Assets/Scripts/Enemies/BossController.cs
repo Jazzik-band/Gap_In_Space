@@ -97,11 +97,11 @@ public class BossController : MonoBehaviour
 
     private void RunTurn()
     {
-        if (player)
+        if (player && canMove)
         {
-            transform.position =
-                Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
-            Vector2 direction = player.position - transform.position;
+            Vector2 direction = (player.position - transform.position).normalized;
+            enemyRb.linearVelocity = direction * enemyRunSpeed;
+        
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
@@ -173,15 +173,17 @@ public class BossController : MonoBehaviour
     private IEnumerator BiteAndWait()
     {
         canMove = false;
-        transform.position = new Vector3 (
-            transform.position.x - (player.transform.position.x - transform.position.x) * 0.5f,
-            transform.position.y - (player.transform.position.y - transform.position.y) * 0.5f, 0);
-        enemyRb.bodyType = RigidbodyType2D.Static;
         isBite = true;
-        yield return new WaitForSeconds(1f);
-
+    
+        savedVelocity = enemyRb.linearVelocity;
+        enemyRb.linearVelocity = Vector2.zero;
+        enemyRb.bodyType = RigidbodyType2D.Kinematic;
+    
+        yield return new WaitForSeconds(2f);
+    
         enemyRb.bodyType = RigidbodyType2D.Dynamic;
         canMove = true;
+        isBite = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -192,6 +194,12 @@ public class BossController : MonoBehaviour
             audioSource.UnPause();
             audioSource.PlayOneShot(bossSounds[0]);
             PlayerController.maxHealth -= 2f;
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                Vector2 bounceDirection = (other.transform.position - transform.position).normalized;
+                playerController.ApplyBounce(bounceDirection);
+            }
         }
         else
         {

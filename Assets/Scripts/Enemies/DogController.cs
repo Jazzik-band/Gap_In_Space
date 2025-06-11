@@ -32,7 +32,7 @@ public class DogController : MonoBehaviour
     private bool isStopped = false;
 
     private bool wasChasing;
-    public static bool IsBite;
+    public static bool isBite;
     private bool canMove = true;
     private bool isWalking;
     private bool isSprinting;
@@ -89,21 +89,21 @@ public class DogController : MonoBehaviour
 
         if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
         {
-            IsBite = false;
+            isBite = false;
         }
 
         enemyAnimator.SetBool("IsWalking", isWalking);
         enemyAnimator.SetBool("IsRunning", isSprinting);
-        enemyAnimator.SetBool("IsAtacking", IsBite);
+        enemyAnimator.SetBool("IsAtacking", isBite);
     }
 
     private void RunTurn()
     {
-        if (player)
+        if (player && canMove)
         {
-            transform.position =
-                Vector2.MoveTowards(transform.position, player.position, enemyRunSpeed * Time.deltaTime);
-            Vector2 direction = player.position - transform.position;
+            Vector2 direction = (player.position - transform.position).normalized;
+            enemyRb.linearVelocity = direction * enemyRunSpeed;
+        
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
@@ -177,26 +177,34 @@ public class DogController : MonoBehaviour
     private IEnumerator BiteAndWait()
     {
         canMove = false;
-        transform.position = new Vector3 (
-            transform.position.x - (player.transform.position.x - transform.position.x) * 0.8f,
-            transform.position.y - (player.transform.position.y - transform.position.y) * 0.8f, 0);
-        enemyRb.bodyType = RigidbodyType2D.Static;
-        IsBite = true;
+        isBite = true;
+    
+        savedVelocity = enemyRb.linearVelocity;
+        enemyRb.linearVelocity = Vector2.zero;
+        enemyRb.bodyType = RigidbodyType2D.Kinematic;
+    
         yield return new WaitForSeconds(2f);
-
+    
         enemyRb.bodyType = RigidbodyType2D.Dynamic;
         canMove = true;
+        isBite = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            IsBite = true;
+            isBite = true;
             StartCoroutine(BiteAndWait());
             audioSource.UnPause();
             audioSource.PlayOneShot(dogSounds[0]);
             PlayerController.maxHealth -= 1f;
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                Vector2 bounceDirection = (other.transform.position - transform.position).normalized;
+                playerController.ApplyBounce(bounceDirection);
+            }
         }
         else
         {
@@ -208,6 +216,7 @@ public class DogController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
+            enemyRb.bodyType = RigidbodyType2D.Static;
             canMove = false;
             isWalking = false;
             isSprinting = false;
@@ -215,6 +224,7 @@ public class DogController : MonoBehaviour
 
         if (!FlashlightController.IsFlashLightSuper)
         {
+            enemyRb.bodyType = RigidbodyType2D.Dynamic;
             canMove = true;
         }
         
@@ -224,6 +234,7 @@ public class DogController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerLightTester"))
         {
+            enemyRb.bodyType = RigidbodyType2D.Dynamic;
             canMove = true;
         }
     }
