@@ -59,11 +59,6 @@ public class BossController : MonoBehaviour
         }
         if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
-            if (!PlayerController.IsSeeingEnemy)
-            {
-                PlayerController.IsSeeingEnemy = true;
-                TooltipsSystem.Instance.ShowTooltip("ПКМ - усилить фонарик", 5);
-            }
             RunTurn();
             wasChasing = true;
             isWalking = false;
@@ -85,14 +80,14 @@ public class BossController : MonoBehaviour
             }
         }
 
-        if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
-        {
-            isBite = false;
-        }
+        // if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
+        // {
+        //     isBite = false;
+        // }
 
         enemyAnimator.SetBool("IsWalking", isWalking);
         enemyAnimator.SetBool("IsRunning", isSprinting);
-        //enemyAnimator.SetBool("IsAtacking", isBite);
+        enemyAnimator.SetBool("IsAtacking", isBite);
     }
 
     private void RunTurn()
@@ -179,7 +174,7 @@ public class BossController : MonoBehaviour
         enemyRb.linearVelocity = Vector2.zero;
         enemyRb.bodyType = RigidbodyType2D.Kinematic;
     
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
     
         enemyRb.bodyType = RigidbodyType2D.Dynamic;
         canMove = true;
@@ -213,7 +208,7 @@ public class BossController : MonoBehaviour
         {
             //canMove = false;
             enemyRunSpeed = 2;
-            isWalking = false;
+            isWalking = true;
             isSprinting = false;
         }
         

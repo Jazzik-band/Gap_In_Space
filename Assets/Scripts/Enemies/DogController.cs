@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
@@ -61,10 +62,11 @@ public class DogController : MonoBehaviour
         }
         if (Vector2.Distance(player.transform.position, transform.position) <= distance && canMove)
         {
-            if (!PlayerController.IsSeeingEnemy)
+            if (!PlayerController.IsSeeingEnemy && SceneManager.GetActiveScene().name == "Education")
             {
                 PlayerController.IsSeeingEnemy = true;
-                TooltipsSystem.Instance.ShowTooltip("ПКМ - усилить фонарик", 5);
+                TooltipsSystem.Instance.ShowTooltip(
+                    "ПКМ - усилить фонарик\nСледите за запасом энергии!", 7);
             }
             RunTurn();
             wasChasing = true;
@@ -87,10 +89,10 @@ public class DogController : MonoBehaviour
             }
         }
 
-        if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
-        {
-            isBite = false;
-        }
+        // if (((Vector3)enemyRb.position - player.position).magnitude > 2f)
+        // {
+        //     isBite = false;
+        // }
 
         enemyAnimator.SetBool("IsWalking", isWalking);
         enemyAnimator.SetBool("IsRunning", isSprinting);

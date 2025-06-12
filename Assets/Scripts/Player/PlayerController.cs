@@ -63,10 +63,11 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] stepSounds;
     private AudioSource audioSource;
 
-    public static bool IsSeeingEnemy;
+    public static bool IsSeeingEnemy, IsSeeingItems,
+        IsPickingUpItemEarly, IsSeeingOrbs, IsCollectedOrbs;
     public bool isShown;
     private bool isTriggered;
-    public static bool IsPickingUpItemEarly;
+    
     
     private static bool _isWalking;
     private static bool _isCrouching;
@@ -81,16 +82,16 @@ public class PlayerController : MonoBehaviour
             maxHealth = 10f;
             IsBoosted = false;
             OrbHandler.CurrentOrbs = 0;
-            TooltipsSystem.Instance.ShowTooltip("WASD - движение\nL. Shift - ускорение\nL. Ctrl - присесть", 6);
         }
         else
         {
             playerAnimator.runtimeAnimatorController = playerFlashlightAnimator;
         }
 
-        if (SceneManager.GetActiveScene().name == "Game")
+        if (SceneManager.GetActiveScene().name == "Education")
         {
-            TooltipsSystem.Instance.ShowTooltip("F - вкл/выкл фонарик\nTab - сменить ячейку инвентаря", 5);
+            TooltipsSystem.Instance.ShowTooltip(
+                "WASD - движение\nL. Shift - ускорение\nL. Ctrl - присесть\nF - вкл/выкл фонарик", 10);
         }
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -186,6 +187,26 @@ public class PlayerController : MonoBehaviour
         {
             CameraFollower.Target = transform;
             InventoryHandler.Target = transform;
+            if (transform.position.y > 22 && !IsSeeingItems)
+            {
+                IsSeeingItems = true;
+                TooltipsSystem.Instance.ShowTooltip(
+                    "Tab - сменить ячейку инвентаря\nE - взять предмет", 5);
+            }
+            
+            if (transform.position.y > 60 && !IsSeeingOrbs)
+            {
+                IsSeeingOrbs = true;
+                TooltipsSystem.Instance.ShowTooltip(
+                    "Соберите необходимое\nколичество сфер,\nчтобы открыть портал", 7);
+            }
+
+            if (OrbHandler.CurrentOrbs == 4 && !IsCollectedOrbs)
+            {
+                IsCollectedOrbs = true;
+                TooltipsSystem.Instance.ShowTooltip(
+                    "Стрелка указывает на портал\nИдите скорее!", 7);
+            }
         }
     }
 

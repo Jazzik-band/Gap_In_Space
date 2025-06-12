@@ -21,7 +21,12 @@ public class GameManager : Sounds
         PlayerController.maxHealth = 10f;
         if (currentLevel == "Education" || PlayerController.isDieOnLearning)
         {
+            PlayerController.IsSeeingEnemy = false;
+            PlayerController.IsPickingUpItemEarly = false;
+            PlayerController.IsSeeingItems = false;
+            PlayerController.IsSeeingOrbs = false;
             PlayerController.isDieOnLearning = false;
+            PlayerController.IsCollectedOrbs = false;
             SceneManager.LoadScene("Education");
         }
         else

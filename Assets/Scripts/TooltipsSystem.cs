@@ -18,14 +18,14 @@ public class TooltipsSystem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void ShowTooltip(string message, float duration = 3f)
+    public void ShowTooltip(string message, float duration)
     {
         tooltipText.text = message;
         
         var textWidth = tooltipText.preferredWidth;
         var textHeight = tooltipText.preferredHeight;
         
-        tooltipPanel.sizeDelta = new Vector2(textWidth + 20, textHeight + 10);
+        tooltipPanel.sizeDelta = new Vector2(textWidth + 30, textHeight + 20);
         
         tooltipPanel.gameObject.SetActive(true);
 

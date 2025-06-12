@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OrbHandler : MonoBehaviour
 {
-    [SerializeField]private int necessaryOrbs;
+    [SerializeField] private int necessaryOrbs;
     public static int CurrentOrbs;
     
     public int GetNecessaryOrbs()
