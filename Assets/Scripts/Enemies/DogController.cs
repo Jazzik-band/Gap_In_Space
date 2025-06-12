@@ -184,7 +184,6 @@ public class DogController : MonoBehaviour
         savedVelocity = enemyRb.linearVelocity;
         enemyRb.linearVelocity = Vector2.zero;
         enemyRb.bodyType = RigidbodyType2D.Kinematic;
-    
         yield return new WaitForSeconds(2f);
     
         enemyRb.bodyType = RigidbodyType2D.Dynamic;

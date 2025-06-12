@@ -140,7 +140,7 @@ MonoBehaviour:
   maxWaitTime: 3
   distance: 7
   rotationSpeed: 5
-  enemyRb: {fileID: 8701971965796199905}
+  enemyRb: {fileID: 0}
   delayAfterBite: 1
   dogSounds:
   - {fileID: 8300000, guid: 40bd9bbdaae8d6a4eaa3b4166f40b0bb, type: 3}

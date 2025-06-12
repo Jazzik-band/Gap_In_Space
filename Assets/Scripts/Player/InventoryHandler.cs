@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryHandler : MonoBehaviour
@@ -132,7 +133,7 @@ public class InventoryHandler : MonoBehaviour
                 isItemNotFound = false;
                 if (PlayerController.TryPickUp())
                 {
-                    if (!PlayerController.IsPickingUpItemEarly)
+                    if (!PlayerController.IsPickingUpItemEarly && SceneManager.GetActiveScene().name == "Education")
                     {
                         PlayerController.IsPickingUpItemEarly = true;
                         TooltipsSystem.Instance.ShowTooltip(
