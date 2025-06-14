@@ -105,7 +105,7 @@ public class DogController : MonoBehaviour
         {
             Vector2 direction = (player.position - transform.position).normalized;
             enemyRb.linearVelocity = direction * enemyRunSpeed;
-        
+            
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
@@ -184,7 +184,7 @@ public class DogController : MonoBehaviour
         savedVelocity = enemyRb.linearVelocity;
         enemyRb.linearVelocity = Vector2.zero;
         enemyRb.bodyType = RigidbodyType2D.Kinematic;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
     
         enemyRb.bodyType = RigidbodyType2D.Dynamic;
         canMove = true;
@@ -218,15 +218,16 @@ public class DogController : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerLightTester") && FlashlightController.IsFlashLightSuper)
         {
             enemyRb.bodyType = RigidbodyType2D.Static;
-            canMove = false;
+            //canMove = false;
+            enemyRunSpeed = 0;
             isWalking = false;
             isSprinting = false;
         }
-
         if (!FlashlightController.IsFlashLightSuper)
         {
             enemyRb.bodyType = RigidbodyType2D.Dynamic;
-            canMove = true;
+            //canMove = true;
+            enemyRunSpeed = 4;
         }
         
     }
@@ -235,7 +236,7 @@ public class DogController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerLightTester"))
         {
-            enemyRb.bodyType = RigidbodyType2D.Dynamic;
+           //enemyRb.bodyType = RigidbodyType2D.Dynamic;
             canMove = true;
         }
     }

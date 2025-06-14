@@ -140,8 +140,8 @@ MonoBehaviour:
   crouchSpeed: 1
   maxStamina: 100
   sprintPercentAvailability: 0.2
-  staminaDrainRate: 30
-  staminaRegenRate: 8
+  staminaDrainRate: 25
+  staminaRegenRate: 9
   staminaRegenDelay: 2
   moveAction: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -150,7 +150,9 @@ MonoBehaviour:
   interactAction: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   nextSlotAction: {fileID: 2601004407269590109, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   playerSpriteWithoutFlashlight: {fileID: -589821096341392778, guid: 45acddbcfb173514d9b69f614ff4aca8, type: 3}
+  mainLight: {fileID: 0}
   door: {fileID: 0}
+  lamps: []
   delayBeforeLoad: 2
   playerFlashlightAnimator: {fileID: 22100000, guid: efd1ef4e32caead48a4b5676fc53380f, type: 2}
   playerAnimator: {fileID: -6357229897198731027}
