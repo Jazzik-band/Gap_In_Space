@@ -223,6 +223,7 @@ public class BossController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerLightTester"))
         {
+            enemyRunSpeed = 5;
             canMove = true;
         }
     }

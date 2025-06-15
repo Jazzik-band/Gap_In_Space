@@ -223,7 +223,7 @@ public class DogController : MonoBehaviour
             isWalking = false;
             isSprinting = false;
         }
-        if (!FlashlightController.IsFlashLightSuper)
+        else if (!other.gameObject.CompareTag("PlayerLightTester") || !FlashlightController.IsFlashLightSuper)
         {
             enemyRb.bodyType = RigidbodyType2D.Dynamic;
             //canMove = true;
@@ -237,7 +237,9 @@ public class DogController : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerLightTester"))
         {
            //enemyRb.bodyType = RigidbodyType2D.Dynamic;
-            canMove = true;
+           enemyRb.bodyType = RigidbodyType2D.Dynamic;
+           enemyRunSpeed = 4;
+           canMove = true;
         }
     }
 }
